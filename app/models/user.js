@@ -1,0 +1,1 @@
+// schema for user collection

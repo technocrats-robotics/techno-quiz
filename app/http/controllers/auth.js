@@ -1,22 +1,23 @@
 const User = require("../../models/user");
 
 const register = (req, res) => {
-    console.log("register")
     const { name, email, password } = req.body;
     const user = new User({ name, email, password });
-    user.save()
-        .then((user) => {
-            res.json({
-                message: "User created successfully",
-                user,
-            });
-        })
-        .catch((err) => {
-            res.json({
-                message: "User not created",
+
+    user.save((err, user) => {
+        if (err) {
+            return res.json({
+                message: "User not found",
                 err,
             });
+        }
+        return res.json({
+            message: "User created",
+            user,
         });
+    });
+
+    
 };
 
 const login = (req, res) => {
@@ -28,8 +29,8 @@ const login = (req, res) => {
                     message: "User not found",
                 });
             } else {
-                if (user.password === password) {
-                    res.json({
+                if (user.authenticate(password)) {
+                    return res.json({
                         message: "User found",
                         user,
                     });

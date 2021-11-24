@@ -3,7 +3,7 @@
 const admin = (req, res, next)=>{
 
     console.log('Admin Request Received')
-    let admin = false // verify admin here
+    let admin = true // verify admin here
     if(admin){
         next()
     } else {

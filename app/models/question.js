@@ -1,24 +1,24 @@
 // schema for question collection
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
 const question = new mongoose.Schema({
     statement: {
         type: String,
-        required: true 
+        required: true,
     },
     options: {
         type: Object,
-        default: []
+        default: [],
     },
     answer: {
         type: Number,
-        required: true
+        required: true,
     },
     createdOn: {
         type: Date,
-        default: Date.now
+        default: () => Date.now(),
     }
 });
 
-const Question = mongoose.model('Quiz', question)
-module.exports = Question
+const Question = mongoose.model("Quiz", question);
+module.exports = Question;

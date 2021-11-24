@@ -1,41 +1,41 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
 const quiz = new mongoose.Schema({
     name: {
         type: String,
-        required: true 
+        required: true,
     },
     description: {
         type: String,
-        required: true
+        required: true,
     },
     questions: {
         type: Object,
-        default: []
+        default: [],
     },
     start: {
         type: Date,
-        required: true
+        required: true,
     },
     duration: {
         type: Date,
-        required: true
+        required: true,
     },
     createdOn: {
         type: Date,
-        default: Date.now
+        default: () => Date.now(),
     },
     department: {
         type: Number,
-        required: true
+        required: true,
     },
     adminId: {
         type: String,
-        required: true
+        required: true,
     }
 });
 
-const Quiz = mongoose.model('Quiz', quiz)
-module.exports = Quiz
+const Quiz = mongoose.model("Quiz", quiz);
+module.exports = Quiz;
 
 // name, description, questions, date, registered users, department, adminId, duration

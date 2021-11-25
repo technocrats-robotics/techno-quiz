@@ -1,4 +1,5 @@
 const User = require("../../models/user");
+const Jwt=require("jsonwebtoken")
 
 const register = (req, res) => {
     const { name, email, password } = req.body;
@@ -11,9 +12,15 @@ const register = (req, res) => {
                 err,
             });
         }
+        const token=Jwt.sign({
+            id:user._id,
+            role:user.role
+        },process.env.TOKEN_SECRET,{
+            expiresIn:"3h"
+        })
         return res.json({
             message: "User created",
-            user,
+            token,
         });
     });
 
@@ -30,9 +37,15 @@ const login = (req, res) => {
                 });
             } else {
                 if (user.authenticate(password)) {
+                    const token=Jwt.sign({
+                        id:user._id,
+                        role:user.role
+                    },process.env.TOKEN_SECRET,{
+                        expiresIn:"3h"
+                    })
                     return res.json({
                         message: "User found",
-                        user,
+                        token,
                     });
                 } else {
                     res.json({

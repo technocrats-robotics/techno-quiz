@@ -4,6 +4,7 @@ const Auth = require('../app/http/controllers/auth')
 // middlewares
 const user = require('../app/http/middlewares/user')
 const admin = require('../app/http/middlewares/admin')
+const test=require('../testing/verify')
 
 const api = (app)=>{
     
@@ -11,7 +12,10 @@ const api = (app)=>{
     app.post('/api/question', admin, Question.addQuestion)
     app.post('/api/auth/register', Auth.register)
     app.post('/api/auth/login',Auth.login)
+    app.get('/api/token_test',test,(request,response)=>{
+             response.status(200).send("Verified")
+    })
 
 }
 
-module.exports = api
+module.exports=api

@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const userType = require("../utils/user");
 const { v4: uuidv4 } = require("uuid");
 const crypto = require("crypto");
+
 const user = new mongoose.Schema({
     name: {
         type: String,
@@ -11,6 +12,10 @@ const user = new mongoose.Schema({
     email: {
         type: String,
         unique: true,
+    },
+    isVerified: {
+        type: Boolean,
+        default: false,
     },
     encry_password: {
         type: String,

@@ -1,6 +1,9 @@
 const User = require("../../models/user");
-const Jwt=require("jsonwebtoken")
-
+const Jwt = require("jsonwebtoken");
+const smtpConfig=require("../../config/smtpConfig")
+const sendConfirmationEmail(smtpConfig,user,token)=>{
+// send mail with defined transport object
+}
 const register = (req, res) => {
     const { name, email, password } = req.body;
     const user = new User({ name, email, password });
@@ -12,19 +15,22 @@ const register = (req, res) => {
                 err,
             });
         }
-        const token=Jwt.sign({
-            id:user._id,
-            role:user.role
-        },process.env.TOKEN_SECRET,{
-            expiresIn:"3h"
-        })
-        return res.json({
+        const token = Jwt.sign(
+            {
+                id: user._id,
+                role: user.role,
+            },
+            process.env.TOKEN_SECRET,
+            {
+                expiresIn: "3h",
+            }
+        );
+        // Send Mail to user for confimation
+        return res.status(200).json({
             message: "User created",
             token,
         });
     });
-
-    
 };
 
 const login = (req, res) => {
@@ -37,12 +43,16 @@ const login = (req, res) => {
                 });
             } else {
                 if (user.authenticate(password)) {
-                    const token=Jwt.sign({
-                        id:user._id,
-                        role:user.role
-                    },process.env.TOKEN_SECRET,{
-                        expiresIn:"3h"
-                    })
+                    const token = Jwt.sign(
+                        {
+                            id: user._id,
+                            role: user.role,
+                        },
+                        process.env.TOKEN_SECRET,
+                        {
+                            expiresIn: "3h",
+                        }
+                    );
                     return res.json({
                         message: "User found",
                         token,

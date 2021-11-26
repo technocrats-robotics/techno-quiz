@@ -29,6 +29,9 @@ const user = new mongoose.Schema({
     role: {
         type: String,
         default: userType[201],
+    }
+});
+
     },
 });
 

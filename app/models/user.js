@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const userType = require("../utils/user");
 const { v4: uuidv4 } = require("uuid");
 const crypto = require("crypto");
+const bcrypt = require("bcrypt");
 
 const user = new mongoose.Schema({
     name: {
@@ -17,11 +18,10 @@ const user = new mongoose.Schema({
         type: Boolean,
         default: false,
     },
-    encry_password: {
+    password: {
         type: String,
         required: true,
     },
-    salt: String,
     createdOn: {
         type: Date,
         default: () => Date.now(),
@@ -35,33 +35,19 @@ const user = new mongoose.Schema({
     },
 });
 
-user
-  .virtual("password")
-  .set(function(password) {
-    this._password = password;
-    this.salt = uuidv4();
-    this.encry_password = this.securePassword(password);
-  })
-  .get(function() {
-    return this._password;
-  });
-
-user.methods = {
-  authenticate: function(plainpassword) {
-    return this.securePassword(plainpassword) === this.encry_password;
-  },
-
-  securePassword: function(plainpassword) {
-    if (!plainpassword) return "";
+user.pre("save", async function (next) {
     try {
-      return crypto
-        .createHmac("sha256", this.salt)
-        .update(plainpassword)
-        .digest("hex");
+        const salt = await bcrypt.genSalt(10);
+        this.password = await bcrypt.hash(this.password, salt);
+        next();
     } catch (err) {
-      return "";
+        next(err);
     }
-  }
+});
+user.methods = {
+    authenticate: async function (plainpassword) {
+        return await bcrypt.compare(plainpassword, this.password);
+    },
 };
 
 const User = mongoose.model("User", user);

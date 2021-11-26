@@ -3,6 +3,7 @@ const Jwt = require("jsonwebtoken");
 const transporter = require("../../config/smtpConfig");
 const Token = require("../../models/tokenSchema");
 const crypto = require("crypto");
+const { check, validationResult } = require("express-validator");
 
 const sendConfirmationEmail = (user, token) => {
     const link = `http://localhost:8080/api/auth/verify/${token}`;
@@ -24,6 +25,10 @@ const sendConfirmationEmail = (user, token) => {
 };
 
 const register = (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(422).json({ errors: errors.array() });
+    }
     const { name, email, password } = req.body;
     const user = new User({ name, email, password });
 
@@ -64,6 +69,10 @@ const register = (req, res) => {
 };
 
 const login = (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(422).json({ errors: errors.array() });
+    }
     const { email, password } = req.body;
     User.findOne({ email })
         .then((user) => {

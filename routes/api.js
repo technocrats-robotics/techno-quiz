@@ -11,6 +11,7 @@ const api = (app) => {
     app.post("/api/question", admin, Question.addQuestion);
     app.post("/api/auth/register", Auth.register);
     app.post("/api/auth/login", Auth.login);
+    app.get("/api/auth/verify/:token", Auth.verify);
 
     // Test Routes
     app.get("/api/token_test", test, (request, response) => {

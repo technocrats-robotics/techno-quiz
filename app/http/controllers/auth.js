@@ -12,7 +12,7 @@ const sendConfirmationEmail = (user, token) => {
         html:
             "<h1>Hello!<br/>Follow this link for verifying your email:<a href=" +
             link +
-            "></a></h1>",
+            ">Click Here</a></h1>",
     };
     transporter.sendMail(mailOptions, (err, info) => {
         if (err) {
@@ -101,7 +101,44 @@ const login = (req, res) => {
             });
         });
 };
+const verify = (req, res) => {
+    const { token } = req.params;
+    Token.findOne({ token })
+        .then((token) => {
+            if (!token) {
+                return res.json({
+                    message: "Token not found",
+                });
+            }
+            User.findOne({ _id: token.userId })
+                .then((user) => {
+                    if (!user) {
+                        return res.json({
+                            message: "User not found",
+                        });
+                    }
+                    user.isVerified = true;
+                    user.save();
+                    return res.json({
+                        message: "User verified",
+                    });
+                })
+                .catch((err) => {
+                    res.json({
+                        message: "User not found",
+                        err,
+                    });
+                });
+        })
+        .catch((err) => {
+            res.json({
+                message: "Token not found",
+                err,
+            });
+        });
+};
 module.exports = {
     register,
     login,
+    verify,
 };

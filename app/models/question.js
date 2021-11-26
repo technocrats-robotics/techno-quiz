@@ -18,6 +18,7 @@ const question = new mongoose.Schema({
         type: Date,
         default: () => Date.now(),
     }
+    },
 });
 
 const Question = mongoose.model("Quiz", question);

@@ -14,7 +14,7 @@ const user = (req, res, next) => {
             });
         }
         req.user = decoded;
-        
+
         next();
     });
     // verify user here

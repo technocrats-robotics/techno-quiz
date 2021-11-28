@@ -17,9 +17,9 @@ const addQuestion = (req, res, next)=>{
         });    
 }
 
-const getQuestion = (req, res, next)=>{
+const getQuestion = async (req, res, next)=>{
     try{
-        const ques = Question.find();
+       const ques=await Question.find()
         return res.json({
             status: "Success ! Questions are Fetched",
             data: ques,

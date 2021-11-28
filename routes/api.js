@@ -3,6 +3,7 @@ const { check, validationResult } = require("express-validator");
 // controllers
 const Question = require("../app/http/controllers/question");
 const Auth = require("../app/http/controllers/auth");
+const Quiz=require("../app/http/controllers/quiz");
 // middlewares
 const user = require("../app/http/middlewares/user");
 const admin = require("../app/http/middlewares/admin");
@@ -18,7 +19,9 @@ const loginLimiter = limiter({
 });
 const api = (app) => {
     app.get("/api/question", user, Question.getQuestion);
-    app.post("/api/question", admin, Question.addQuestion);
+    app.post("/api/question",user,admin, Question.addQuestion);
+    app.get("/api/quiz",user,Quiz.getQuiz);
+    app.post("/api/quiz",user,admin,Quiz.addQuiz);
     app.post(
         "/api/auth/register",
         registerLimiter,

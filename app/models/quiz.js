@@ -11,13 +11,19 @@ const quiz = new mongoose.Schema({
     },
     questions: {
         type: Object,
-        default: [],
+        default: [
+            {
+                type:mongoose.Schema.Types.ObjectId,
+                ref:"Questions"
+
+            }
+        ],
     },
     start: {
         type: Date,
         required: true,
     },
-    duration: {
+    end: {
         type: Date,
         required: true,
     },
@@ -32,6 +38,11 @@ const quiz = new mongoose.Schema({
     adminId: {
         type: String,
         required: true,
+    },
+
+    isPublished:{
+       type:Boolean,
+       default:false,
     }
 });
 

@@ -30,6 +30,17 @@ const user = new mongoose.Schema({
         type: String,
         default: userType[201],
     },
+    results: [
+        {
+            quizId: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "Quiz",
+            },
+            score: {
+                type: Number,
+            },
+        },
+    ],
 });
 
 user.pre("save", async function (next) {

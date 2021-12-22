@@ -17,13 +17,13 @@ const quiz = new mongoose.Schema({
         type: Date,
         required: true
     },
-    duration: {
+    end: {
         type: Date,
         required: true
     },
     createdOn: {
         type: Date,
-        default: Date.now
+        default:()=>Date.now() 
     },
     department: {
         type: Number,

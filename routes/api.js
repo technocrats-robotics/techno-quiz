@@ -8,6 +8,8 @@ const Quiz=require("../app/http/controllers/quiz");
 const user = require("../app/http/middlewares/user");
 const admin = require("../app/http/middlewares/admin");
 const test = require("../testing/verify");
+const uploadAnswer = require("../app/http/controllers/answer");
+
 
 const registerLimiter = limiter({
     windowMs: 5 * 60 * 1000,
@@ -57,6 +59,8 @@ const api = (app) => {
     app.get("/api/test/admin", user, admin, (req, res) => {
         res.send("Admin verified");
     });
+
+    app.post("/api/test/answer",user,uploadAnswer)
 };
 
 module.exports = api;

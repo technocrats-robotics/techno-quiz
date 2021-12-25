@@ -15,9 +15,8 @@ const answerSchema = new mongoose.Schema({
         {
             questionId: {
                 type: mongoose.Schema.Types.ObjectId,
-                ref: "Question",
+                ref: "questions",
                 required: true,
-               
             },
             userAnswer: Number,
         },
@@ -26,4 +25,4 @@ const answerSchema = new mongoose.Schema({
 
 const answerModel = mongoose.model("Answer", answerSchema);
 
-module.exports= answerModel;
+module.exports = answerModel;

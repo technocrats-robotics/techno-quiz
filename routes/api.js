@@ -10,6 +10,7 @@ const admin = require("../app/http/middlewares/admin");
 const test = require("../testing/verify");
 const uploadAnswer = require("../app/http/controllers/answer");
 const evaluateAnswer = require("../app/http/controllers/evaluate");
+const getResult= require("../app/http/controllers/result")
 
 const registerLimiter = limiter({
     windowMs: 5 * 60 * 1000,
@@ -62,6 +63,8 @@ const api = (app) => {
 
     app.post("/api/test/answer", user, uploadAnswer);
     app.put("/api/test/evaluate/:quizId", user, admin, evaluateAnswer);
+
+    app.get('/api/test/result/:quizId',user,getResult);
 };
 
 module.exports = api;

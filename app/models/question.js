@@ -17,7 +17,7 @@ const question = new mongoose.Schema({
     createdOn: {
         type: Date,
         default: () => Date.now(),
-    }
+    },
 });
 
 const Question = mongoose.model("Quiz", question);

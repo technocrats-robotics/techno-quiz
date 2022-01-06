@@ -3,10 +3,14 @@ const { check, validationResult } = require("express-validator");
 // controllers
 const Question = require("../app/http/controllers/question");
 const Auth = require("../app/http/controllers/auth");
+const Quiz = require("../app/http/controllers/quiz");
 // middlewares
 const user = require("../app/http/middlewares/user");
 const admin = require("../app/http/middlewares/admin");
 const test = require("../testing/verify");
+const uploadAnswer = require("../app/http/controllers/answer");
+const evaluateAnswer = require("../app/http/controllers/evaluate");
+const getResult= require("../app/http/controllers/result")
 
 const registerLimiter = limiter({
     windowMs: 5 * 60 * 1000,
@@ -18,7 +22,9 @@ const loginLimiter = limiter({
 });
 const api = (app) => {
     app.get("/api/question", user, Question.getQuestion);
-    app.post("/api/question", admin, Question.addQuestion);
+    app.post("/api/question", user, admin, Question.addQuestion);
+    app.get("/api/quiz", user, Quiz.getQuiz);
+    app.post("/api/quiz", user, admin, Quiz.addQuiz);
     app.post(
         "/api/auth/register",
         registerLimiter,
@@ -54,6 +60,11 @@ const api = (app) => {
     app.get("/api/test/admin", user, admin, (req, res) => {
         res.send("Admin verified");
     });
+
+    app.post("/api/test/answer", user, uploadAnswer);
+    app.put("/api/test/evaluate/:quizId", user, admin, evaluateAnswer);
+
+    app.get('/api/test/result/:quizId',user,getResult);
 };
 
 module.exports = api;

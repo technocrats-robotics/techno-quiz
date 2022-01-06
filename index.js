@@ -1,3 +1,4 @@
+require("./app/config/db")();
 const express = require("express");
 
 const app = express();
@@ -6,7 +7,6 @@ const app = express();
 app.use(express.json());
 
 require("dotenv").config();
-require("./app/config/db")();
 require("./routes/api")(app);
 
 // error handler

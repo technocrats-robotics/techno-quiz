@@ -9,15 +9,17 @@ const quiz = new mongoose.Schema({
         type: String,
         required: true,
     },
-    questions: {
-        type: Object,
-        default: [],
-    },
+    questions: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "questions",
+        },
+    ],
     start: {
         type: Date,
         required: true,
     },
-    duration: {
+    end: {
         type: Date,
         required: true,
     },
@@ -32,7 +34,12 @@ const quiz = new mongoose.Schema({
     adminId: {
         type: String,
         required: true,
-    }
+    },
+
+    isPublished: {
+        type: Boolean,
+        default: false,
+    },
 });
 
 const Quiz = mongoose.model("Quiz", quiz);

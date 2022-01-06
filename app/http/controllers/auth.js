@@ -6,7 +6,7 @@ const crypto = require("crypto");
 const { check, validationResult } = require("express-validator");
 
 const sendConfirmationEmail = (user, token) => {
-    const link = `http://localhost:8080/api/auth/verify/${token}`;
+    const link = `http://localhost:${process.env.PORT}/api/auth/verify/${token}`;
     const mailOptions = {
         to: user.email,
         subject: "Verify your email for Techno Quiz Platform!",

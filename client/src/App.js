@@ -31,8 +31,7 @@ function App() {
                             element={<LandingPage />}
                         />
                         <Route exact path="/" element={<Homepage />} />
-                        <Route exact path="/auth" element={<Login />} />
-                        <Route exact path="/department" element={<Department />} />
+                        <Route exact path="/department/:id" element={<Department />} />
                         <Route exact path="/about" element={<About />} />
                         <Route exact path="/user" element={UserDashboard} />
                         <Route exact path="/admin" element={AdminDashboard} />

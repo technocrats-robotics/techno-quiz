@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 // Notifications
 import ReactNotification from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
+
 // pages
 import Homepage from "./pages/Homepage";
 import NotFound from "./pages/NotFound";
@@ -33,13 +34,13 @@ function App() {
                         <Route exact path="/" element={<Homepage />} />
                         <Route exact path="/department/:id" element={<Department />} />
                         <Route exact path="/about" element={<About />} />
-                        <Route exact path="/user" element={UserDashboard} />
-                        <Route exact path="/admin" element={AdminDashboard} />
-                        <Route exact path="/quiz" element={QuizPage} />
+                        <Route exact path="/user" element={<UserDashboard/>} />
+                        <Route exact path="/admin" element={<AdminDashboard/>} />
+                        <Route exact path="/quiz" element={<QuizPage />} />
                         <Route
                             exact
                             path="/leaderboard"
-                            element={Leaderboard}
+                            element={<Leaderboard />}
                         />
                         {/* Admin routes */}
                         <Route path="*" element={<NotFound />} />

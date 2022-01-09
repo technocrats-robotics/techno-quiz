@@ -1,16 +1,19 @@
 import { Box } from "@mui/material";
 import React from "react";
+import Objective from "./Questions/Objective";
 
 function ContentQuiz() {
     return (
         <Box
             sx={{
-                flexGrow: 1,
+                height: "100vh",
+                width: "100%",
                 backgroundColor: "#050022",
-                color: "white"
+                color: "white",
+                overflow: "hidden",
             }}
         >
-            Quiz Content
+            <Objective />
         </Box>
     );
 }

@@ -36,7 +36,7 @@ function SideBarQuiz() {
                     icon={GeneralRoboticsLogo}
                 />
                 <DepartmentQuiz name="Electrical" icon={ElectricalLogo} />
-                <DepartmentQuiz name="Computer Science" icon={CsLogo} />
+                <DepartmentQuiz name="Programming" icon={CsLogo} />
                 <DepartmentQuiz name="Mechanical" icon={MechanicalLogo} />
                 <Timer />
             </Box>

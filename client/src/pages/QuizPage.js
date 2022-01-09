@@ -1,12 +1,21 @@
 import React from "react";
-import HeaderQuiz from "../components/HeaderQuiz";
-import SideBarQuiz from "../components/SideBarQuiz";
+import ContentQuiz from "../components/QuizPage/ContentQuiz";
+import { Box } from "@mui/material";
+import HeaderQuiz from "../components/QuizPage/HeaderQuiz";
+import SideBarQuiz from "../components/QuizPage/SideBarQuiz";
 function QuizPage() {
     return (
-       <>
-           <HeaderQuiz />
-           <SideBarQuiz />
-       </> 
+        <>
+            <HeaderQuiz />
+            <Box
+                sx={{
+                    display: "flex",
+                }}
+            >
+                <SideBarQuiz />
+                <ContentQuiz />
+            </Box>
+        </>
     );
 }
 

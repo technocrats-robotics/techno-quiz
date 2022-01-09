@@ -31,6 +31,9 @@ function Sidebar() {
                         <AiOutlinePieChart />
                         <h3>View Statistics</h3>
                     </Link>
+                    <Logout>
+                        <Badge content="Logout" logout/>
+                    </Logout>
                 </Links>
         </LinksContainer>
         </Container>

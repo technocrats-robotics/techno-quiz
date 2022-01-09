@@ -89,3 +89,36 @@ const Links = styled.ul`
   padding-top: 2rem;
   height: 60%;
 `;
+
+const Logout = styled.li`
+margin-left: 15%;
+color: #000;
+display: flex;
+margin-bottom: 2rem;
+gap: 1rem;
+cursor: pointer;
+`;
+const Link = styled.li`
+&:hover {
+  background: #000;
+  color: #FFF;
+  width: 80%;
+  margin-left: 5px;
+  padding: 20px;
+  border-radius: 20px 0px 0px 20px;
+}
+  margin-left: 15%;
+  color: #000;
+  display: flex;
+  margin-bottom: 2rem;
+  gap: 1rem;
+  cursor: pointer;
+  h3 {
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  svg {
+    font-size: 1.1rem;
+    margin-top: 3%;
+  }
+`;

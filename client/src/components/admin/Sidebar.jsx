@@ -72,3 +72,20 @@ const Name = styled.h1`
   font-weight: 400;
   margin: 0.8rem 0 0.5rem 0;
 `;
+
+const LinksContainer = styled.div`
+  background-color: ${lightThemeColor};
+  height: 100%;
+  padding: 0px;
+  width: 80%;
+  text-align: center;
+  border-radius: 2rem;
+`;
+
+const Links = styled.ul`
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  padding-top: 2rem;
+  height: 60%;
+`;

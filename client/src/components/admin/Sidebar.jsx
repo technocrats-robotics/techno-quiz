@@ -13,6 +13,26 @@ function Sidebar() {
                 <Name>TCR Dummy</Name>
                 <Badge content="Role: Admin" />
             </ProfileContainer>
+            <LinksContainer>
+                <Links>
+                    <Link>
+                        <RiHomeLine />
+                        <h3>Dashboard</h3>
+                    </Link>
+                    <Link>
+                        <RiFileCopyLine />
+                        <h3>Add Tests</h3>
+                    </Link>
+                    <Link>
+                        <FaUserCircle />
+                        <h3>User Details</h3>
+                    </Link>
+                    <Link>
+                        <AiOutlinePieChart />
+                        <h3>View Statistics</h3>
+                    </Link>
+                </Links>
+        </LinksContainer>
         </Container>
   );
 }

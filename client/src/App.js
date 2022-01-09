@@ -16,14 +16,23 @@ import LandingPage from "./pages/LandingPage";
 import Department from "./pages/Department";
 import About from "./pages/About";
 
+import {makeStyles} from "@mui/styles";
+
+const useStyles = makeStyles({
+    root:{
+        // remove margin and padding
+        margin: 0,
+        padding: 0,
+    }
+})
+
+
 function App() {
+    const classes = useStyles();
     return (
-        <div className="app">
+        <div className={classes.root}>
             <ReactNotification />
             <Router>
-                <div className="app__header">
-                    <Link to="/">Homepage</Link>
-                </div>
                 <div className="app__body">
                     <Routes>
                         <Route

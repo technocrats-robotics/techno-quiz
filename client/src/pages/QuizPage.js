@@ -1,11 +1,13 @@
-import React from 'react'
-
+import React from "react";
+import HeaderQuiz from "../components/HeaderQuiz";
+import SideBarQuiz from "../components/SideBarQuiz";
 function QuizPage() {
     return (
-        <div>
-            Quiz page
-        </div>
-    )
+       <>
+           <HeaderQuiz />
+           <SideBarQuiz />
+       </> 
+    );
 }
 
-export default QuizPage
+export default QuizPage;

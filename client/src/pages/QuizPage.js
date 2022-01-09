@@ -1,11 +1,11 @@
 import React from 'react'
 
-function NotFound() {
+function QuizPage() {
     return (
         <div>
-            Page Not Found
+            Quiz page
         </div>
     )
 }
 
-export default NotFound
+export default QuizPage

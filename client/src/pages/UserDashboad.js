@@ -3,9 +3,9 @@ import React from 'react'
 function UserDashboard() {
     return (
         <div>
-            {/* Doing something here */}
+            Dashboard component
         </div>
     )
 }
 
-export default UserDashboard
+export default UserDashboard;

@@ -1,11 +1,11 @@
 import React from 'react'
 
-function NotFound() {
+function LandingPage() {
     return (
         <div>
-            Page Not Found
+            Landing Page 
         </div>
     )
 }
 
-export default NotFound
+export default LandingPage

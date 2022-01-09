@@ -1,1 +1,0 @@
-1) Duration of quiz, handling user disconnection during quiz has to be addressed.

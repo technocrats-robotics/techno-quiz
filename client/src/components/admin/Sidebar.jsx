@@ -30,3 +30,15 @@ const Container = styled.div`
     height: max-content !important;
   }
 `;
+const ProfileContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
+
+const Avatar = styled.img`
+  height: 7rem;
+  border-radius: 6rem;
+  margin-top: 20%;
+`;

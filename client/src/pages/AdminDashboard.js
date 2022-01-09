@@ -1,6 +1,7 @@
 import "./static/css/AdminDashboard.css";
 import styled from "styled-components";
 import Sidebar from "./components/admin/Sidebar";
+import MainContent from ".components/admin/MainContent";
 function App() {
   return (
     <Container>

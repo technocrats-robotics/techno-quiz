@@ -1,6 +1,6 @@
 import React from 'react'
 
-function UserCP() {
+function UserDashboard() {
     return (
         <div>
             {/* Doing something here */}
@@ -8,4 +8,4 @@ function UserCP() {
     )
 }
 
-export default UserCP
+export default UserDashboard

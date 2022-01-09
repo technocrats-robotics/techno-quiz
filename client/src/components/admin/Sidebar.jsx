@@ -42,3 +42,10 @@ const Avatar = styled.img`
   border-radius: 6rem;
   margin-top: 20%;
 `;
+
+const Name = styled.h1`
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin: 0.8rem 0 0.5rem 0;
+`;

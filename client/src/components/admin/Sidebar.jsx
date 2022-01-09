@@ -4,41 +4,46 @@ import { RiHomeLine, RiFileCopyLine } from "react-icons/ri";
 import { FaUserCircle } from "react-icons/fa";
 import { AiOutlinePieChart } from "react-icons/ai";
 import Badge from "./Badge";
-import AvatarImage from "../assets/avatarImage.jpg"; //Sample
+import AvatarImage from "../assets/avatarImage.jpg";
 function Sidebar() {
   return (
-        <Container>
-            <ProfileContainer>
-                <Avatar src={AvatarImage} />
-                <Name>TCR Dummy</Name>
-                <Badge content="Role: Admin" />
-            </ProfileContainer>
-            <LinksContainer>
-                <Links>
-                    <Link>
-                        <RiHomeLine />
-                        <h3>Dashboard</h3>
-                    </Link>
-                    <Link>
-                        <RiFileCopyLine />
-                        <h3>Add Tests</h3>
-                    </Link>
-                    <Link>
-                        <FaUserCircle />
-                        <h3>User Details</h3>
-                    </Link>
-                    <Link>
-                        <AiOutlinePieChart />
-                        <h3>View Statistics</h3>
-                    </Link>
-                    <Logout>
-                        <Badge content="Logout" logout/>
-                    </Logout>
-                </Links>
+    <Container>
+      <ProfileContainer>
+        <Avatar src={AvatarImage} />
+        <Name>TCR Dummy</Name>
+        <Badge content="Role: Admin" />
+      </ProfileContainer>
+      <LinksContainer>
+        <Links>
+          <Link>
+            <RiHomeLine />
+            <h3>Dashboard</h3>
+          </Link>
+          <Link>
+            <RiFileCopyLine />
+            <h3>Add Tests</h3>
+          </Link>
+          <Link>
+            <FaUserCircle />
+            <h3>User Details</h3>
+          </Link>
+          <Link>
+            <AiOutlinePieChart />
+            <h3>View Statistics</h3>
+          </Link>
+          <Logout>
+            <Badge content="Logout" logout/>
+          </Logout>
+        </Links>
         </LinksContainer>
-        </Container>
+        <ContactContainer>
+          <span>Having troubles?</span>
+          <a href="#">Contact us </a>
+        </ContactContainer>
+    </Container>
   );
 }
+
 const Container = styled.div`
   width: 20%;
   height: 100% !important;
@@ -53,6 +58,7 @@ const Container = styled.div`
     height: max-content !important;
   }
 `;
+
 const ProfileContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -74,7 +80,7 @@ const Name = styled.h1`
 `;
 
 const LinksContainer = styled.div`
-  background-color: ${lightThemeColor};
+  background-color: #FFF;
   height: 100%;
   padding: 0px;
   width: 80%;
@@ -122,3 +128,26 @@ const Link = styled.li`
     margin-top: 3%;
   }
 `;
+
+const ContactContainer = styled.div`
+  width: 60%;
+  background-color: #091322;
+  color: #c4c4c4;
+  height: 15%;
+  margin: auto auto;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
+
+  @media screen and (min-width: 320px) and (max-width: 1080px) {
+    margin-bottom: 2rem;
+  }
+`;
+
+export default Sidebar;

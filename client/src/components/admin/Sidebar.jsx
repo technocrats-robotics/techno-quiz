@@ -7,7 +7,26 @@ import Badge from "./Badge";
 import AvatarImage from "../assets/avatarImage.jpg"; //Sample
 function Sidebar() {
   return (
-      <Container>
+        <Container>
+            <ProfileContainer>
+                <Avatar src={AvatarImage} />
+                <Name>TCR Dummy</Name>
+                <Badge content="Role: Admin" />
+            </ProfileContainer>
         </Container>
   );
 }
+const Container = styled.div`
+  width: 20%;
+  height: 100% !important;
+  border-radius: 2rem;
+  background-color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  @media screen and (min-width: 320px) and (max-width: 1080px) {
+    width: 100%;
+    height: max-content !important;
+  }
+`;

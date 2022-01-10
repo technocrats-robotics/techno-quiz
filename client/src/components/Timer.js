@@ -14,7 +14,7 @@ function Timer() {
                 color: "black",
             }}
         >
-            Time Component
+            00: 10 : 02    
         </Box>
     );
 }

@@ -14,6 +14,7 @@ const styles = {
         color: "white",
         backgroundColor: "#080136",
         borderBottom: "1px solid #eee",
+        overflow: "hidden",
     },
     logo: {
         maxHeight: "70px",
@@ -44,13 +45,13 @@ function HeaderQuiz() {
                     </Typography>
                     <Button
                         color="inherit"
-                        sx={{ marginRight: "2rem", marginLeft: "2rem" }}
+                        sx={{ marginLeft: "2rem", paddingRight: "2rem" }}
                     >
                         <AccountCircleRounded
                             sx={{
                                 width: "3rem",
                                 height: "3rem",
-                                marginRight: "1rem",
+                                paddingRight: "1rem",
                             }}
                         />
                         Username

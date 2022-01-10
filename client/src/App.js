@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import ReactNotification from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
 
+import Box from "@mui/material/Box";
 // pages
 import Homepage from "./pages/Homepage";
 import NotFound from "./pages/NotFound";
@@ -16,25 +17,16 @@ import LandingPage from "./pages/LandingPage";
 import Department from "./pages/Department";
 import About from "./pages/About";
 
-import { makeStyles } from "@mui/styles";
-
-const useStyles = makeStyles({
-    root: {
-        // remove margin and padding
-        margin: 0,
-        padding: 0,
-        height: "100%",
-        width: "100%",
-    },
-});
-
 function App() {
-    const classes = useStyles();
     return (
-        <div className={classes.root}>
+        <>
             <ReactNotification />
             <Router>
-                <div className="app__body">
+                <Box
+                    sx={{
+                        minHeight: "100%",
+                    }}
+                >
                     <Routes>
                         <Route
                             exact
@@ -63,9 +55,9 @@ function App() {
                         {/* Admin routes */}
                         <Route path="*" element={<NotFound />} />
                     </Routes>
-                </div>
+                </Box>
             </Router>
-        </div>
+        </>
     );
 }
 

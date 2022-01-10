@@ -14,6 +14,7 @@ function ContentQuiz() {
         >
             <Objective />
             <Objective />
+            <Objective />
         </Box>
     );
 }

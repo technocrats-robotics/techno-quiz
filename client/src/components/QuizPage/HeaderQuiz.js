@@ -14,51 +14,54 @@ const styles = {
         color: "white",
         backgroundColor: "#080136",
         borderBottom: "1px solid #eee",
-        overflow: "hidden",
+        overflowX: "hidden",
+        width: "100%",
+        height: "100%"
     },
     logo: {
         maxHeight: "70px",
         objectFit: "cover",
-        marginLeft: "15px",
     },
 };
 function HeaderQuiz() {
     return (
-        <Box>
-            <AppBar position="static" sx={styles.root}>
-                <Toolbar
-                    sx={{ display: "flex", justifyContent: "space-between" }}
+        <AppBar position="static" sx={styles.root}>
+            <Toolbar
+                sx={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    width: "calc(100%-1rem)",
+                }}
+            >
+                <IconButton
+                    size="large"
+                    edge="start"
+                    color="inherit"
+                    aria-label="menu"
+                    sx={{
+                        marginLeft: "1.5rem",
+                    }}
                 >
-                    <IconButton
-                        size="large"
-                        edge="start"
-                        color="inherit"
-                        aria-label="menu"
+                    <img style={styles.logo} src={TCRLogo} alt="TCR LOGO" />
+                </IconButton>
+                <Typography variant="h6" component="div">
+                    Test Name
+                </Typography>
+                <Button
+                    color="inherit"
+                    sx={{ marginLeft: "2rem", paddingRight: "2rem" }}
+                >
+                    <AccountCircleRounded
                         sx={{
-                            marginLeft: "1.5rem",
+                            width: "3rem",
+                            height: "3rem",
+                            paddingRight: "1rem",
                         }}
-                    >
-                        <img style={styles.logo} src={TCRLogo} alt="TCR LOGO" />
-                    </IconButton>
-                    <Typography variant="h6" component="div">
-                        Test Name
-                    </Typography>
-                    <Button
-                        color="inherit"
-                        sx={{ marginLeft: "2rem", paddingRight: "2rem" }}
-                    >
-                        <AccountCircleRounded
-                            sx={{
-                                width: "3rem",
-                                height: "3rem",
-                                paddingRight: "1rem",
-                            }}
-                        />
-                        Username
-                    </Button>
-                </Toolbar>
-            </AppBar>
-        </Box>
+                    />
+                    Username
+                </Button>
+            </Toolbar>
+        </AppBar>
     );
 }
 

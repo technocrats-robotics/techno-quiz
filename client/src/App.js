@@ -20,8 +20,14 @@ import About from "./pages/About";
 class App extends React.Component {
 
     componentDidMount() {
-      if (localStorage.getItem('_ID')) {
+      if (localStorage.getItem('userID')) {
         axios.get(`/api/users/${localStorage.getItem('userID')}`).then(res => {
+          store.dispatch({
+            user: res.data.user,
+            type: 'setUser' //same
+          })
+        }).catch(er => {
+          console.log(er);
         })
       }
     }

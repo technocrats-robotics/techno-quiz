@@ -6,13 +6,13 @@ function ContentQuiz() {
     return (
         <Box
             sx={{
-                height: "100vh",
+                height: "100%",
                 width: "100%",
                 backgroundColor: "#050022",
                 color: "white",
-                overflow: "hidden",
             }}
         >
+            <Objective />
             <Objective />
         </Box>
     );

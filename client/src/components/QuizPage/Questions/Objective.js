@@ -17,12 +17,6 @@ function Objective({ index, question, options, total }) {
                 border: "0.5px solid rgba(125,125,125, 0.5)",
             }}
         >
-            {/* <Typography>
-                Question No - {idx + 1}/{total}
-            </Typography>
-            <Typography variant="h3" component="h3">
-                {question}
-            </Typography> */}
             <Typography
                 variant="h4"
                 component="h3"
@@ -32,7 +26,13 @@ function Objective({ index, question, options, total }) {
             >
                 Question No - 1/20
             </Typography>
-            <Typography variant="h5" component="p">
+            <Typography
+                variant="h6"
+                component="p"
+                sx={{
+                    fontWeight: "normal",
+                }}
+            >
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt
                 vel repudiandae et obcaecati error voluptate minima eum, omnis
                 eaque amet nostrum optio ea perferendis ad consectetur totam
@@ -41,13 +41,18 @@ function Objective({ index, question, options, total }) {
                 Debitis nulla, cum placeat nobis aperiam et.
             </Typography>
             <Container
-                maxWidth="sm"
+                maxWidth="xl"
                 sx={{
                     paddingTop: "1rem",
                     paddingBottom: "1rem",
                 }}
             >
-                <Grid container spacing={4}>
+                <Grid
+                    container
+                    spacing={4}
+                    
+                    alignItems="stretch"
+                >
                     <Grid item xs={6}>
                         <Answer />
                     </Grid>

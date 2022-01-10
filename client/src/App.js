@@ -16,16 +16,17 @@ import LandingPage from "./pages/LandingPage";
 import Department from "./pages/Department";
 import About from "./pages/About";
 
-import {makeStyles} from "@mui/styles";
+import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles({
-    root:{
+    root: {
         // remove margin and padding
         margin: 0,
         padding: 0,
-    }
-})
-
+        height: "100%",
+        width: "100%",
+    },
+});
 
 function App() {
     const classes = useStyles();
@@ -41,10 +42,18 @@ function App() {
                             element={<LandingPage />}
                         />
                         <Route exact path="/" element={<Homepage />} />
-                        <Route exact path="/department/:id" element={<Department />} />
+                        <Route
+                            exact
+                            path="/department/:id"
+                            element={<Department />}
+                        />
                         <Route exact path="/about" element={<About />} />
-                        <Route exact path="/user" element={<UserDashboard/>} />
-                        <Route exact path="/admin" element={<AdminDashboard/>} />
+                        <Route exact path="/user" element={<UserDashboard />} />
+                        <Route
+                            exact
+                            path="/admin"
+                            element={<AdminDashboard />}
+                        />
                         <Route exact path="/quiz" element={<QuizPage />} />
                         <Route
                             exact
@@ -59,6 +68,5 @@ function App() {
         </div>
     );
 }
-
 
 export default App;

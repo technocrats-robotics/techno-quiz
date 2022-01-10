@@ -17,11 +17,9 @@ function SideBarQuiz() {
             sx={{
                 position: "static",
                 width: "20vw",
-                height: "100vh",
                 backgroundColor: "#080136",
                 color: "white",
-                overflowY: "hidden",
-                borderRight: "1px solid #eee"
+                borderRight: "1px solid #eee",
             }}
         >
             <Box

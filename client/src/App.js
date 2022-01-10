@@ -1,5 +1,7 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import axios from 'axios';
+import store from './store';
 
 // Notifications
 import ReactNotification from "react-notifications-component";
@@ -15,7 +17,15 @@ import LandingPage from "./pages/LandingPage";
 import Department from "./pages/Department";
 import About from "./pages/About";
 
-function App() {
+class App extends React.Component {
+
+    componentDidMount() {
+      if (localStorage.getItem('_ID')) {
+        axios.get(`/api/users/${localStorage.getItem('userID')}`).then(res => {
+        })
+      }
+    }
+render(){
     return (
         <div className="app">
             <ReactNotification />
@@ -50,6 +60,6 @@ function App() {
         </div>
     );
 }
-
+}
 
 export default App;

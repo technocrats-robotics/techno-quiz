@@ -16,6 +16,8 @@ import Leaderboard from "./pages/Leaderboard";
 import LandingPage from "./pages/LandingPage";
 import Department from "./pages/Department";
 import About from "./pages/About";
+import LoginModal from "./components/AuthModal/LoginModal";
+import TestPage from "./pages/TestPage";
 
 function App() {
     return (
@@ -53,7 +55,9 @@ function App() {
                             element={<Leaderboard />}
                         />
                         {/* Admin routes */}
+                        <Route path="/test" element={<TestPage/>} />
                         <Route path="*" element={<NotFound />} />
+                       
                     </Routes>
                 </Box>
             </Router>

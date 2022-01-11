@@ -1,1 +1,1 @@
-export const BASE_URL="URL";
+export default BASE_URL="http://localhost:5000/";

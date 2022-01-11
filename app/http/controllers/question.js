@@ -1,38 +1,36 @@
-// define all question related controllers here
+const Question = require("../../models/question");
 
 const addQuestion = (req, res, next)=>{
-    
-    try{
-
-        // for example: it will be a POST request, get data from request body
-        let data = []
-    
-        res.json({
-            status: "succeess",
-            data: data
-        })
-
-    } catch(err){
-        next(err)
-    }
-    
+        const { statement, options, answer } = req.body;
+        const ques = new Question({ statement, options, answer });
+        ques.save((err, ques) => {
+            if (err) {
+                return res.json({
+                    message: "Err: Question Not Added",
+                    err,
+                });
+            }
+            return res.json({
+                status: "Success: Question was Added !",
+                data: ques,
+            });
+        });    
 }
 
-const getQuestion = (req, res, next)=>{
-
+const getQuestion = async (req, res, next)=>{
     try{
-
-        let data = []
-    
-        res.json({
-            status: "succeess",
-            data: data
-        })
-
-    } catch(err){
-        next(err)
+       const ques=await Question.find()
+        return res.json({
+            status: "Success ! Questions are Fetched",
+            data: ques,
+        });
     }
-
+    catch(err){
+        return res.json({
+            message: "Err: Questions not Fetched !",
+            err,
+        });
+    }
 }
 
 module.exports = {

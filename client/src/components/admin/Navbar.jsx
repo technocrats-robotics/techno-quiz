@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { FiSearch } from "react-icons/fi";
+import SearchIcon from '@mui/icons-material/Search';
 function Navbar() {
   return (
     <NavbarContainer>
@@ -10,7 +10,7 @@ function Navbar() {
       </Text>
       <InputContainer>
         <Icon>
-          <FiSearch />
+          <SearchIcon />
         </Icon>
         <Input type="text" placeholder="Search for Quizzes" />
       </InputContainer>

@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { RiHomeLine, RiFileCopyLine } from "react-icons/ri";
-import { FaUserCircle } from "react-icons/fa";
-import { AiOutlinePieChart } from "react-icons/ai";
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import AssessmentIcon from '@mui/icons-material/Assessment';
 import Badge from "./Badge";
 import AvatarImage from "../assets/avatarImage.jpg";
 function Sidebar() {
@@ -16,19 +17,19 @@ function Sidebar() {
       <LinksContainer>
         <Links>
           <Link>
-            <RiHomeLine />
+            <DashboardIcon />
             <h3>Dashboard</h3>
           </Link>
           <Link>
-            <RiFileCopyLine />
+            <AddCircleIcon />
             <h3>Add Tests</h3>
           </Link>
           <Link>
-            <FaUserCircle />
+            <AccountCircleIcon />
             <h3>User Details</h3>
           </Link>
           <Link>
-            <AiOutlinePieChart />
+            <AssessmentIcon />
             <h3>View Statistics</h3>
           </Link>
           <Logout>

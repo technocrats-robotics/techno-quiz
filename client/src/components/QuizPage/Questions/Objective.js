@@ -47,12 +47,7 @@ function Objective({ index, question, options, total }) {
                     paddingBottom: "1rem",
                 }}
             >
-                <Grid
-                    container
-                    spacing={4}
-                    
-                    alignItems="stretch"
-                >
+                <Grid container spacing={4} alignItems="stretch">
                     <Grid item xs={6}>
                         <Answer />
                     </Grid>

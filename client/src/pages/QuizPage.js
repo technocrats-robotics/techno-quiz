@@ -5,11 +5,17 @@ import HeaderQuiz from "../components/QuizPage/HeaderQuiz";
 import SideBarQuiz from "../components/QuizPage/SideBarQuiz";
 function QuizPage() {
     return (
-        <Box>
+        <Box
+        // sx={{
+        //     height: "100vh",
+        // }}
+        >
             <HeaderQuiz />
             <Box
                 sx={{
                     display: "flex",
+                    minHeight: "100vh",
+                    height: "100%",
                 }}
             >
                 <SideBarQuiz />

@@ -6,6 +6,7 @@ function ContentQuiz() {
     return (
         <Box
             sx={{
+                minHeight: "100vh",
                 height: "100%",
                 width: "100%",
                 backgroundColor: "#050022",

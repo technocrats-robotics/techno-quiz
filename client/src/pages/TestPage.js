@@ -1,12 +1,8 @@
-import React from 'react'
-import LoginModal from '../components/AuthModal/LoginModal'
+import React from "react";
+import AuthModal from "../components/AuthModal/AuthModal";
 
 function TestPage() {
-    return (
-        <div>
-            <LoginModal/>
-        </div>
-    )
+  return <AuthModal />;
 }
 
-export default TestPage
+export default TestPage;

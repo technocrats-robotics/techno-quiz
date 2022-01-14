@@ -30,3 +30,9 @@ body {
     background: rgb(22, 34, 207);
     transition: 500ms ease-in-out;
 }
+
+#portal{
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+}

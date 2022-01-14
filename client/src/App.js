@@ -16,7 +16,7 @@ import Leaderboard from "./pages/Leaderboard";
 import LandingPage from "./pages/LandingPage";
 import Department from "./pages/Department";
 import About from "./pages/About";
-import LoginModal from "./components/AuthModal/LoginModal";
+
 import TestPage from "./pages/TestPage";
 
 function App() {

@@ -3,7 +3,7 @@ import { Box, Button, Typography } from "@mui/material";
 import LoginLogo from "../Icons/login.svg";
 import TextField from "@mui/material/TextField";
 
-function LoginModal({ setHasAccount, hasAccount }) {
+function RegisterModal({ setHasAccount, hasAccount }) {
   return (
     <>
       <div
@@ -49,7 +49,7 @@ function LoginModal({ setHasAccount, hasAccount }) {
           }}
         >
           <Typography variant="h3" component={"h3"}>
-            Login
+            Register
           </Typography>
           <img src={LoginLogo} style={{ maxWidth: "25rem" }} />
         </Box>
@@ -70,9 +70,26 @@ function LoginModal({ setHasAccount, hasAccount }) {
         >
           <TextField
             id="outlined-basic"
+            label="Name"
+            variant="outlined"
+            placeholder="Name"
+            sx={{
+              color: "white",
+              background: "#405893",
+              "&::placeholder": {
+                color: "white",
+              },
+              borderRadius: "1.5rem",
+              border: "1px solid rgba(255,255,255,0.7)",
+              marginBottom: "1rem",
+              width: "100%",
+            }}
+          />
+          <TextField
+            id="outlined-basic"
             label="Email-Id"
             variant="outlined"
-            placeholder="Username/Email-Id"
+            placeholder="Email-Id"
             sx={{
               color: "white",
               background: "#405893",
@@ -104,15 +121,33 @@ function LoginModal({ setHasAccount, hasAccount }) {
             }}
           />
 
+          <TextField
+            id="outlined-basic"
+            label="Re-enter Password"
+            variant="outlined"
+            placeholder="Re-enter Password"
+            sx={{
+              color: "white",
+              background: "#405893",
+              "::placeholder": {
+                color: "white",
+              },
+              borderRadius: "1.5rem",
+              border: "none",
+              marginBottom: "1rem",
+              width: "100%",
+            }}
+          />
+
           <Typography variant="p" component={"p"}>
-            Don't have an account ?{" "}
+            Do have an account ?
             <Typography
               variant="span"
               component={"span"}
               onClick={() => setHasAccount(!hasAccount)}
               style={{ textDecoration: "underline", cursor: "pointer" }}
             >
-              Register Now
+              Login
             </Typography>
           </Typography>
           <Button
@@ -135,4 +170,4 @@ function LoginModal({ setHasAccount, hasAccount }) {
   );
 }
 
-export default LoginModal;
+export default RegisterModal;

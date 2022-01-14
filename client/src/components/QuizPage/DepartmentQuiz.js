@@ -6,13 +6,16 @@ function DepartmentQuiz({ name, icon }) {
         <Box
             sx={{
                 display: "flex",
-                justifyContent: "space-between",
+                justifyContent: {
+                    sm: "center",
+                    lg: "space-around",
+                },
                 alignItems: "center",
                 margin: "1rem",
                 border: "1px solid rgba(125,125,125,0.5)",
                 borderRadius: "1.5rem",
                 padding: "0.5rem",
-                paddingLeft: "1rem",
+                paddingLeft: "1.5rem",
                 paddingRight: "1.5rem",
                 background:
                     "linear-gradient(145deg, rgba(0, 0, 0, 1), rgba(10,0,123, 1))",
@@ -22,6 +25,7 @@ function DepartmentQuiz({ name, icon }) {
                     border: "1px solid rgba(0,224,255,1)",
                 },
             }}
+            display={{}}
         >
             <img
                 src={icon}
@@ -30,7 +34,17 @@ function DepartmentQuiz({ name, icon }) {
                     padding: "0.6rem",
                 }}
             />
-            {name}
+            <Box
+                component="span"
+                display={{
+                    sm: "none",
+                    md: "none",
+                    lg: "none",
+                    xl: "block",
+                }}
+            >
+                {name}
+            </Box>
         </Box>
     );
 }

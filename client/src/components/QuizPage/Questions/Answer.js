@@ -23,7 +23,14 @@ function Answer() {
                 },
             }}
         >
-            <Typography variant="h5" component="p">
+            <Typography
+                variant="h5"
+                component="p"
+                fontSize={{
+                    xs: "1rem",
+                    sm: "1.2rem"
+                }}
+            >
                 A) component
             </Typography>
         </Box>

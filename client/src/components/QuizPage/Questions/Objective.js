@@ -6,15 +6,31 @@ function Objective({ index, question, options, total }) {
     return (
         <Box
             sx={{
-                margin: "5rem",
+                margin: {
+                    xs: "1.5rem",
+                    sm: "3rem",
+                },
                 background:
                     "linear-gradient(145deg, black, rgba(0, 54, 103, 0), rgba(0,73,141, 0.7))",
                 borderRadius: "2rem",
-                paddingTop: "4rem",
-                paddingLeft: "4rem",
-                paddingRight: "4rem",
+                paddingTop: {
+                    xs: "2.5rem",
+                    sm: "4rem",
+                },
+                paddingLeft: {
+                    xs: "1.5rem",
+                    sm: "4rem",
+                },
+                paddingRight: {
+                    xs: "1.5rem",
+                    sm: "4rem",
+                },
                 paddingBottom: "3rem",
                 border: "0.5px solid rgba(125,125,125, 0.5)",
+                fontSize: {
+                    xs: "1rem",
+                    sm: "3rem",
+                },
             }}
         >
             <Typography
@@ -22,6 +38,10 @@ function Objective({ index, question, options, total }) {
                 component="h3"
                 sx={{
                     marginBottom: "1.5rem",
+                }}
+                fontSize={{
+                    xs: "1.5rem",
+                    sm: "2rem"
                 }}
             >
                 Question No - 1/20
@@ -32,6 +52,11 @@ function Objective({ index, question, options, total }) {
                 sx={{
                     fontWeight: "normal",
                 }}
+                fontSize={{
+                    xs: "1rem",
+                    sm: "1.2rem",
+                }}
+                textAlign={"justify"}
             >
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt
                 vel repudiandae et obcaecati error voluptate minima eum, omnis
@@ -48,16 +73,16 @@ function Objective({ index, question, options, total }) {
                 }}
             >
                 <Grid container spacing={4} alignItems="stretch">
-                    <Grid item xs={6}>
+                    <Grid item xl={6} lg={6} xs={12}>
                         <Answer />
                     </Grid>
-                    <Grid item xs={6}>
+                    <Grid item xl={6} lg={6} xs={12}>
                         <Answer />
                     </Grid>
-                    <Grid item xs={6}>
+                    <Grid item xl={6} lg={6} xs={12}>
                         <Answer />
                     </Grid>
-                    <Grid item xs={6}>
+                    <Grid item xl={6} lg={6} xs={12}>
                         <Answer />
                     </Grid>
                 </Grid>

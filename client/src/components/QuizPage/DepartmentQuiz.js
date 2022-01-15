@@ -1,4 +1,5 @@
-import { Box } from "@mui/material";
+import { useTheme } from "@emotion/react";
+import { Box, useMediaQuery } from "@mui/material";
 import React from "react";
 
 function DepartmentQuiz({ name, icon }) {
@@ -16,6 +17,10 @@ function DepartmentQuiz({ name, icon }) {
                 borderRadius: "1.5rem",
                 padding: "0.5rem",
                 paddingLeft: "1.5rem",
+                width: {
+                    xs: "100%",
+                    sm: "inherit",
+                },
                 paddingRight: "1.5rem",
                 background:
                     "linear-gradient(145deg, rgba(0, 0, 0, 1), rgba(10,0,123, 1))",

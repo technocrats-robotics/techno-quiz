@@ -6,6 +6,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
+import CloseIcon from "@mui/icons-material/Close";
 
 import TCRLogo from "../Icons/TCRoverLogo.png";
 import TCR_TLogo from "../Icons/TLogo.png";
@@ -19,9 +20,9 @@ const styles = {
         color: "white",
         backgroundColor: "#080136",
         borderBottom: "1px solid #eee",
-        overflowX: "hidden",
-        width: "100%",
-        height: "100%",
+        overflow: "hidden",
+        // width: "100%",
+        // height: "100%",
     },
     logoSM: {
         maxHeight: "70px",
@@ -37,7 +38,7 @@ function HeaderQuiz({ hamburger, setHamburger }) {
     const matches = useMediaQuery(theme.breakpoints.up("sm"));
 
     return (
-        <AppBar position="static" sx={styles.root}>
+        <AppBar position="fixed" sx={styles.root}>
             <Toolbar
                 sx={{
                     display: "flex",
@@ -58,7 +59,7 @@ function HeaderQuiz({ hamburger, setHamburger }) {
                     }}
                     onClick={() => setHamburger(!hamburger)}
                 >
-                    {!matches && <MenuIcon />}
+                    {!matches && (hamburger ? <CloseIcon /> : <MenuIcon />)}
                 </Button>
 
                 <IconButton

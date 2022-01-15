@@ -20,6 +20,7 @@ function SideBarQuiz() {
                 backgroundColor: "#080136",
                 color: "white",
                 borderRight: "1px solid #eee",
+                
             }}
             display={{
                 xs: "none",

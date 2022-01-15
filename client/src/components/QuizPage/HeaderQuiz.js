@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import AppBar from "@mui/material/AppBar";
 
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
+import MenuIcon from "@mui/icons-material/Menu";
 
 import TCRLogo from "../Icons/TCRoverLogo.png";
 import TCR_TLogo from "../Icons/TLogo.png";
@@ -31,9 +32,10 @@ const styles = {
         objectFit: "cover",
     },
 };
-function HeaderQuiz() {
+function HeaderQuiz({ hamburger, setHamburger }) {
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.up("sm"));
+
     return (
         <AppBar position="static" sx={styles.root}>
             <Toolbar
@@ -46,6 +48,19 @@ function HeaderQuiz() {
                     width: "calc(100%-1rem)",
                 }}
             >
+                <Button
+                    sx={{
+                        color: "white",
+                        display: {
+                            xs: "inline",
+                            sm: "none",
+                        },
+                    }}
+                    onClick={() => setHamburger(!hamburger)}
+                >
+                    {!matches && <MenuIcon />}
+                </Button>
+
                 <IconButton
                     size="large"
                     edge="start"
@@ -61,8 +76,15 @@ function HeaderQuiz() {
                         alt="TCR LOGO"
                     />
                 </IconButton>
-                <Typography variant="h6" component="span">
-                    Test name {`${matches}`}
+                <Typography
+                    variant="h6"
+                    component="span"
+                    fontSize={{
+                        xs: "1rem",
+                        sm: "1.5rem",
+                    }}
+                >
+                    Test name
                 </Typography>
                 <Button
                     color="inherit"

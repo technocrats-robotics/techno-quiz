@@ -1,9 +1,17 @@
 import React from "react";
-import { Box, Button, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import LoginLogo from "../Icons/login.svg";
 import TextField from "@mui/material/TextField";
 
 function LoginModal({ setHasAccount, hasAccount }) {
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up("lg"));
   return (
     <>
       <div
@@ -40,19 +48,23 @@ function LoginModal({ setHasAccount, hasAccount }) {
           //  transform:"translate(0%,-40vh)",
         }}
       >
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Typography variant="h3" component={"h3"}>
-            Login
-          </Typography>
-          <img src={LoginLogo} style={{ maxWidth: "25rem" }} />
-        </Box>
+        {matches && (
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              paddingLeft: "1.5rem",
+            }}
+          >
+            <Typography variant="h3" component={"h3"}>
+              Login
+            </Typography>
+
+            <img src={LoginLogo} style={{ maxWidth: "25rem" }} />
+          </Box>
+        )}
 
         <Box
           sx={{
@@ -66,41 +78,66 @@ function LoginModal({ setHasAccount, hasAccount }) {
             justifyContent: "center",
             paddingTop: "1rem",
             paddingBottom: "1rem",
+            width: "80%",
+            fontSize: {
+              xs: "1rem",
+              sm: "inherit",
+            },
+            paddingRight: "3rem",
+            paddingLeft: "3rem",
           }}
         >
-          <TextField
-            id="outlined-basic"
+          {!matches && (
+            <Typography
+              variant="h5"
+              component="h3"
+              sx={{
+                marginBottom: "1.5rem",
+              }}
+            >
+              Login
+            </Typography>
+          )}
+
+          <input
+            id="input"
             label="Email-Id"
-            variant="outlined"
             placeholder="Username/Email-Id"
-            sx={{
+            style={{
               color: "white",
               background: "#405893",
-              "&::placeholder": {
+              "::WebkitInputPlaceholder": {
                 color: "white",
               },
               borderRadius: "1.5rem",
               border: "1px solid rgba(255,255,255,0.7)",
               marginBottom: "1rem",
               width: "100%",
+              border: "none",
+              outline: "none",
+              height: "3rem",
+              paddingLeft: "1.5rem",
             }}
           />
 
-          <TextField
-            id="outlined-basic"
+          <input
+            id="input"
             label="Password"
-            variant="outlined"
             placeholder="Password"
-            sx={{
+            style={{
               color: "white",
               background: "#405893",
-              "::placeholder": {
+              "::WebkitInputPlaceholder": {
                 color: "white",
               },
               borderRadius: "1.5rem",
               border: "none",
               marginBottom: "1rem",
               width: "100%",
+              border: "none",
+              outline: "none",
+              height: "3rem",
+              paddingLeft: "1.5rem",
             }}
           />
 

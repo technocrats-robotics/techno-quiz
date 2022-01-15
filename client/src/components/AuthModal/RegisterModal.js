@@ -1,9 +1,16 @@
 import React from "react";
-import { Box, Button, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import LoginLogo from "../Icons/login.svg";
-import TextField from "@mui/material/TextField";
 
 function RegisterModal({ setHasAccount, hasAccount }) {
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up("lg"));
   return (
     <>
       <div
@@ -40,19 +47,21 @@ function RegisterModal({ setHasAccount, hasAccount }) {
           //  transform:"translate(0%,-40vh)",
         }}
       >
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Typography variant="h3" component={"h3"}>
-            Register
-          </Typography>
-          <img src={LoginLogo} style={{ maxWidth: "25rem" }} />
-        </Box>
+        {matches && (
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Typography variant="h3" component={"h3"}>
+              Register
+            </Typography>
+            <img src={LoginLogo} style={{ maxWidth: "25rem" }} />
+          </Box>
+        )}
 
         <Box
           sx={{
@@ -62,18 +71,33 @@ function RegisterModal({ setHasAccount, hasAccount }) {
             alignItems: "center",
             // marginLeft:'2rem',
             // marginRight:'20%',
-            // paddingLeft:'2rem',
+            paddingLeft: "3rem",
+            paddingRight: "3rem",
             justifyContent: "center",
             paddingTop: "1rem",
             paddingBottom: "1rem",
+            width: {
+              lg: "inherit",
+              xs: "100%",
+            },
           }}
         >
-          <TextField
-            id="outlined-basic"
+          {!matches && (
+            <Typography
+              variant="h5"
+              component="h3"
+              sx={{
+                marginBottom: "1.5rem",
+              }}
+            >
+              Login
+            </Typography>
+          )}
+          <input
+            id="input"
             label="Name"
-            variant="outlined"
             placeholder="Name"
-            sx={{
+            style={{
               color: "white",
               background: "#405893",
               "&::placeholder": {
@@ -83,14 +107,17 @@ function RegisterModal({ setHasAccount, hasAccount }) {
               border: "1px solid rgba(255,255,255,0.7)",
               marginBottom: "1rem",
               width: "100%",
+              outline: "none",
+              height: "3rem",
+              paddingLeft: "1.5rem",
             }}
           />
-          <TextField
-            id="outlined-basic"
+
+          <input
+            id="input"
             label="Email-Id"
-            variant="outlined"
             placeholder="Email-Id"
-            sx={{
+            style={{
               color: "white",
               background: "#405893",
               "&::placeholder": {
@@ -100,15 +127,17 @@ function RegisterModal({ setHasAccount, hasAccount }) {
               border: "1px solid rgba(255,255,255,0.7)",
               marginBottom: "1rem",
               width: "100%",
+              outline: "none",
+              height: "3rem",
+              paddingLeft: "1.5rem",
             }}
           />
 
-          <TextField
-            id="outlined-basic"
+          <input
+            id="input"
             label="Password"
-            variant="outlined"
             placeholder="Password"
-            sx={{
+            style={{
               color: "white",
               background: "#405893",
               "::placeholder": {
@@ -118,15 +147,17 @@ function RegisterModal({ setHasAccount, hasAccount }) {
               border: "none",
               marginBottom: "1rem",
               width: "100%",
+              outline: "none",
+              height: "3rem",
+              paddingLeft: "1.5rem",
             }}
           />
 
-          <TextField
-            id="outlined-basic"
+          <input
+            id="input"
             label="Re-enter Password"
-            variant="outlined"
             placeholder="Re-enter Password"
-            sx={{
+            style={{
               color: "white",
               background: "#405893",
               "::placeholder": {
@@ -136,6 +167,9 @@ function RegisterModal({ setHasAccount, hasAccount }) {
               border: "none",
               marginBottom: "1rem",
               width: "100%",
+              outline: "none",
+              height: "3rem",
+              paddingLeft: "1.5rem",
             }}
           />
 

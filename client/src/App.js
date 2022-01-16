@@ -18,7 +18,7 @@ import Department from "./pages/Department";
 import About from "./pages/About";
 import TestingPage from "./pages/TestingPage";
 
-import TestPage from "./pages/TestPage";
+import TestPage from "./pages/TestingPage";
 
 function App() {
     return (

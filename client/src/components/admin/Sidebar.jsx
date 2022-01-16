@@ -5,7 +5,7 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import AssessmentIcon from '@mui/icons-material/Assessment';
 import Badge from "./Badge";
-import AvatarImage from "../assets/avatarImage.jpg";
+import AvatarImage from "../Icons/TLogo.png";
 function Sidebar() {
   return (
     <Container>

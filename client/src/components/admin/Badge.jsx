@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { themeColor } from "../utils";
+
 function Badge({
   content,
   clean = false,
@@ -19,13 +19,13 @@ const Div = styled.span`
   border-radius: 1rem;
   font-weight: 500;
   color: white;
-  background-color: ${themeColor};
+  background-color: #6100d4;
   cursor: pointer;
   ${({ clean }) =>
     clean &&
     `background-color: transparent;
-    border: 0.05rem solid ${themeColor};
-     color:${themeColor};`}
+    border: 0.05rem solid #6100d4;
+     color: #6100d4;`}
   ${({ logout }) =>
     logout &&
     `

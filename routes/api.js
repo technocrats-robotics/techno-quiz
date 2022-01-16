@@ -23,8 +23,13 @@ const loginLimiter = limiter({
 const api = (app) => {
     app.get("/api/question", user, Question.getQuestion);
     app.post("/api/question", user, admin, Question.addQuestion);
-    app.get("/api/quiz", user, Quiz.getQuiz);
+    app.delete("/api/question",user,admin,Question.deleteQuestion)
+
+    app.get("/api/quiz/questions/:quizId", user, Question.getQuizQuestions);
+    app.get("/api/quiz/:dept", user, Quiz.getQuiz);
     app.post("/api/quiz", user, admin, Quiz.addQuiz);
+    app.put("/api/quiz/publish",user,admin, Quiz.publishQuiz);
+
     app.post(
         "/api/auth/register",
         registerLimiter,

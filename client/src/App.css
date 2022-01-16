@@ -3,6 +3,10 @@
     padding: 0px;
 }
 
+div.app__header{
+    width: 100vw
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
 
 nav.navBarUser{
@@ -38,23 +42,35 @@ p.userName{
     font-weight: normal;
     font-size: 36px;
     line-height: 54px;
-
     color: #FFFFFF;
 }
 
-section.mainSection{
+div.enclosure{
     background: #0C0255;
+}
+
+section.mainSection{
+    width: 100vw;
     display: flex;
+    column-gap: 5%;
     justify-content: center;
     align-items: center;
-    padding: 2%;
+    /* padding: 2%; */
 }
 
 section.subSection1{
     background: rgba(255, 255, 255, 0.95);
     border-radius: 59px;
     padding: 2%;
-    width: 20vw;
+    width: 15vw;
+}
+
+section.subSection2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 60vw;
 }
 
 p.activeLeftButton{
@@ -112,4 +128,143 @@ button.logoutButton{
     font-size: 24px;
     line-height: 36px;
     text-align: center;
+}
+
+h1.welcome{
+    width: 801px;
+    height: 83px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 64px;
+    line-height: 96px;
+    text-align: center;
+    color: #FFFFFF;
+    margin-bottom: 2%;
+}
+
+p.subtitle{
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 54px;
+    text-align: center;
+    color: #FFFFFF;
+    margin-bottom: 5%;
+
+}
+
+div.stats{
+    display: flex;
+    flex-flow: row wrap;
+    gap: 2%;
+    align-items: center;
+    justify-content: center;
+    width: inherit;
+}
+
+div.card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 15vw;
+    padding: 5%;
+    height: 190px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 30px;
+    margin-bottom: 2%;
+}
+
+div.card2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 30vw;
+    padding: 5%;
+    height: auto;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 30px;
+    margin-bottom: 2%;
+}
+
+img.meter{
+    width: 240px;
+    height: 130px;
+}
+
+h2.progress{
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 26px;
+    line-height: 39px;
+    color: #000000;
+    margin-bottom: 2%;
+}
+
+p.progressText{
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 21px;
+    color: #000000;
+    margin-bottom: 5%;
+}
+
+h2.userAnalysis{
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 45px;
+    text-align: center;
+    color: #000000;
+    margin-bottom: 5%;
+}
+
+p.userAnalysisText{
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 30px;
+    text-align: center;
+    color: #000000;
+}
+
+h2.previousAttempts{
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 26px;
+    line-height: 39px;
+    text-align: center;
+    color: #000000;
+}
+
+img.Graph{
+    width: 90%;
+    height: 144px;
+}
+
+h2.testAnalysis{
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 26px;
+    line-height: 39px;
+    text-align: center;
+    color: #000000;
+}
+
+img.footer{
+    position: absolute;
+    top: 650px;
+    bottom: 50px;
+    width: 100vw;
+    height: auto;
 }

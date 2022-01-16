@@ -16,6 +16,7 @@ import Leaderboard from "./pages/Leaderboard";
 import LandingPage from "./pages/LandingPage";
 import Department from "./pages/Department";
 import About from "./pages/About";
+import TestingPage from "./pages/TestingPage";
 
 import TestPage from "./pages/TestPage";
 
@@ -55,6 +56,9 @@ function App() {
                             element={<Leaderboard />}
                         />
                         {/* Admin routes */}
+
+                        
+
                         <Route path="/test" element={<TestPage/>} />
                         <Route path="*" element={<NotFound />} />
                        

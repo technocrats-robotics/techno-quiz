@@ -74,6 +74,7 @@ const login = (req, res) => {
         return res.status(422).json({ errors: errors.array() });
     }
     const { email, password } = req.body;
+    console.log("HIT!!!")
     User.findOne({ email })
         .then((user) => {
             if (!user) {
@@ -92,8 +93,15 @@ const login = (req, res) => {
                             expiresIn: "3h",
                         }
                     );
+                    const responseUser = {
+                        email: user.email,
+                        isAdmin: user.isAdmin,
+                        name: user.name,
+                        role: user.role,
+                        createdOn: user.createdOn
+                    }
                     return res.json({
-                        message: "User found",
+                        responseUser,
                         token,
                     });
                 } else {

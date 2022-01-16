@@ -22,6 +22,10 @@ function SideBarQuiz() {
                 color: "white",
                 borderRight: "1px solid #eee",
             }}
+            display={{
+                xs: "none",
+                md: "block"
+            }}
         >
             <Box
                 sx={{

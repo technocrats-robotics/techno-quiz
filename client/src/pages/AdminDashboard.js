@@ -8,8 +8,6 @@ function AdminDashboard() {
   return (
     <Container>
       <Sidebar />
-      <MainContent />
-      <Footer/>
     </Container>
   );
 }

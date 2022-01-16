@@ -1,11 +1,11 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import axios from 'axios';
-import store from './store';
 
 // Notifications
 import ReactNotification from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
+
+import Box from "@mui/material/Box";
 // pages
 import Homepage from "./pages/Homepage";
 import NotFound from "./pages/NotFound";
@@ -16,30 +16,18 @@ import Leaderboard from "./pages/Leaderboard";
 import LandingPage from "./pages/LandingPage";
 import Department from "./pages/Department";
 import About from "./pages/About";
+import TestingPage from "./pages/TestingPage";
 
-class App extends React.Component {
-
-    componentDidMount() {
-      if (localStorage.getItem('userID')) {
-        axios.get(`/api/users/${localStorage.getItem('userID')}`).then(res => {
-          store.dispatch({
-            user: res.data.user,
-            type: 'setUser' //same
-          })
-        }).catch(er => {
-          console.log(er);
-        })
-      }
-    }
-render(){
+function App() {
     return (
-        <div className="app">
+        <>
             <ReactNotification />
             <Router>
-                <div className="app__header">
-                    <Link to="/">Homepage</Link>
-                </div>
-                <div className="app__body">
+                <Box
+                    sx={{
+                        minHeight: "100%",
+                    }}
+                >
                     <Routes>
                         <Route
                             exact
@@ -47,25 +35,32 @@ render(){
                             element={<LandingPage />}
                         />
                         <Route exact path="/" element={<Homepage />} />
-                        <Route exact path="/auth" element={<Login />} />
-                        <Route exact path="/department" element={<Department />} />
+                        <Route
+                            exact
+                            path="/department/:id"
+                            element={<Department />}
+                        />
                         <Route exact path="/about" element={<About />} />
-                        <Route exact path="/user" element={UserDashboard} />
-                        <Route exact path="/admin" element={AdminDashboard} />
-                        <Route exact path="/quiz" element={QuizPage} />
+                        <Route exact path="/user" element={<UserDashboard />} />
+                        <Route
+                            exact
+                            path="/admin"
+                            element={<AdminDashboard />}
+                        />
+                        <Route exact path="/quiz" element={<QuizPage />} />
                         <Route
                             exact
                             path="/leaderboard"
-                            element={Leaderboard}
+                            element={<Leaderboard />}
                         />
                         {/* Admin routes */}
+                        <Route exact path="/test" element={<TestingPage />} />
                         <Route path="*" element={<NotFound />} />
                     </Routes>
-                </div>
+                </Box>
             </Router>
-        </div>
+        </>
     );
-}
 }
 
 export default App;

@@ -26,7 +26,6 @@ function App() {
             <ReactNotification />
             <Router>
                 <div className="app__header">
-                    <NavBar />
                 </div>
                 <div className="app__body">
                     <Routes>

@@ -19,6 +19,23 @@ const addQuestion = (req, res, next) => {
         });
     });
 };
+
+const deleteQuestion= async (req,res)=>{
+    const {questionId}=req.body;
+
+    try{
+        await Question.deleteOne({questionId})
+        return res.send("Question deleted");
+
+    }
+    catch(err){
+        return res.json({
+            message:"Error, Question not deleted!",
+            err,
+        })
+    }
+}
+
 // for admin to fetch all questions 
 const getQuestion = async (req, res, next) => {
     try {
@@ -55,4 +72,5 @@ module.exports = {
     addQuestion,
     getQuestion,
     getQuizQuestions,
+    deleteQuestion
 };

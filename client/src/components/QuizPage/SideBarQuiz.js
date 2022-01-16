@@ -10,6 +10,7 @@ import GeneralRoboticsLogo from "../Icons/generalRobotics.svg";
 import ElectricalLogo from "../Icons/electricalLogo.svg";
 import CsLogo from "../Icons/csLogo.svg";
 import MechanicalLogo from "../Icons/mechanicalLogo.svg";
+import QuestionProgress from "./QuestionProgress"
 
 function SideBarQuiz() {
     return (
@@ -41,6 +42,7 @@ function SideBarQuiz() {
                 <DepartmentQuiz name="Programming" icon={CsLogo} />
                 <DepartmentQuiz name="Mechanical" icon={MechanicalLogo} />
                 <Timer />
+                {/* <QuestionProgress/> */}
             </Box>
         </Box>
     );

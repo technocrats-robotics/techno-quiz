@@ -8,6 +8,8 @@ import SideBarQuiz from "../components/QuizPage/SideBarQuiz";
 import SidebarXS from "../components/QuizPage/SidebarXS";
 
 
+
+
 function QuizPage() {
     const [hamburger, setHamburger] = useState(false);
     const theme = useTheme();
@@ -24,6 +26,7 @@ function QuizPage() {
                         xs: "4rem",
                         sm: "6rem",
                     },
+
                 }}
             >
                 <SideBarQuiz />

@@ -1,22 +1,34 @@
-import styled from "styled-components";
-import Sidebar from "../components/Admin/Sidebar";
+import React, { useState } from "react";
+import Content from "../components/Admin/Content";
+import { Box, useMediaQuery, useTheme } from "@mui/material";
+
+import Header from "../components/Admin/Header";
+import SideBar from "../components/Admin/Sidebar";
 
 function AdminDashboard() {
-  return (
-    <Container>
-      <Sidebar />
-    </Container>
-  );
-}
+    const [hamburger, setHamburger] = useState(false);
+    const theme = useTheme();
+    const matches = useMediaQuery(theme.breakpoints.up("sm"));
+    return (
+        <Box>
+            <Header setHamburger={setHamburger} hamburger={hamburger} />
+            <Box
+                sx={{
+                    display: "flex",
+                    minHeight: "100vh",
+                    height: "100%",
+                    paddingTop: {
+                        xs: "4rem",
+                        sm: "6rem",
+                    },
 
-const Container = styled.div`
-  display: flex;
-  height: 90vh;
-  background: linear-gradient(to bottom right,  #050022 0%, #050022 70%);
-  border-radius: 2rem;
-  @media screen and (min-width: 320px) and (max-width: 1080px) {
-    flex-direction: column;
-  }
-`;
+                }}
+            >
+                <SideBar />
+                <Content />
+            </Box>
+        </Box>
+    );
+}
 
 export default AdminDashboard;

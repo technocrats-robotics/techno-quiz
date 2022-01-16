@@ -32,6 +32,9 @@ const Div = styled.span`
     padding: 0.3rem 1rem;
     border-radius: 1rem;
     font-weight: 500;
+    width: 60px;
+    margin: 30px 60px;
+    text-align: center;
     color: #000;
     background-color: #FFFD1B;
     cursor: pointer;

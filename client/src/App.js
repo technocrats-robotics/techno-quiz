@@ -16,13 +16,17 @@ import LandingPage from "./pages/LandingPage";
 import Department from "./pages/Department";
 import About from "./pages/About";
 
+//Components
+
+import NavBar from './components/NavBar';
+
 function App() {
     return (
         <div className="app">
             <ReactNotification />
             <Router>
                 <div className="app__header">
-                    <Link to="/">Homepage</Link>
+                    <NavBar />
                 </div>
                 <div className="app__body">
                     <Routes>

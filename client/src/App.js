@@ -17,11 +17,8 @@ import LandingPage from "./pages/LandingPage";
 import Department from "./pages/Department";
 import About from "./pages/About";
 import TestingPage from "./pages/TestingPage";
-<<<<<<< HEAD
-=======
 
 import TestPage from "./pages/TestPage";
->>>>>>> d0b37fc0d26fd1685a472ea24e07417497d6510b
 
 function App() {
     return (
@@ -73,8 +70,4 @@ function App() {
     );
 }
 
-<<<<<<< HEAD
 export default App;
-=======
-export default App;
->>>>>>> d0b37fc0d26fd1685a472ea24e07417497d6510b

@@ -34,7 +34,7 @@ body {
 #portal {
   height: 100vh;
   width: 100vw;
-  position: relative;
+  position: fixed;
 }
 
 #input::placeholder {

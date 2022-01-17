@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled from '@emotion/styled'
 
 function Badge({ content, clean = false, logout = false, glow = false }) {
   return (

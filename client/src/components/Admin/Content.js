@@ -1,0 +1,75 @@
+import { Box, Typography } from "@mui/material";
+import React from "react";
+import Meter from "../Icons/Meter.png";
+import Graph from "../Icons/Graph.png";
+import Test from "../Icons/Test.png";
+
+function Content() {
+    return (
+        <Box
+            sx={{
+                minHeight: "100vh",
+                height: "100%",
+                width: "100%",
+                backgroundColor: "#050022",
+                color: "white",
+            }}
+        >
+        <Typography style={{textAlign: "center", fontWeight: "bolder", fontSize: "2rem", marginTop: "80px"}}>Welcome, Admin!</Typography>
+        <Typography style={{textAlign: "center", fontSize: "1rem", margin: "2px"}}>Take a look at these !</Typography>
+        <Box style={{margin: "30px", backgroundColor: "#f2f2f4", borderRadius: "30px", width: "350px"}}>
+        <br></br>
+        <Typography  style={{textAlign: "center", fontSize:"1.2rem", fontWeight: "bolder", color: "#000"}} >Progress Meter</Typography>   
+        <Typography style={{textAlign: "center", marginBottom: "30px", fontSize:"0.9rem", color: "#000"}}>Keep it up! You're getting there</Typography>         
+                    <img
+                        src={Meter}
+                        style={{
+                        width: "150px",
+                        height: "80px",
+                        marginLeft: "105px",
+                        marginBottom: "15px",
+                        }}
+                        alt="Dashboard"
+                    />
+        </Box>
+        <Box style={{backgroundColor: "#f2f2f4", borderRadius: "30px", marginLeft:"420px", marginTop:"-230px", width: "650px"}}>
+        <br></br>
+        <Typography  style={{textAlign: "center", fontSize:"1.2rem", fontWeight: "bolder", color: "#000"}} >User Analysis</Typography>   
+        <Typography style={{margin: "20px 15px", textAlign: "center", fontSize:"0.9rem", color: "#000"}}>Lorem ipsum dolor sit amet, 
+        consectetur adipiscing elit. Turpis fermentum vitae, sit tincidunt aenean eu. Sed neque auctor purus pretium pharetra donec vel felis. 
+        Nisl placerat vel, nulla tempor id a. Elementum urna quis donec faucibus et, vitae nec. In risus lectus ultricies sit. Morbi urna orci.</Typography>         
+        <br></br>
+        </Box>
+        <Box style={{margin: "30px", backgroundColor: "#f2f2f4", borderRadius: "30px", width: "550px"}}>
+        <br></br>
+        <Typography  style={{textAlign: "center", fontSize:"1.2rem", fontWeight: "bolder", color: "#000"}} >Summary of Previous Attempts</Typography>   
+           <br></br>
+                    <img
+                        src={Graph}
+                        style={{
+                        width: "480px",
+                        height: "130px",
+                        marginLeft: "35px",
+                        marginBottom: "15px",
+                        }}
+                        alt="Dashboard"
+                    />
+        </Box>
+        <Box style={{marginLeft: "620px", marginTop: "-245px", backgroundColor: "#f2f2f4", borderRadius: "30px", width: "450px"}}>
+        <br></br>
+                    <img
+                        src={Test}
+                        style={{
+                        width: "200px",
+                        height: "175px",
+                        marginLeft: "115px",
+                        marginBottom: "15px",
+                        }}
+                        alt="Dashboard"
+                    />
+        </Box>
+        </Box>
+    );
+}
+
+export default Content;

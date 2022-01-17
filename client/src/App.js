@@ -18,7 +18,7 @@ import Department from "./pages/Department";
 import About from "./pages/About";
 import TestingPage from "./pages/TestingPage";
 
-import TestPage from "./pages/TestPage";
+import TestPage from "./pages/TestingPage";
 
 function App() {
     return (
@@ -56,6 +56,7 @@ function App() {
                             element={<Leaderboard />}
                         />
                         {/* Admin routes */}
+                        <Route exact path="/test" element={<TestingPage />} />
 
                         
 

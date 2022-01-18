@@ -1,15 +1,15 @@
 import {createSlice} from "@reduxjs/toolkit"
 
 const initialState = {
-    questions: null,
+    answers: null,
 }
 
 const questionsSlice = createSlice({
-    name: "questions",
+    name: "answers",
     initialState,
     reducers: {
-        setQuestions(state, action){
-            state.questions = action.payload;
+        addAnswers(state, action){
+            state.answers = action.payload;
         },
         removeQuestions(state){
             state.questions = null;

@@ -22,6 +22,9 @@ function Answer({ option, index }) {
                     border: "2px solid rgba(0,224,255,1)",
                 },
             }}
+            // TODO: Onclick handler
+            // onClick = {()=>{}}
+            
         >
             <Typography
                 variant="h5"

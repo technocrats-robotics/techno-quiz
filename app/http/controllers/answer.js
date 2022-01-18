@@ -2,6 +2,7 @@ const answerModel = require("../../models/answer");
 const uploadAnswer = async (req,res)=>{
     // User answer should follow the schema of answerSchema
     const userAnswer = req.body;
+    const userId = req.user.id;
     console.log(userAnswer)
     // TODO: JValidation required before saving
     try{

@@ -8,7 +8,7 @@ import SideBarQuiz from "../components/QuizPage/SideBarQuiz";
 import SidebarXS from "../components/QuizPage/SidebarXS";
 import { useGetQuestionsByIdQuery } from "../app/services/api";
 
-import { setQuestions } from "../features/Questions/questionSlice";
+import { setQuestions } from "../features/Answers/answerSlice";
 import { useDispatch } from "react-redux";
 
 function QuizPage() {

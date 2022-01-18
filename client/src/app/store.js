@@ -3,7 +3,7 @@ import { api } from "./services/api";
 import storage from "redux-persist/lib/storage";
 import { persistReducer } from "redux-persist";
 import authReducer from "../features/Auth/authSlice";
-import questionReducer from "../features/Questions/questionSlice";
+import questionReducer from "../features/Answers/answerSlice";
 const persistConfig = {
     key: "root",
     storage,

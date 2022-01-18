@@ -2,7 +2,7 @@ import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 
-function Answer() {
+function Answer({ option, index }) {
     return (
         <Box
             sx={{
@@ -28,10 +28,10 @@ function Answer() {
                 component="p"
                 fontSize={{
                     xs: "1rem",
-                    sm: "1.2rem"
+                    sm: "1.2rem",
                 }}
             >
-                A) component
+                {index} ) {option}
             </Typography>
         </Box>
     );

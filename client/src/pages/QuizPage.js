@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import ContentQuiz from "../components/QuizPage/ContentQuiz";
 import { Box, useMediaQuery, useTheme } from "@mui/material";
 import { useParams } from "react-router-dom";
@@ -15,14 +15,14 @@ function QuizPage() {
     const [hamburger, setHamburger] = useState(false);
     const dispatch = useDispatch();
     const theme = useTheme();
-    // Get quiz id from params react router v6
+
     const { quizId } = useParams();
     console.log(quizId);
 
-    const {data: fetchQuestions,  isLoading } = useGetQuestionsByIdQuery(quizId);
+    const { data, isLoading } = useGetQuestionsByIdQuery(quizId);
 
-    const matches = useMediaQuery(theme.breakpoints.up("sm"));
-
+    // const matches = useMediaQuery(theme.breakpoints.up("sm"));
+    console.log(data);
 
     return (
         <Box>
@@ -39,7 +39,9 @@ function QuizPage() {
                 }}
             >
                 <SideBarQuiz />
-                <ContentQuiz />
+                <Suspense fallback={<div>Loading</div>}>
+                    <ContentQuiz questions={data} isLoading={isLoading} />
+                </Suspense>
             </Box>
             {hamburger && <SidebarXS />}
         </Box>

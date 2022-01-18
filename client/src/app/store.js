@@ -3,7 +3,7 @@ import { api } from "./services/api";
 import storage from "redux-persist/lib/storage";
 import { persistReducer } from "redux-persist";
 import authReducer from "../features/Auth/authSlice";
-
+import questionReducer from "../features/Questions/questionSlice";
 const persistConfig = {
     key: "root",
     storage,
@@ -14,6 +14,7 @@ export const store = configureStore({
     reducer: {
         [api.reducerPath]: api.reducer,
         auth: authReducer,
+        questions: questionReducer,
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware().concat(api.middleware),

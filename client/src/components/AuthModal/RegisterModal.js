@@ -8,7 +8,13 @@ import {
 } from "@mui/material";
 import LoginLogo from "../Icons/login.svg";
 
-function RegisterModal({ setHasAccount, hasAccount }) {
+function RegisterModal({
+  setHasAccount,
+  hasAccount,
+  credentials,
+  setCredentials,
+  handleRegister,
+}) {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("lg"));
   return (
@@ -97,6 +103,14 @@ function RegisterModal({ setHasAccount, hasAccount }) {
             id="input"
             label="Name"
             placeholder="Name"
+            type="text"
+            value={credentials.name}
+            onChange={(event) => {
+              setCredentials({
+                ...credentials,
+                name: event.target.value,
+              });
+            }}
             style={{
               color: "white",
               background: "#405893",
@@ -117,6 +131,14 @@ function RegisterModal({ setHasAccount, hasAccount }) {
             id="input"
             label="Email-Id"
             placeholder="Email-Id"
+            type="email"
+            value={credentials.email}
+            onChange={(event) => {
+              setCredentials({
+                ...credentials,
+                email: event.target.value,
+              });
+            }}
             style={{
               color: "white",
               background: "#405893",
@@ -137,6 +159,14 @@ function RegisterModal({ setHasAccount, hasAccount }) {
             id="input"
             label="Password"
             placeholder="Password"
+            type="password"
+            value={credentials.password}
+            onChange={(event) => {
+              setCredentials({
+                ...credentials,
+                password: event.target.value,
+              });
+            }}
             style={{
               color: "white",
               background: "#405893",
@@ -157,6 +187,14 @@ function RegisterModal({ setHasAccount, hasAccount }) {
             id="input"
             label="Re-enter Password"
             placeholder="Re-enter Password"
+            type="password"
+            value={credentials.repassword}
+            onChange={(event) => {
+              setCredentials({
+                ...credentials,
+                repassword: event.target.value,
+              });
+            }}
             style={{
               color: "white",
               background: "#405893",
@@ -185,6 +223,7 @@ function RegisterModal({ setHasAccount, hasAccount }) {
             </Typography>
           </Typography>
           <Button
+            onClick={handleRegister}
             variant="contained"
             style={{
               color: "white",

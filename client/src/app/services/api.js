@@ -20,10 +20,17 @@ export const api = createApi({
                 body: credentials,
             }),
         }),
+        addQuestion: builder.mutation({
+            query: (data) => ({
+                url: "/api/question",
+                method: "POST",
+                body: data,
+            }),
+        }),
         protected: builder.mutation({
             query: () => "protected",
         }),
     }),
 });
 
-export const { useLoginMutation, useProtectedMutation } = api;
+export const { useLoginMutation, useProtectedMutation, useAddQuestionMutation } = api;

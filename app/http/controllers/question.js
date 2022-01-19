@@ -4,8 +4,54 @@ const Quiz = require("../../models/quiz");
 const sanitizeQuizQuestion = require("../services/sanitizeQuizQuestion");
 
 const addQuestion = (req, res, next) => {
-    const { statement, options, answer } = req.body;
-    const ques = new Question({ statement, options, answer });
+    const { statement, options, answer } = req.body; // TODO: do data validation here 
+
+    if(!statement || !options || options.length != 4 || !answer){
+        return res.json({
+            message: "All parameters are required!",
+            status: "failed"
+        })
+    }
+    
+    let optionCheck = new Map() // to detect duplicate options
+
+    let allOptions = [] // options mapped to a id
+    let answerId = -1 // answer id (as per option)
+
+    options.map((option, index)=>{
+
+        // check for duplicate options
+        if(optionCheck.has(option)){
+            return res.json({
+                message: "Duplicate options found!",
+                status: "failed"
+            })
+        }
+
+        optionCheck.set(option, true)
+
+        // assign id to uniquely identify options 
+        allOptions.push({
+            [index]: option
+        })
+        
+        // save answer id
+        if(option === answer){
+            answerId = index
+        }
+
+    })
+
+    // if answer does not match any option
+    if(answerId == -1){
+        return res.json({
+            message: "Invalid answer!",
+            status: "failed"
+        })
+    }
+
+    const ques = new Question({ statement, options: allOptions, answer: answerId });
+
     ques.save((err, ques) => {
         if (err) {
             return res.json({

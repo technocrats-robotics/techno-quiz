@@ -1,8 +1,9 @@
 import { Box } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import Objective from "./Questions/Objective";
 
-function ContentQuiz({ questions }) {
+function ContentQuiz({ questions, quizId }) {
+    const [userAttempt, setUserAttempt] = useState(new Map());
     console.log(questions);
     return (
         <Box
@@ -16,7 +17,14 @@ function ContentQuiz({ questions }) {
         >
             {questions &&
                 questions.map((question, idx) => (
-                    <Objective key={idx} question={question} index={idx + 1} />
+                    <Objective
+                        key={idx}
+                        quizId={quizId}
+                        question={question}
+                        index={idx + 1}
+                        userAttempt={userAttempt}
+                        setUserAttempt={setUserAttempt}
+                    />
                 ))}
         </Box>
     );

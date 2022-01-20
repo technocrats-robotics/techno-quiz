@@ -1,10 +1,15 @@
 import { Box } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { addAnswers } from "../../features/Answers/answerSlice";
 import Objective from "./Questions/Objective";
 
 function ContentQuiz({ questions, quizId }) {
+    const dispatch = useDispatch();
     const [userAttempt, setUserAttempt] = useState(new Map());
     console.log(questions);
+
+    
     return (
         <Box
             sx={{

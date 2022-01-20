@@ -72,9 +72,9 @@ function Objective({ question, index, quizId, userAttempt, setUserAttempt }) {
                     {question.options.map((option, idx) => (
                         <Grid item xl={6} lg={6} xs={12}>
                             <Answer
+                                key={idx}
                                 userAttempt={userAttempt}
                                 setUserAttempt={setUserAttempt}
-                                key={idx}
                                 questionId={question.id}
                                 option={option}
                                 index={idx + 1}

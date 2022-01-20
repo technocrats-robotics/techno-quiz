@@ -1,7 +1,9 @@
 import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
-
+import { useDispatch } from "react-redux";
+import { addAnswers } from "../../../features/Answers/answerSlice";
+import produce from "immer";
 function Answer({
     option,
     index,
@@ -10,17 +12,26 @@ function Answer({
     setUserAttempt,
     userAttempt,
     selectedAnswer,
-    setSelectedAnswer
+    setSelectedAnswer,
 }) {
+    const dispatch = useDispatch();
     const handleOnClick = () => {
-        setUserAttempt(userAttempt.set(questionId, index));
+        setUserAttempt(
+            produce(userAttempt, (draftState) => {
+                draftState.set(questionId, index);
+            })
+        );
+        // dispatch(addAnswers(userAttempt));
         setSelectedAnswer(index);
         console.log(userAttempt);
     };
     return (
         <Box
             sx={{
-                border: (userAttempt.get(questionId)===index) ? "2px solid rgba(0,224,255,1)": "2px solid rgba(125,125,125,0.75)",
+                border:
+                    userAttempt.get(questionId) === index
+                        ? "2px solid rgba(0,224,255,1)"
+                        : "2px solid rgba(125,125,125,0.75)",
                 padding: "0.5rem",
                 paddingLeft: "1.5rem",
                 paddingRight: "1.5rem",
@@ -29,7 +40,10 @@ function Answer({
                 width: "calc(100% - 3rem)",
                 display: "flex",
                 alignItems: "center",
-                background: (userAttempt.get(questionId)===index)? "rgba(0,33,151,0.51)":"#050430",
+                background:
+                    userAttempt.get(questionId) === index
+                        ? "rgba(0,33,151,0.51)"
+                        : "#050430",
                 overflow: "hidden",
                 ":hover": {
                     background: "rgba(0,33,151,0.51)",

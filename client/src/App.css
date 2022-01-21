@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Roboto:wght@100&display=swap');
+*{
+    font-family: 'Poppins', sans-serif;
+}
 /* css reset */
 html,
 body {
@@ -40,3 +44,4 @@ body {
 #input::placeholder {
   color: white;
 }
+

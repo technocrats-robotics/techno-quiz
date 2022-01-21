@@ -4,7 +4,7 @@ const { check, validationResult } = require("express-validator");
 const Question = require("../app/http/controllers/question");
 const Auth = require("../app/http/controllers/auth");
 const Quiz = require("../app/http/controllers/quiz");
-// middlewares
+// middlewar
 const user = require("../app/http/middlewares/user");
 const admin = require("../app/http/middlewares/admin");
 const test = require("../testing/verify");

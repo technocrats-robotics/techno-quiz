@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 import { useDispatch } from "react-redux";
 import { useLoginMutation, useRegisterMutation } from "../../app/services/api";
@@ -8,6 +8,7 @@ import { setUserState } from "../../features/Auth/authSlice";
 import Alert from "@mui/material/Alert";
 
 function AuthModal() {
+
   const [login, { isLoading }] = useLoginMutation();
   const [register, { isError }] = useRegisterMutation();
   const dispatch = useDispatch();
@@ -72,6 +73,8 @@ function AuthModal() {
       alert("Error");
     }
   };
+  
+  
 
   return ReactDOM.createPortal(
     <>

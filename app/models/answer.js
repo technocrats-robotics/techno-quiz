@@ -22,6 +22,7 @@ const answerSchema = new mongoose.Schema({
         },
     ],
 });
+answerSchema.index({ userId: 1, quizId: 1 }, { unique: true });
 
 const answerModel = mongoose.model("Answer", answerSchema);
 

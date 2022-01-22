@@ -4,6 +4,7 @@ const uploadAnswer = async (req,res)=>{
     const userAnswer = req.body;
     const userId = req.user.id;
     console.log(userAnswer)
+    console.log(userId);
     // TODO: JValidation required before saving
     try{
 
@@ -13,7 +14,7 @@ const uploadAnswer = async (req,res)=>{
     });
     }
     catch(err){
-        console.log(err)
+        // console.log(err);
         res.status(500).json({
             message: "Error saving answer",
         });

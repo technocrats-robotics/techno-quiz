@@ -21,8 +21,6 @@ const styles = {
         backgroundColor: "#080136",
         borderBottom: "1px solid #eee",
         overflow: "hidden",
-        // width: "100%",
-        // height: "100%",
     },
     logoSM: {
         maxHeight: "70px",

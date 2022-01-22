@@ -13,8 +13,6 @@ import { useDispatch } from "react-redux";
 
 function QuizPage() {
     const [hamburger, setHamburger] = useState(false);
-    const dispatch = useDispatch();
-    const theme = useTheme();
 
     const { quizId } = useParams();
     console.log(quizId);

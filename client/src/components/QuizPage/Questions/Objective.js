@@ -1,9 +1,10 @@
 import { Box, Container, Grid, Typography } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Answer from "./Answer";
 
 function Objective({ question, index, quizId, userAttempt, setUserAttempt }) {
     const [selectedAnswer, setSelectedAnswer] = useState(0);
+    
     return (
         <Box
             sx={{

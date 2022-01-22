@@ -2,7 +2,6 @@ import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addAnswers } from "../../../features/Answers/answerSlice";
 import produce from "immer";
 function Answer({
     option,
@@ -14,14 +13,13 @@ function Answer({
     selectedAnswer,
     setSelectedAnswer,
 }) {
-    const dispatch = useDispatch();
     const handleOnClick = () => {
         setUserAttempt(
             produce(userAttempt, (draftState) => {
                 draftState.set(questionId, index);
             })
         );
-        // dispatch(addAnswers(userAttempt));
+        
         setSelectedAnswer(index);
         console.log(userAttempt);
     };

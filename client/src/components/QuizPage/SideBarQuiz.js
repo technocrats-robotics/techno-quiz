@@ -11,8 +11,27 @@ import ElectricalLogo from "../Icons/electricalLogo.svg";
 import CsLogo from "../Icons/csLogo.svg";
 import MechanicalLogo from "../Icons/mechanicalLogo.svg";
 import QuestionProgress from "./QuestionProgress";
-
+import { useUploadAnswersMutation } from "../../app/services/api";
+import { useParams } from "react-router-dom";
+import { selectAnswers } from "../../features/Answers/answerSlice";
+import { useSelector } from "react-redux";
+import { store } from "../../app/store";
 function SideBarQuiz() {
+    const { quizId } = useParams();
+    const [upload, { isLoading }] = useUploadAnswersMutation();
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            const answers = store.getState().answers.answers;
+            console.log("answer state", store.getState().answers);
+            const response = await upload({ quizId, answers }).unwrap();
+            console.log("response", response);
+        } catch (err) {
+            console.log(err);
+            alert("error");
+        }
+    };
     return (
         <Box
             sx={{
@@ -52,9 +71,9 @@ function SideBarQuiz() {
                         marginTop: "1.5rem",
                         marginLeft: "0.7rem",
                         marginRight: "0.7rem",
-                        borderRadius: "1.5rem"
+                        borderRadius: "1.5rem",
                     }}
-                    onClick={() => {}}
+                    onClick={handleSubmit}
                 >
                     Submit Attempt!
                 </Button>

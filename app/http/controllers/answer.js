@@ -14,7 +14,7 @@ const uploadAnswer = async (req, res) => {
             message: "Answer saved successfully",
         });
     } catch (err) {
-        // console.log(err);
+        console.log(err);
         res.status(500).json({
             message: "Error saving answer",
         });

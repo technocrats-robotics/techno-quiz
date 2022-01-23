@@ -12,11 +12,13 @@ import CsLogo from "../Icons/csLogo.svg";
 import MechanicalLogo from "../Icons/mechanicalLogo.svg";
 import QuestionProgress from "./QuestionProgress";
 import { useUploadAnswersMutation } from "../../app/services/api";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { selectAnswers } from "../../features/Answers/answerSlice";
 import { useSelector } from "react-redux";
 import { store } from "../../app/store";
+
 function SideBarQuiz() {
+    const navigator = useNavigate();
     const { quizId } = useParams();
     const [upload, { isLoading }] = useUploadAnswersMutation();
     const handleSubmit = async (e) => {
@@ -27,6 +29,8 @@ function SideBarQuiz() {
             console.log("answer state", store.getState().answers);
             const response = await upload({ quizId, answers }).unwrap();
             console.log("response", response);
+            alert("Success");
+            navigator("/dashboard");
         } catch (err) {
             console.log(err);
             alert("error");

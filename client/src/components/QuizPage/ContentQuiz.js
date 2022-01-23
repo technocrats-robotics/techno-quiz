@@ -11,6 +11,7 @@ function ContentQuiz({ questions, quizId }) {
     useEffect(() => {
         console.log("Dispatch called under useEffect");
         dispatch(addAnswers(Array.from(userAttempt.entries())));
+        console.log(userAttempt);
     }, [userAttempt]);
 
     return (

@@ -30,7 +30,7 @@ const answerSchema = new mongoose.Schema({
                 ref: "questions",
                 required: true,
             },
-            userAnswer: Number,
+            userAnswer: String,
         },
     ],
 });

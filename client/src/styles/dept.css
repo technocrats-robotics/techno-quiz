@@ -60,6 +60,9 @@
     text-decoration: none;
     border-radius: 25px;
 }
+.link-item1:hover {
+    cursor: pointer;
+}
 
 .header {
     margin-top: 60px;

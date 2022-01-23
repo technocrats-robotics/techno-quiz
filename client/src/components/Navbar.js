@@ -3,13 +3,14 @@ import "../styles/dept.css";
 import Logo from "../img/logo.png";
 import { Link } from "react-router-dom";
 import AuthModal from "./AuthModal/AuthModal";
+
 function Navbar() {
     const [isActive, setIsActive] = useState(false);
     const ref = useRef();
     const handleOutside = (event) => {};
     return (
         <>
-            <header>
+            <header onClick={(e) => e.stopPropagation()}>
                 <nav className="navbar">
                     <img src={Logo} className="logo" alt="" />
                     <ul className="links-container">
@@ -39,7 +40,9 @@ function Navbar() {
                     </ul>
                 </nav>
             </header>
-            {isActive && <AuthModal />}
+            {isActive && (
+                <AuthModal isActive={isActive} setIsActive={setIsActive} />
+            )}
         </>
     );
 }

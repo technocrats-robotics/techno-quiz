@@ -3,13 +3,15 @@ import "../styles/dept.css";
 import Logo from "../img/logo.png";
 import { Link } from "react-router-dom";
 import AuthModal from "./AuthModal/AuthModal";
+
 import { Slide } from "@mui/material";
+
 function Navbar() {
     const [isActive, setIsActive] = useState(false);
     const ref = useRef();
     return (
         <>
-            <header>
+            <header onClick={(e) => e.stopPropagation()}>
                 <nav className="navbar">
                     <img src={Logo} className="logo" alt="" />
                     <ul className="links-container">

@@ -1,6 +1,18 @@
 const mongoose = require("mongoose");
 
 const answerSchema = new mongoose.Schema({
+    _id: {
+        userId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User",
+            required: true,
+        },
+        quizId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Quiz",
+            required: true,
+        },
+    },
     userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
@@ -18,7 +30,7 @@ const answerSchema = new mongoose.Schema({
                 ref: "questions",
                 required: true,
             },
-            userAnswer: Number,
+            userAnswer: String,
         },
     ],
 });

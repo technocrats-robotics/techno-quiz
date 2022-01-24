@@ -8,8 +8,12 @@ function ContentQuiz({ questions, quizId }) {
     const dispatch = useDispatch();
     const [userAttempt, setUserAttempt] = useState(new Map());
     console.log(questions);
+    useEffect(() => {
+        console.log("Dispatch called under useEffect");
+        dispatch(addAnswers(Array.from(userAttempt.entries())));
+        console.log(userAttempt);
+    }, [userAttempt]);
 
-    
     return (
         <Box
             sx={{

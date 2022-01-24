@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    answers: null,
+    answers: new Map(),
 };
 
 const answerSlice = createSlice({
@@ -12,7 +12,7 @@ const answerSlice = createSlice({
             state.answers = action.payload;
         },
         removeAnswers(state) {
-            state.questions = null;
+            state.answers = null;
         },
     },
 });

@@ -40,12 +40,8 @@ function AuthModal({ isActive, setIsActive }) {
         event.preventDefault();
         try {
             const response = await login(loginCredentials).unwrap();
-            dispatch(
-                setUserState({
-                    user: response.responseUser,
-                    token: response.token,
-                })
-            );
+            dispatch(setUserState(response));
+            localStorage.setItem("token", response.token);
             alert("Successful");
         } catch (err) {
             console.log(err);
@@ -67,12 +63,8 @@ function AuthModal({ isActive, setIsActive }) {
         };
         try {
             const response = await register(data).unwrap();
-            dispatch(
-                setUserState({
-                    user: response.responseUser,
-                    token: response.token,
-                })
-            );
+            dispatch(setUserState(response));
+            localStorage.setItem("token", response.token);
             alert("Successful");
         } catch (err) {
             console.log(err);

@@ -3,10 +3,10 @@ import "../styles/dept.css";
 import Logo from "../img/logo.png";
 import { Link } from "react-router-dom";
 import AuthModal from "./AuthModal/AuthModal";
+import { Slide } from "@mui/material";
 function Navbar() {
     const [isActive, setIsActive] = useState(false);
     const ref = useRef();
-    const handleOutside = (event) => {};
     return (
         <>
             <header>
@@ -39,7 +39,11 @@ function Navbar() {
                     </ul>
                 </nav>
             </header>
-            {isActive && <AuthModal />}
+            {isActive && (
+                <Slide direction="up" mountOnEnter unmountOnExit>
+                    <AuthModal />
+                </Slide>
+            )}
         </>
     );
 }

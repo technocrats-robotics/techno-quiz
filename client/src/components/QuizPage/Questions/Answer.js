@@ -1,12 +1,33 @@
 import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import React from "react";
-
-function Answer() {
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import produce from "immer";
+function Answer({
+    option,
+    index,
+    questionIndex,
+    questionId,
+    setUserAttempt,
+    userAttempt,
+    selectedAnswer,
+    setSelectedAnswer,
+}) {
+    const handleOnClick = () => {
+        setUserAttempt(
+            produce(userAttempt, (draftState) => {
+                draftState.set(questionId, option);
+            })
+        );
+        setSelectedAnswer(index);
+    };
     return (
         <Box
             sx={{
-                border: "2px solid rgba(125,125,125,0.75)",
+                border:
+                    userAttempt.get(questionId) == option
+                        ? "2px solid rgba(0,224,255,1)"
+                        : "2px solid rgba(125,125,125,0.75)",
                 padding: "0.5rem",
                 paddingLeft: "1.5rem",
                 paddingRight: "1.5rem",
@@ -15,23 +36,27 @@ function Answer() {
                 width: "calc(100% - 3rem)",
                 display: "flex",
                 alignItems: "center",
-                background: "#050430",
+                background:
+                    userAttempt.get(questionId) === option
+                        ? "rgba(0,33,151,0.51)"
+                        : "#050430",
                 overflow: "hidden",
                 ":hover": {
                     background: "rgba(0,33,151,0.51)",
                     border: "2px solid rgba(0,224,255,1)",
                 },
             }}
+            onClick={handleOnClick}
         >
             <Typography
                 variant="h5"
                 component="p"
                 fontSize={{
                     xs: "1rem",
-                    sm: "1.2rem"
+                    sm: "1.2rem",
                 }}
             >
-                A) component
+                {index} ) {option}
             </Typography>
         </Box>
     );

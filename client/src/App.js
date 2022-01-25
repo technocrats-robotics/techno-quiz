@@ -16,9 +16,9 @@ import Leaderboard from "./pages/Leaderboard";
 import LandingPage from "./pages/LandingPage";
 import Department from "./pages/Department";
 import About from "./pages/About";
-import TestingPage from "./pages/TestingPage";
 
-import TestPage from "./pages/TestPage";
+import AuthModal from "./components/AuthModal/AuthModal";
+import TestingPage from "./pages/TestingPage";
 
 function App() {
     return (
@@ -49,7 +49,11 @@ function App() {
                             path="/admin"
                             element={<AdminDashboard />}
                         />
-                        <Route exact path="/quiz" element={<QuizPage />} />
+                        <Route
+                            exact
+                            path="/quiz/:quizId"
+                            element={<QuizPage />}
+                        />
                         <Route
                             exact
                             path="/leaderboard"
@@ -57,11 +61,9 @@ function App() {
                         />
                         {/* Admin routes */}
 
-                        
-
-                        <Route path="/test" element={<TestPage/>} />
+                        <Route path="/login" element={<AuthModal />} />
+                        <Route path="/test" element={<TestingPage />} />
                         <Route path="*" element={<NotFound />} />
-                       
                     </Routes>
                 </Box>
             </Router>

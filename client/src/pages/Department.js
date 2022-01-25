@@ -1,14 +1,17 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+import Navbar from "../components/Navbar";
+import Bg from "../components/Bg";
 import { departmentInfo } from "../utils/departmentInfo";
 function Department() {
-    
-    const {id} = useParams();
+    const { id } = useParams();
     // consume id
     return (
-        <div>
-            Department Page
-        </div>
+        <>
+            <Navbar />
+            {/* <DepartmentContent/> */}
+            <Bg />
+        </>
     );
 }
 

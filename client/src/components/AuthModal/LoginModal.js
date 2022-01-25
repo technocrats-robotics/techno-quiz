@@ -8,8 +8,16 @@ import {
 } from "@mui/material";
 import LoginLogo from "../Icons/login.svg";
 import TextField from "@mui/material/TextField";
+import CancelIcon from "@mui/icons-material/Cancel";
 
-function LoginModal({ setHasAccount, hasAccount }) {
+function LoginModal({
+    setHasAccount,
+    hasAccount,
+    credentials,
+    setCredentials,
+    handleLogin,
+    setIsActive,
+}) {
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.up("lg"));
     return (
@@ -48,6 +56,20 @@ function LoginModal({ setHasAccount, hasAccount }) {
                         //  transform:"translate(0%,-40vh)",
                     }}
                 >
+                    <CancelIcon
+                        className="cancel-icon"
+                        style={{
+                            width: "3rem",
+                            position: "absolute",
+                            top: 10,
+                            right: 10,
+                            height: "2rem",
+                            "&:hover": { cursor: "pointer" },
+                        }}
+                        onClick={() => {
+                            setIsActive(false);
+                        }}
+                    />
                     {matches && (
                         <Box
                             sx={{
@@ -105,7 +127,14 @@ function LoginModal({ setHasAccount, hasAccount }) {
                         <input
                             id="input"
                             label="Email-Id"
-                            placeholder="Username/Email-Id"
+                            placeholder="Email-Id"
+                            value={credentials.email}
+                            onChange={(event) =>
+                                setCredentials({
+                                    ...credentials,
+                                    email: event.target.value,
+                                })
+                            }
                             style={{
                                 color: "white",
                                 background: "#405893",
@@ -127,6 +156,14 @@ function LoginModal({ setHasAccount, hasAccount }) {
                             id="input"
                             label="Password"
                             placeholder="Password"
+                            type="password"
+                            value={credentials.password}
+                            onChange={(event) =>
+                                setCredentials({
+                                    ...credentials,
+                                    password: event.target.value,
+                                })
+                            }
                             style={{
                                 color: "white",
                                 background: "#405893",
@@ -159,6 +196,7 @@ function LoginModal({ setHasAccount, hasAccount }) {
                             </Typography>
                         </Typography>
                         <Button
+                            onClick={handleLogin}
                             variant="contained"
                             style={{
                                 color: "white",

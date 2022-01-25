@@ -1,16 +1,13 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import BASE_URL from "../../services/config/server";
-
 export const api = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: BASE_URL,
         prepareHeaders: (headers, { getState }) => {
-            const token = getState().auth.token;
-            console.log("Token inside prepare headers: ", token);
-            // if (token) {
-            //     headers.set("auth-token", `${token}`);
-            // }
-            headers.set("auth-token", `${token}`);
+            const token = localStorage.getItem("token");
+            if (token) {
+                headers.set("auth-token", `${token}`);
+            }
             headers.set("Access-Control-Allow-Origin", "*");
             return headers;
         },
@@ -39,6 +36,13 @@ export const api = createApi({
                 method: "GET",
             }),
         }),
+        uploadAnswers: builder.mutation({
+            query: (body) => ({
+                url: `/api/test/answer`,
+                method: "POST",
+                body,
+            }),
+        }),
     }),
 });
 
@@ -47,4 +51,5 @@ export const {
     useProtectedMutation,
     useGetQuestionsByIdQuery,
     useRegisterMutation,
+    useUploadAnswersMutation,
 } = api;

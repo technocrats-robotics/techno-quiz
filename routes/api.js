@@ -4,7 +4,7 @@ const { check, validationResult } = require("express-validator");
 const Question = require("../app/http/controllers/question");
 const Auth = require("../app/http/controllers/auth");
 const Quiz = require("../app/http/controllers/quiz");
-// middlewares
+// middlewar
 const user = require("../app/http/middlewares/user");
 const admin = require("../app/http/middlewares/admin");
 const test = require("../testing/verify");
@@ -20,10 +20,12 @@ const loginLimiter = limiter({
     windowMs: 1 * 60 * 1000,
     max: 5,
 });
+
 const api = (app) => {
     app.get("/api/question", user, Question.getQuestion);
     app.post("/api/question", user, admin, Question.addQuestion);
-    app.delete("/api/question",user,admin,Question.deleteQuestion)
+    // Some comments added 
+    app.delete("/api/question",user,admin,Question.deleteQuestion);
 
     app.get("/api/quiz/questions/:quizId", user, Question.getQuizQuestions);
     app.get("/api/quiz/:dept", user, Quiz.getQuiz);

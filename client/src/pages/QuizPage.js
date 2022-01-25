@@ -13,16 +13,12 @@ import { useDispatch } from "react-redux";
 
 function QuizPage() {
     const [hamburger, setHamburger] = useState(false);
-    const dispatch = useDispatch();
-    const theme = useTheme();
 
     const { quizId } = useParams();
     console.log(quizId);
 
     const { data, isLoading } = useGetQuestionsByIdQuery(quizId);
 
-    // const matches = useMediaQuery(theme.breakpoints.up("sm"));
-    console.log(data);
 
     return (
         <Box>
@@ -40,7 +36,7 @@ function QuizPage() {
             >
                 <SideBarQuiz />
                 <Suspense fallback={<div>Loading</div>}>
-                    <ContentQuiz questions={data} isLoading={isLoading} />
+                    <ContentQuiz questions={data} quizId={quizId} isLoading={isLoading} />
                 </Suspense>
             </Box>
             {hamburger && <SidebarXS />}

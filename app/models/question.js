@@ -11,7 +11,7 @@ const question = new mongoose.Schema({
         default: [],
     },
     answer: {
-        type: Number,
+        type: String,
         required: true,
     },
     createdOn: {

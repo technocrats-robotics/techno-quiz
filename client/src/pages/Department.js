@@ -4,17 +4,14 @@ import Navbar from "../components/Navbar";
 import Bg from "../components/Bg";
 import { departmentInfo } from "../utils/departmentInfo";
 function Department() {
-    
-    const {id} = useParams();
+    const { id } = useParams();
     // consume id
     return (
         <>
-        <Navbar/>
-        {/* <DepartmentContent/> */}
-        <Bg/>
+            <Navbar />
+            {/* <DepartmentContent/> */}
+            <Bg />
         </>
-
-        
     );
 }
 

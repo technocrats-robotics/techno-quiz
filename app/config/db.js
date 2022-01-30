@@ -3,7 +3,10 @@ const result = dotenv.config();
 
 // database configuration
 const mongoose = require("mongoose");
+<<<<<<< HEAD
 
+=======
+>>>>>>> 96b054e65afd1df39441edf0e45e1402ce063d96
 dotenv.config();
 
 const connection = async () => {

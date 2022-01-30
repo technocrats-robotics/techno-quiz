@@ -4,10 +4,11 @@ import Logo from "../img/logo.png";
 import { Link } from "react-router-dom";
 import AuthModal from "./AuthModal/AuthModal";
 
+import { Slide } from "@mui/material";
+
 function Navbar() {
     const [isActive, setIsActive] = useState(false);
     const ref = useRef();
-    const handleOutside = (event) => {};
     return (
         <>
             <header onClick={(e) => e.stopPropagation()}>
@@ -41,7 +42,9 @@ function Navbar() {
                 </nav>
             </header>
             {isActive && (
-                <AuthModal isActive={isActive} setIsActive={setIsActive} />
+                <Slide direction="up" mountOnEnter unmountOnExit>
+                    <AuthModal />
+                </Slide>
             )}
         </>
     );

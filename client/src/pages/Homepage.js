@@ -6,10 +6,12 @@ import Paper from "@mui/material/Paper";
 
 // components
 import backgroundImg from "../img/bg.svg";
-
+import Navbar from "../components/Navbar";
+import { Typography } from "@mui/material";
 function Homepage() {
     return (
         <>
+            <Navbar />
             <div
                 style={{
                     background:
@@ -25,11 +27,10 @@ function Homepage() {
             <div
                 style={{
                     backgroundImage: "url(" + backgroundImg + ")",
-                    backgroundRepeat: "repeat",
+                    backgroungRepeat: "no-repeat",
                     backgroundSize: "cover",
                     backgroundAttachment: "fixed",
                     backgroundPosition: "50% 0",
-                    // position: "absolute",
                     mixBlendMode: "hard-light",
                 }}
             >
@@ -37,15 +38,37 @@ function Homepage() {
                     sx={{
                         display: "flex",
                         width: "85%",
-                        height: "40vh",
+                        height: {
+                            xs: "160px",
+                            sm: "200px",
+                            md: "300px",
+                        },
                         mx: "auto",
+                        marginY: {
+                            xs: "5rem",
+                        },
                         backgroundColor: "#CEFDCD",
                         justifyContent: "center",
                         alignItems: "center",
                         borderRadius: "1.5rem",
                     }}
                 >
-                    <h1>Hero Section</h1>
+                    {/* <p style={{
+                        fontSize: "20px",
+                        fontWeight: "bold"
+                    }}>Hero Section</p> */}
+                    <Typography
+                        variant="h3"
+                        component="h1"
+                        sx={{
+                            fontSize: {
+                                xs: "1.5rem",
+                                sm: "auto",
+                            },
+                        }}
+                    >
+                        Hero Content
+                    </Typography>
                 </Box>
                 <Box
                     sx={{
@@ -60,7 +83,9 @@ function Homepage() {
                         borderRadius: "1.5rem",
                     }}
                 >
-                    <h1>Timer</h1>
+                    <Typography variant="h3" component="h1">
+                        Timer
+                    </Typography>
                 </Box>
 
                 <Box
@@ -71,18 +96,19 @@ function Homepage() {
                         flexDirection: "column",
                         justifyContent: "center",
                         alignItems: "center",
-                        mt: "7rem",
+                        mt: "4rem",
                     }}
                 >
-                    <h1
-                        style={{
+                    <Typography
+                        variant="h3"
+                        component="h1"
+                        sx={{
                             color: "white",
-                            fontSize: "9vmin",
-                            marginBottom: "3rem",
+                            marginBottom: "1.5rem",
                         }}
                     >
-                        DEPARTMENTS
-                    </h1>
+                        Department
+                    </Typography>
                     <Grid
                         container
                         columnSpacing={{ xs: 1, sm: 6, md: 10, lg: 6 }}
@@ -92,27 +118,31 @@ function Homepage() {
                             <Paper
                                 elevation={12}
                                 style={{
-                                    backgroundColor: "#c4c4c4",
+                                    background:
+                                        "linear-gradient(145.74deg, rgba(41, 42, 46, 0.6) -11.13%, rgba(218, 218, 218, 0.37) 25.01%, rgba(218, 218, 218, 0.28) 69.34%, rgba(41, 42, 46, 0.62) 119.8%)",
                                     height: "40vh",
                                     display: "flex",
                                     flexDirection: "column",
                                     justifyContent: "space-evenly",
                                     alignItems: "center",
-                                    borderRadius: "1rem",
-                                    background: "rgba(41, 42, 46, 0.6)",
+                                    borderRadius: "3rem",
+                                    border: "2px solid rgba(255,255,255,0.3)",
+                                    // borderImageSource:
+                                    //     "linear-gradient(144.87deg, rgba(255,255,255, 0.64), rgba(218, 218, 218, 0.7), rgba(255, 255, 255, 0.9))",
                                     boxShadow:
-                                        "0 8px 32px 0 rgba( 31, 38, 135, 0.37 )",
-                                    backdropFilter: "blur( 6px )",
+                                        "0 8px 32px 0 rgba( 200, 200, 200, 0.37 )",
+                                    backdropFilter: "blur(3px)",
                                 }}
                             >
-                                <h1
-                                    style={{
+                                <Typography
+                                    variant={"h3"}
+                                    component="h3"
+                                    sx={{
                                         color: "white",
-                                        fontSize: "5vmin",
                                     }}
                                 >
                                     Mechanical
-                                </h1>
+                                </Typography>
                                 <Button
                                     variant="outlined"
                                     style={{
@@ -128,27 +158,31 @@ function Homepage() {
                             <Paper
                                 elevation={12}
                                 style={{
-                                    backgroundColor: "#c4c4c4",
+                                    background:
+                                        "linear-gradient(145.74deg, rgba(41, 42, 46, 0.6) -11.13%, rgba(218, 218, 218, 0.37) 25.01%, rgba(218, 218, 218, 0.28) 69.34%, rgba(41, 42, 46, 0.62) 119.8%)",
                                     height: "40vh",
                                     display: "flex",
                                     flexDirection: "column",
                                     justifyContent: "space-evenly",
                                     alignItems: "center",
-                                    borderRadius: "1rem",
-                                    background: "rgba(41, 42, 46, 0.6)",
+                                    borderRadius: "3rem",
+                                    border: "2px solid rgba(255,255,255,0.3)",
+                                    // borderImageSource:
+                                    //     "linear-gradient(144.87deg, rgba(255,255,255, 0.64), rgba(218, 218, 218, 0.7), rgba(255, 255, 255, 0.9))",
                                     boxShadow:
-                                        "0 8px 32px 0 rgba( 31, 38, 135, 0.37 )",
-                                    backdropFilter: "blur( 6px )",
+                                        "0 8px 32px 0 rgba( 200, 200, 200, 0.37 )",
+                                    backdropFilter: "blur(3px)",
                                 }}
                             >
-                                <h1
-                                    style={{
+                                <Typography
+                                    variant={"h3"}
+                                    component="h3"
+                                    sx={{
                                         color: "white",
-                                        fontSize: "5vmin",
                                     }}
                                 >
                                     Electrical
-                                </h1>
+                                </Typography>
                                 <Button
                                     variant="outlined"
                                     style={{
@@ -164,27 +198,31 @@ function Homepage() {
                             <Paper
                                 elevation={12}
                                 style={{
-                                    backgroundColor: "#c4c4c4",
+                                    background:
+                                        "linear-gradient(145.74deg, rgba(41, 42, 46, 0.6) -11.13%, rgba(218, 218, 218, 0.37) 25.01%, rgba(218, 218, 218, 0.28) 69.34%, rgba(41, 42, 46, 0.62) 119.8%)",
                                     height: "40vh",
                                     display: "flex",
                                     flexDirection: "column",
                                     justifyContent: "space-evenly",
                                     alignItems: "center",
-                                    borderRadius: "1rem",
-                                    background: "rgba(41, 42, 46, 0.6)",
+                                    borderRadius: "3rem",
+                                    border: "2px solid rgba(255,255,255,0.3)",
+                                    // borderImageSource:
+                                    //     "linear-gradient(144.87deg, rgba(255,255,255, 0.64), rgba(218, 218, 218, 0.7), rgba(255, 255, 255, 0.9))",
                                     boxShadow:
-                                        "0 8px 32px 0 rgba( 31, 38, 135, 0.37 )",
-                                    backdropFilter: "blur( 6px )",
+                                        "0 8px 32px 0 rgba( 200, 200, 200, 0.37 )",
+                                    backdropFilter: "blur(3px)",
                                 }}
                             >
-                                <h1
-                                    style={{
+                                <Typography
+                                    variant={"h3"}
+                                    component="h3"
+                                    sx={{
                                         color: "white",
-                                        fontSize: "5vmin",
                                     }}
                                 >
                                     Programming
-                                </h1>
+                                </Typography>
                                 <Button
                                     variant="outlined"
                                     style={{
@@ -200,27 +238,31 @@ function Homepage() {
                             <Paper
                                 elevation={12}
                                 style={{
-                                    backgroundColor: "#c4c4c4",
+                                    background:
+                                        "linear-gradient(145.74deg, rgba(41, 42, 46, 0.6) -11.13%, rgba(218, 218, 218, 0.37) 25.01%, rgba(218, 218, 218, 0.28) 69.34%, rgba(41, 42, 46, 0.62) 119.8%)",
                                     height: "40vh",
                                     display: "flex",
                                     flexDirection: "column",
                                     justifyContent: "space-evenly",
                                     alignItems: "center",
-                                    borderRadius: "1rem",
-                                    background: "rgba(41, 42, 46, 0.6)",
+                                    borderRadius: "3rem",
+                                    border: "2px solid rgba(255,255,255,0.3)",
+                                    // borderImageSource:
+                                    //     "linear-gradient(144.87deg, rgba(255,255,255, 0.64), rgba(218, 218, 218, 0.7), rgba(255, 255, 255, 0.9))",
                                     boxShadow:
-                                        "0 8px 32px 0 rgba( 31, 38, 135, 0.37 )",
-                                    backdropFilter: "blur( 6px )",
+                                        "0 8px 32px 0 rgba( 200, 200, 200, 0.37 )",
+                                    backdropFilter: "blur(3px)",
                                 }}
                             >
-                                <h1
-                                    style={{
+                                <Typography
+                                    variant={"h3"}
+                                    component="h3"
+                                    sx={{
                                         color: "white",
-                                        fontSize: "5vmin",
                                     }}
                                 >
                                     General
-                                </h1>
+                                </Typography>
                                 <Button
                                     variant="outlined"
                                     style={{

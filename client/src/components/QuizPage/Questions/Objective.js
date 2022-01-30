@@ -2,7 +2,9 @@ import { Box, Container, Grid, Typography } from "@mui/material";
 import React from "react";
 import Answer from "./Answer";
 
-function Objective({ index, question, options, total }) {
+function Objective({ question, index }) {
+    console.log(question);
+    console.log(index);
     return (
         <Box
             sx={{
@@ -41,10 +43,10 @@ function Objective({ index, question, options, total }) {
                 }}
                 fontSize={{
                     xs: "1.5rem",
-                    sm: "2rem"
+                    sm: "2rem",
                 }}
             >
-                Question No - 1/20
+                Question No - {index}
             </Typography>
             <Typography
                 variant="h6"
@@ -58,12 +60,7 @@ function Objective({ index, question, options, total }) {
                 }}
                 textAlign={"justify"}
             >
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt
-                vel repudiandae et obcaecati error voluptate minima eum, omnis
-                eaque amet nostrum optio ea perferendis ad consectetur totam
-                quam esse, eligendi eius voluptatem ipsa? Tempore ut labore
-                deleniti odio nostrum, aliquid eos exercitationem deserunt.
-                Debitis nulla, cum placeat nobis aperiam et.
+                {question.statement}
             </Typography>
             <Container
                 maxWidth="xl"
@@ -73,18 +70,11 @@ function Objective({ index, question, options, total }) {
                 }}
             >
                 <Grid container spacing={4} alignItems="stretch">
-                    <Grid item xl={6} lg={6} xs={12}>
-                        <Answer />
-                    </Grid>
-                    <Grid item xl={6} lg={6} xs={12}>
-                        <Answer />
-                    </Grid>
-                    <Grid item xl={6} lg={6} xs={12}>
-                        <Answer />
-                    </Grid>
-                    <Grid item xl={6} lg={6} xs={12}>
-                        <Answer />
-                    </Grid>
+                    {question.options.map((option, idx) => (
+                        <Grid item xl={6} lg={6} xs={12}>
+                            <Answer key={idx} option={option} index={idx+1}/>
+                        </Grid>
+                    ))}
                 </Grid>
             </Container>
         </Box>

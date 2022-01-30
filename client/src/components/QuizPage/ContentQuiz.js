@@ -2,7 +2,8 @@ import { Box } from "@mui/material";
 import React from "react";
 import Objective from "./Questions/Objective";
 
-function ContentQuiz() {
+function ContentQuiz({ questions }) {
+    console.log(questions);
     return (
         <Box
             sx={{
@@ -13,9 +14,10 @@ function ContentQuiz() {
                 color: "white",
             }}
         >
-            <Objective />
-            <Objective />
-            <Objective />
+            {questions &&
+                questions.map((question, idx) => (
+                    <Objective key={idx} question={question} index={idx + 1} />
+                ))}
         </Box>
     );
 }

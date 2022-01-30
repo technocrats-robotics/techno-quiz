@@ -2,7 +2,7 @@ import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 
-function Answer() {
+function Answer({ option, index }) {
     return (
         <Box
             sx={{
@@ -22,16 +22,19 @@ function Answer() {
                     border: "2px solid rgba(0,224,255,1)",
                 },
             }}
+            // TODO: Onclick handler
+            // onClick = {()=>{}}
+            
         >
             <Typography
                 variant="h5"
                 component="p"
                 fontSize={{
                     xs: "1rem",
-                    sm: "1.2rem"
+                    sm: "1.2rem",
                 }}
             >
-                A) component
+                {index} ) {option}
             </Typography>
         </Box>
     );

@@ -22,6 +22,7 @@ import About from "./pages/About";
 //Components
 
 import NavBar from './components/NavBar';
+import QuizTracks from "./pages/QuizTracks";
 
 function App() {
     return (
@@ -39,7 +40,7 @@ function App() {
                             path="/landing"
                             element={<LandingPage />}
                         />
-                        <Route exact path="/" element={<Homepage />} />
+                        <Route exact path="/" element={<><Homepage /></>} />
                         <Route
                             exact
                             path="/department/:id"
@@ -47,6 +48,7 @@ function App() {
                         />
                         <Route exact path="/about" element={<About />} />
                         <Route exact path="/user" element={<UserDashboard />} />
+                        <Route exact path="/quizTracks" element={<QuizTracks />} />
                         <Route
                             exact
                             path="/admin"

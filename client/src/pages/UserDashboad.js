@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import '../App.css'
 import logo from '../images/logo.png';
 import dummyUser from '../images/dummyUserIcon.png';
@@ -18,8 +19,8 @@ function UserDashboard() {
         <section className="mainSection">
             <section className="subSection1">
                 <p className="activeLeftButton">Dashboard</p>
-                <p className="LeftButtons">Leaderboard</p>
-                <p className="LeftButtons">Quiz Tracks</p>
+                <Link to="/leaderboard"className="LeftButtons">Leaderboard</Link>
+                <Link to="/quizTracks" className="LeftButtons">Attempt Quizes</Link>
                 <p className="LeftButtons">View Attempts</p>
                 <img src={coder} alt="Coder" className="coderImage"/>
                 <button className="logoutButton">Logout</button>

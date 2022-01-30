@@ -13,11 +13,16 @@ body{
     overflow-x: hidden;
 }
 
+a{
+    cursor: pointer;
+    text-decoration: none;
+}
+
 div.app__header{
     width: 100vw
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap');
 
 nav.navBarUser{
     width: 100vw;
@@ -100,7 +105,7 @@ p.activeLeftButton{
     margin-bottom: 5%;
 }
 
-p.LeftButtons{
+p,a.LeftButtons{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -278,6 +283,23 @@ div.pieChart{
     border-bottom: 20px solid #F57272;
     border-right: 20px solid #F57272;
     border-radius: 100%;
+}
+
+div.startQuizButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFFD1B;
+    border-radius: 47px;
+    width: 35%;
+    padding: 5%;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 36px;
+    text-align: center;
+    color: #000000;
 }
 
 img.footer{

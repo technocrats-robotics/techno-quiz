@@ -43,7 +43,9 @@ function UserDashboard() {
                         <img src={graph} alt="Graph" className="Graph"/>
                     </div>
                     <div className="card">
+                        <div className="pieChart">
                         <h2 className="testAnalysis">Test Analysis</h2>
+                        </div>
                     </div>
                 </div>
             </section>

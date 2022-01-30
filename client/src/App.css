@@ -3,6 +3,16 @@
     padding: 0px;
 }
 
+html{
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+body{
+    width: 100%;
+    overflow-x: hidden;
+}
+
 div.app__header{
     width: 100vw
 }
@@ -261,11 +271,18 @@ h2.testAnalysis{
     color: #000000;
 }
 
+div.pieChart{
+    padding: 22%;
+    border-top: 20px solid #3D9983;
+    border-left: 20px solid #3D9983;
+    border-bottom: 20px solid #F57272;
+    border-right: 20px solid #F57272;
+    border-radius: 100%;
+}
+
 img.footer{
-    position: absolute;
-    top: 650px;
-    bottom: 50px;
-    width: 100vw;
+    position: relative;
+    width: 100%;
     height: auto;
 }
 /* css reset */

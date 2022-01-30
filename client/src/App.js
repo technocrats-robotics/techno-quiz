@@ -17,7 +17,7 @@ import LandingPage from "./pages/LandingPage";
 import Department from "./pages/Department";
 import About from "./pages/About";
 
-import TestingPage from "./pages/TestingPage";
+// import TestingPage from "./pages/TestingPage";
 
 //Components
 
@@ -62,7 +62,7 @@ function App() {
 
                         
 
-                        <Route path="/test" element={<TestingPage/>} />
+                        {/* <Route path="/test" element={<TestingPage/>} /> */}
                         <Route path="*" element={<NotFound />} />
                        
                     </Routes>

@@ -29,8 +29,8 @@ const register = (req, res) => {
   if (!errors.isEmpty()) {
     return res.status(422).json({ errors: errors.array() });
   }
-  const { name, email, password } = req.body;
-  const user = new User({ name, email, password });
+  const { name, email, password,username } = req.body;
+  const user = new User({name, username,email, password });
 
   user.save(async (err, user) => {
     if (err) {
@@ -73,7 +73,7 @@ const login = (req, res) => {
   if (!errors.isEmpty()) {
     return res.status(422).json({ errors: errors.array() });
   }
-  const { email, password } = req.body;
+  const {email, password } = req.body;
   console.log("HIT!!!");
   User.findOne({ email })
     .then((user) => {

@@ -21,7 +21,6 @@ function Leaderboard() {
                 <Typography
                     variant="h4"
                     component="h3"
-                    fontSize={}
                     sx={{
                         textAlign: "center",
                         paddingTop: "2rem",

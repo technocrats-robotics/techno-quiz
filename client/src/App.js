@@ -56,7 +56,7 @@ function App() {
                         />
                         <Route
                             exact
-                            path="/leaderboard"
+                            path="/leaderboard/:quizId"
                             element={<Leaderboard />}
                         />
                         {/* Admin routes */}

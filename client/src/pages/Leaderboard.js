@@ -12,8 +12,16 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import { useGetLeaderBoardQuery } from "../app/services/api";
+import { useParams } from "react-router-dom";
 
 function Leaderboard() {
+    const { quizId } = useParams();
+    console.log(quizId);
+
+    const { data, isLoading } = useGetLeaderBoardQuery(quizId);
+    console.log(data);
+
     const rows = [
         createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
         createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
@@ -87,7 +95,7 @@ function Leaderboard() {
                                     width: "100%",
                                 }}
                             >
-                                Prateek
+                                {data && data[1].userId.name}
                             </Typography>
                             <img
                                 src="/leaderBoard2.svg"
@@ -117,7 +125,7 @@ function Leaderboard() {
                                     width: "100%",
                                 }}
                             >
-                                Nimish
+                                {data && data[0].userId.name}
                             </Typography>
                             <img
                                 src="/leaderBoard1.svg"
@@ -145,7 +153,7 @@ function Leaderboard() {
                                     width: "100%",
                                 }}
                             >
-                                ABC
+                                {data && data[2].userId.name}
                             </Typography>
                             <img
                                 src="/leaderBoard3.svg"
@@ -180,7 +188,7 @@ function Leaderboard() {
                                         color: "#FFFFFF",
                                     }}
                                 >
-                                    Dessert (100g serving)
+                                    #
                                 </TableCell>
                                 <TableCell
                                     align="right"
@@ -188,7 +196,7 @@ function Leaderboard() {
                                         color: "#FFFFFF",
                                     }}
                                 >
-                                    Calories
+                                    Username
                                 </TableCell>
                                 <TableCell
                                     align="right"
@@ -196,79 +204,51 @@ function Leaderboard() {
                                         color: "#FFFFFF",
                                     }}
                                 >
-                                    Fat&nbsp;(g)
-                                </TableCell>
-                                <TableCell
-                                    align="right"
-                                    sx={{
-                                        color: "#FFFFFF",
-                                    }}
-                                >
-                                    Carbs&nbsp;(g)
-                                </TableCell>
-                                <TableCell
-                                    align="right"
-                                    sx={{
-                                        color: "#FFFFFF",
-                                    }}
-                                >
-                                    Protein&nbsp;(g)
+                                    Total Points
                                 </TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {rows.map((row) => (
-                                <TableRow
-                                    key={row.name}
-                                    sx={{
-                                        "&:last-child td, &:last-child th": {
-                                            border: 0,
-                                        },
-                                    }}
-                                >
-                                    <TableCell
-                                        component="th"
-                                        scope="row"
+                            {data &&
+                                data.map((row, index) => (
+                                    <TableRow
+                                        key={index}
                                         sx={{
-                                            color: "#FFFFFF",
+                                            "&:last-child td, &:last-child th":
+                                                {
+                                                    border: 0,
+                                                },
                                         }}
                                     >
-                                        {row.name}
-                                    </TableCell>
-                                    <TableCell
-                                        align="right"
-                                        sx={{
-                                            color: "#FFFFFF",
-                                        }}
-                                    >
-                                        {row.calories}
-                                    </TableCell>
-                                    <TableCell
-                                        align="right"
-                                        sx={{
-                                            color: "#FFFFFF",
-                                        }}
-                                    >
-                                        {row.fat}
-                                    </TableCell>
-                                    <TableCell
-                                        align="right"
-                                        sx={{
-                                            color: "#FFFFFF",
-                                        }}
-                                    >
-                                        {row.carbs}
-                                    </TableCell>
-                                    <TableCell
-                                        align="right"
-                                        sx={{
-                                            color: "#FFFFFF",
-                                        }}
-                                    >
-                                        {row.protein}
-                                    </TableCell>
-                                </TableRow>
-                            ))}
+                                        <TableCell
+                                            component="th"
+                                            scope="row"
+                                            sx={{
+                                                color: "#FFFFFF",
+                                            }}
+                                        >
+                                            {index + 1}
+                                        </TableCell>
+
+                                        <TableCell
+                                            align="right"
+                                            sx={{
+                                                color: "#FFFFFF",
+                                            }}
+                                        >
+                                            {row.userId.username}
+                                        </TableCell>
+
+                                        <TableCell
+                                            align="right"
+                                            sx={{
+                                                color: "#FFFFFF",
+                                            }}
+                                        >
+                                            {row.score}
+                                        </TableCell>
+                                    </TableRow>
+                                ))}
                         </TableBody>
                     </Table>
                 </TableContainer>

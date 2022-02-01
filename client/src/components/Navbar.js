@@ -41,11 +41,7 @@ function Navbar() {
                     </ul>
                 </nav>
             </header>
-            {isActive && (
-                <Slide direction="up" mountOnEnter unmountOnExit>
-                    <AuthModal />
-                </Slide>
-            )}
+            {isActive && <AuthModal isActive={isActive} setIsActive={setIsActive} />}
         </>
     );
 }

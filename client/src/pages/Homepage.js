@@ -53,10 +53,6 @@ function Homepage() {
                         borderRadius: "1.5rem",
                     }}
                 >
-                    {/* <p style={{
-                        fontSize: "20px",
-                        fontWeight: "bold"
-                    }}>Hero Section</p> */}
                     <Typography
                         variant="h3"
                         component="h1"
@@ -131,7 +127,7 @@ function Homepage() {
                                     //     "linear-gradient(144.87deg, rgba(255,255,255, 0.64), rgba(218, 218, 218, 0.7), rgba(255, 255, 255, 0.9))",
                                     boxShadow:
                                         "0 8px 32px 0 rgba( 200, 200, 200, 0.37 )",
-                                    backdropFilter: "blur(3px)",
+                                    backdropFilter: "blur(10px)",
                                 }}
                             >
                                 <Typography
@@ -171,7 +167,7 @@ function Homepage() {
                                     //     "linear-gradient(144.87deg, rgba(255,255,255, 0.64), rgba(218, 218, 218, 0.7), rgba(255, 255, 255, 0.9))",
                                     boxShadow:
                                         "0 8px 32px 0 rgba( 200, 200, 200, 0.37 )",
-                                    backdropFilter: "blur(3px)",
+                                    backdropFilter: "blur(10px)",
                                 }}
                             >
                                 <Typography
@@ -211,7 +207,7 @@ function Homepage() {
                                     //     "linear-gradient(144.87deg, rgba(255,255,255, 0.64), rgba(218, 218, 218, 0.7), rgba(255, 255, 255, 0.9))",
                                     boxShadow:
                                         "0 8px 32px 0 rgba( 200, 200, 200, 0.37 )",
-                                    backdropFilter: "blur(3px)",
+                                    backdropFilter: "blur(10px)",
                                 }}
                             >
                                 <Typography
@@ -251,7 +247,7 @@ function Homepage() {
                                     //     "linear-gradient(144.87deg, rgba(255,255,255, 0.64), rgba(218, 218, 218, 0.7), rgba(255, 255, 255, 0.9))",
                                     boxShadow:
                                         "0 8px 32px 0 rgba( 200, 200, 200, 0.37 )",
-                                    backdropFilter: "blur(3px)",
+                                    backdropFilter: "blur(10px)",
                                 }}
                             >
                                 <Typography

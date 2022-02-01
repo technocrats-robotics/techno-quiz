@@ -174,7 +174,33 @@ function RegisterModal({
                                 paddingLeft: "1.5rem",
                             }}
                         />
-
+                        <input
+                            id="input"
+                            label="Username"
+                            placeholder="username"
+                            type="text"
+                            value={credentials.username}
+                            onChange={(event) => {
+                                setCredentials({
+                                    ...credentials,
+                                    username: event.target.value,
+                                });
+                            }}
+                            style={{
+                                color: "white",
+                                background: "#405893",
+                                "&::placeholder": {
+                                    color: "white",
+                                },
+                                borderRadius: "1.5rem",
+                                border: "1px solid rgba(255,255,255,0.7)",
+                                marginBottom: "1rem",
+                                width: "100%",
+                                outline: "none",
+                                height: "3rem",
+                                paddingLeft: "1.5rem",
+                            }}
+                        />
                         <input
                             id="input"
                             label="Password"

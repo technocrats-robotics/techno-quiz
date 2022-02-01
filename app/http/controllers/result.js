@@ -31,7 +31,11 @@ const getLeaderboard = async (req, res) => {
             .find({
                 quizId,
             })
-            .sort({ score: -1 });
+            .sort({ score: -1 })
+            .populate({
+                path: "userId",
+                select: "username name",
+            });
         console.log(leaderBoardResult);
 
         res.status(200).json(leaderBoardResult);

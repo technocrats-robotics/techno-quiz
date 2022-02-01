@@ -1,9 +1,19 @@
 import { Box } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { addAnswers } from "../../features/Answers/answerSlice";
 import Objective from "./Questions/Objective";
 
-function ContentQuiz({ questions }) {
+function ContentQuiz({ questions, quizId }) {
+    const dispatch = useDispatch();
+    const [userAttempt, setUserAttempt] = useState(new Map());
     console.log(questions);
+    useEffect(() => {
+        console.log("Dispatch called under useEffect");
+        dispatch(addAnswers(Array.from(userAttempt.entries())));
+        console.log(userAttempt);
+    }, [userAttempt]);
+
     return (
         <Box
             sx={{
@@ -16,7 +26,14 @@ function ContentQuiz({ questions }) {
         >
             {questions &&
                 questions.map((question, idx) => (
-                    <Objective key={idx} question={question} index={idx + 1} />
+                    <Objective
+                        key={idx}
+                        quizId={quizId}
+                        question={question}
+                        index={idx + 1}
+                        userAttempt={userAttempt}
+                        setUserAttempt={setUserAttempt}
+                    />
                 ))}
         </Box>
     );

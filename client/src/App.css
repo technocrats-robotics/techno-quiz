@@ -1,7 +1,10 @@
 *{
     margin: 0px;
     padding: 0px;
+    font-family: "Poppins", sans-serif;
 }
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins&family=Roboto:wght@100&display=swap");
 
 html{
     width: 100vw;
@@ -307,45 +310,50 @@ img.footer{
     width: 100%;
     height: auto;
 }
+
 /* css reset */
 html,
 body {
-  margin: 0;
-  padding: 0;
-  font-family: "Roboto", sans-serif;
-  font-size: 16px;
-  color: #333;
-  background-color: #fff;
-  box-sizing: border-box;
-  height: 100%;
-  width: 100vw;
-  overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    color: #333;
+    background-color: #fff;
+    box-sizing: border-box;
+    height: 100%;
+    width: 100vw;
+    overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {
-  width: 1rem;
+    width: 1rem;
 }
 ::-webkit-scrollbar-track {
-  padding-top: 2rem;
-  background: rgb(17, 22, 92);
+    padding-top: 2rem;
+    background: rgb(17, 22, 92);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgb(18, 28, 165);
-  border-radius: 1rem;
+    background: rgb(18, 28, 165);
+    border-radius: 1rem;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(22, 34, 207);
-  transition: 500ms ease-in-out;
+    background: rgb(22, 34, 207);
+    transition: 500ms ease-in-out;
 }
 
 #portal {
-  height: 100vh;
-  width: 100vw;
-  position: fixed;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
 }
 
 #input::placeholder {
-  color: white;
+    color: white;
+}
+
+.cancel-icon:hover {
+    cursor: pointer;
 }

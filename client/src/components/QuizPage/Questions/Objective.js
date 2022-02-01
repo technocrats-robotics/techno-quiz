@@ -1,10 +1,10 @@
 import { Box, Container, Grid, Typography } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Answer from "./Answer";
 
-function Objective({ question, index }) {
-    console.log(question);
-    console.log(index);
+function Objective({ question, index, quizId, userAttempt, setUserAttempt }) {
+    const [selectedAnswer, setSelectedAnswer] = useState(0);
+    
     return (
         <Box
             sx={{
@@ -72,7 +72,17 @@ function Objective({ question, index }) {
                 <Grid container spacing={4} alignItems="stretch">
                     {question.options.map((option, idx) => (
                         <Grid item xl={6} lg={6} xs={12}>
-                            <Answer key={idx} option={option} index={idx+1}/>
+                            <Answer
+                                key={idx}
+                                userAttempt={userAttempt}
+                                setUserAttempt={setUserAttempt}
+                                questionId={question.id}
+                                option={option}
+                                index={idx + 1}
+                                questionIndex={index}
+                                selectedAnswer={selectedAnswer}
+                                setSelectedAnswer={setSelectedAnswer}
+                            />
                         </Grid>
                     ))}
                 </Grid>

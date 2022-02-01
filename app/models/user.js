@@ -10,6 +10,10 @@ const user = new mongoose.Schema({
         type: String,
         required: true,
     },
+    username: {
+        type: String,
+        unique: true,
+    },
     email: {
         type: String,
         unique: true,
@@ -29,9 +33,8 @@ const user = new mongoose.Schema({
     role: {
         type: String,
         default: userType[201],
-    }
+    },
 });
-
 
 user.pre("save", async function (next) {
     try {

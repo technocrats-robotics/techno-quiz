@@ -29,22 +29,22 @@ function QuizTracks() {
                 <div className="stats">
                     <div className="card">
                         <h2 className="progress">Programming</h2>
-                        <p className="progressText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam et recusandae consequatur commodi repudiandae amet iusto quis ratione numquam, laboriosam unde eaque cumque nemo voluptatibus ab ad odit fuga distinctio.</p>
+                        {/* <p className="quizDescriptionText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam et recusandae consequatur commodi repudiandae amet iusto quis ratione numquam, laboriosam unde eaque cumque nemo voluptatibus ab ad odit fuga distinctio.</p> */}
                         <div className="startQuizButton">Attempt</div>
                     </div>
                     <div className="card">
                         <h2 className="progress">Electrical</h2>
-                        <p className="progressText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam et recusandae consequatur commodi repudiandae amet iusto quis ratione numquam, laboriosam unde eaque cumque nemo voluptatibus ab ad odit fuga distinctio.</p>
+                        {/* <p className="quizDescriptionText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam et recusandae consequatur commodi repudiandae amet iusto quis ratione numquam, laboriosam unde eaque cumque nemo voluptatibus ab ad odit fuga distinctio.</p> */}
                         <div className="startQuizButton">Attempt</div>
                     </div>
                     <div className="card">
                         <h2 className="progress">Mechanical</h2>
-                        <p className="progressText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam et recusandae consequatur commodi repudiandae amet iusto quis ratione numquam, laboriosam unde eaque cumque nemo voluptatibus ab ad odit fuga distinctio.</p>
+                        {/* <p className="quizDescriptionText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam et recusandae consequatur commodi repudiandae amet iusto quis ratione numquam, laboriosam unde eaque cumque nemo voluptatibus ab ad odit fuga distinctio.</p> */}
                         <div className="startQuizButton">Attempt</div>
                     </div>
                     <div className="card">
                         <h2 className="progress">General Robotics</h2>
-                        <p className="progressText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam et recusandae consequatur commodi repudiandae amet iusto quis ratione numquam, laboriosam unde eaque cumque nemo voluptatibus ab ad odit fuga distinctio.</p>
+                        {/* <p className="quizDescriptionText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam et recusandae consequatur commodi repudiandae amet iusto quis ratione numquam, laboriosam unde eaque cumque nemo voluptatibus ab ad odit fuga distinctio.</p> */}
                         <div className="startQuizButton">Attempt</div>
                     </div>
                     </div>

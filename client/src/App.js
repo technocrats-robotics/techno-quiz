@@ -21,10 +21,10 @@ import About from "./pages/About";
 
 //Components
 
-import NavBar from './components/NavBar';
+// import NavBar from './components/NavBar';
 import QuizTracks from "./pages/QuizTracks";
 import AuthModal from "./components/AuthModal/AuthModal";
-import TestingPage from "./pages/TestingPage";
+// import TestingPage from "./pages/TestingPage";
 
 function App() {
     return (
@@ -69,7 +69,7 @@ function App() {
                         {/* Admin routes */}
 
                         <Route path="/login" element={<AuthModal />} />
-                        <Route path="/test" element={<TestingPage />} />
+                        {/* <Route path="/test" element={<TestingPage />} /> */}
                         <Route path="*" element={<NotFound />} />
                     </Routes>
                 </Box>

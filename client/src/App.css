@@ -80,7 +80,7 @@ section.subSection1{
     background: rgba(255, 255, 255, 0.95);
     border-radius: 59px;
     padding: 2%;
-    width: 15vw;
+    width: 25vw;
 }
 
 section.subSection2{
@@ -158,6 +158,7 @@ h1.welcome{
     line-height: 96px;
     text-align: center;
     color: #FFFFFF;
+    margin: 0px;
     margin-bottom: 2%;
 }
 
@@ -233,6 +234,16 @@ p.progressText{
     margin-bottom: 5%;
 }
 
+p.quizDescriptionText{
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 21px;
+    color: #000000;
+    margin-bottom: 5%;
+}
+
 h2.userAnalysis{
     font-family: Poppins;
     font-style: normal;
@@ -294,7 +305,7 @@ div.startQuizButton{
     justify-content: center;
     background-color: #FFFD1B;
     border-radius: 47px;
-    width: 35%;
+    width: 90%;
     padding: 5%;
     font-family: Poppins;
     font-style: normal;

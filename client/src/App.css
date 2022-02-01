@@ -2,6 +2,7 @@
     margin: 0px;
     padding: 0px;
     font-family: "Poppins", sans-serif;
+    box-sizing: content-box;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins&family=Roboto:wght@100&display=swap");
@@ -188,9 +189,9 @@ div.card{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 15vw;
+    width: 25vw;
     padding: 5%;
-    height: 190px;
+    height: auto;
     background: rgba(255, 255, 255, 0.95);
     border-radius: 30px;
     margin-bottom: 2%;

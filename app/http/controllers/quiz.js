@@ -25,14 +25,39 @@ const addQuiz = (req, res) => {
         });
     });
 };
+const addQuizQuestions = async (req, res) => {
+    const { question } = req.body;
+    const { quizId } = req.body;
+    try {
+        const quiz = await Quiz.findById(quizId);
+        quiz.questions = question;
+        quiz.save();
+        res.status(200).json({
+            message: "Questions added to:",
+            quizId: quizId,
+        });
+    } catch (err) {
+        console.log(err);
+
+        res.status(500).json({
+            message: "Server failure",
+            error: err,
+        });
+    }
+};
 
 const getQuiz = async (req, res) => {
     const dept = Number(req.params.dept);
+    const date = Date.now();
+    console.log(date);
     try {
         const quiz = await Quiz.find({
             department: dept,
             isPublished: true,
             isFinished: false,
+            end: {
+                $gte: date,
+            },
         });
 
         console.log(quiz);
@@ -63,5 +88,6 @@ const publishQuiz = async (req, res) => {
 module.exports = {
     addQuiz,
     getQuiz,
-    publishQuiz
+    addQuizQuestions,
+    publishQuiz,
 };

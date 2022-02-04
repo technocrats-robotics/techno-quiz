@@ -53,13 +53,16 @@ function Homepage() {
                         borderRadius: "1.5rem",
                     }}
                 >
-                    
-                    <Typography variant="h3" component="h1" sx={{
-                        fontSize:{
-                            xs: "1.5rem",
-                            sm:"auto"
-                        }
-                    }}>
+                    <Typography
+                        variant="h3"
+                        component="h1"
+                        sx={{
+                            fontSize: {
+                                xs: "1.5rem",
+                                sm: "auto",
+                            },
+                        }}
+                    >
                         Hero Content
                     </Typography>
                 </Box>

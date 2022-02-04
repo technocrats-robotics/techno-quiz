@@ -19,6 +19,7 @@ function AuthModal({ isActive, setIsActive }) {
     });
     const [registerCredentials, setRegisterCredentials] = useState({
         email: "",
+        username: "",
         password: "",
         name: "",
         repassword: "",
@@ -58,6 +59,7 @@ function AuthModal({ isActive, setIsActive }) {
         }
         let data = {
             name: registerCredentials.name,
+            username: registerCredentials.username,
             email: registerCredentials.email,
             password: registerCredentials.password,
         };

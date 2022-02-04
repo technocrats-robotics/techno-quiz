@@ -43,6 +43,12 @@ export const api = createApi({
                 body,
             }),
         }),
+        getLeaderBoard: builder.query({
+            query: (quizId) => ({
+                url: `/api/test/leaderboard/${quizId}`,
+                method: "GET",
+            }),
+        }),
     }),
 });
 
@@ -52,4 +58,5 @@ export const {
     useGetQuestionsByIdQuery,
     useRegisterMutation,
     useUploadAnswersMutation,
+    useGetLeaderBoardQuery,
 } = api;

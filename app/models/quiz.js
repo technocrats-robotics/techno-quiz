@@ -33,7 +33,6 @@ const quiz = new mongoose.Schema({
     },
     adminId: {
         type: String,
-        required: true,
     },
     isPublished: {
         type: Boolean,

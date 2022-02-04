@@ -3,6 +3,7 @@ const result = dotenv.config();
 
 // database configuration
 const mongoose = require("mongoose");
+const dotenv = require('dotenv');
 
 dotenv.config();
 

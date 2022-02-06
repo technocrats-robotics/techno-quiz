@@ -1,4 +1,5 @@
 const Quiz = require("../../models/quiz");
+const updateQuestions = require("../services/updateQuestion");
 
 const addQuiz = (req, res) => {
     const { name, description, questions, start, end, department } = req.body;
@@ -28,6 +29,7 @@ const addQuizQuestions = async (req, res) => {
     const { quizId } = req.body;
     try {
         const quiz = await Quiz.findById(quizId);
+        await updateQuestions(question);
         quiz.questions = question;
         quiz.save();
         res.status(200).json({

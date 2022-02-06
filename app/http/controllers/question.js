@@ -5,7 +5,7 @@ const sanitizeQuizQuestion = require("../services/sanitizeQuizQuestion");
 
 const addQuestion = (req, res, next) => {
     const { statement, options, answer, department } = req.body;
-    const ques = new Question({ statement, options, answer });
+    const ques = new Question({ statement, options, answer,department });
     ques.save((err, ques) => {
         if (err) {
             return res.json({

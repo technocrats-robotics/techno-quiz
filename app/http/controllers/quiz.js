@@ -1,8 +1,8 @@
 const Quiz = require("../../models/quiz");
+const updateQuestions = require("../services/updateQuestion");
 
 const addQuiz = (req, res) => {
-    const { name, description, questions, start, end, department, adminId } =
-        req.body;
+    const { name, description, questions, start, end, department } = req.body;
     const quiz = new Quiz({
         name,
         description,
@@ -10,7 +10,6 @@ const addQuiz = (req, res) => {
         start,
         end,
         department,
-        adminId,
     });
     quiz.save((err, quiz) => {
         if (err) {
@@ -30,6 +29,7 @@ const addQuizQuestions = async (req, res) => {
     const { quizId } = req.body;
     try {
         const quiz = await Quiz.findById(quizId);
+        await updateQuestions(question);
         quiz.questions = question;
         quiz.save();
         res.status(200).json({
@@ -47,20 +47,15 @@ const addQuizQuestions = async (req, res) => {
 };
 
 const getQuiz = async (req, res) => {
-    const dept = Number(req.params.dept);
     const date = Date.now();
-    console.log(date);
     try {
         const quiz = await Quiz.find({
-            department: dept,
             isPublished: true,
             isFinished: false,
             end: {
                 $gte: date,
             },
         });
-
-        console.log(quiz);
 
         return res.json({
             status: "Success ! Quiz are Fetched",

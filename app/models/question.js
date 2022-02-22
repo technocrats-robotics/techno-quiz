@@ -15,7 +15,7 @@ const question = new mongoose.Schema({
         required: true,
     },
     department: {
-        type: String,
+        type: Number,
         required: true,
     },
     isUsed: {

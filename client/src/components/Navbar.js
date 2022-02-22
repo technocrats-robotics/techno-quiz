@@ -11,7 +11,7 @@ function Navbar() {
     const ref = useRef();
     return (
         <>
-            <header onClick={(e) => e.stopPropagation()}>
+            <header style={{zIndex:9999}} onClick={(e) => e.stopPropagation()}>
                 <nav className="navbar">
                     <img src={Logo} className="logo" alt="" />
                     <ul className="links-container">

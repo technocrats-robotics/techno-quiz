@@ -1,0 +1,46 @@
+Questions: 
+
+1) '/api/question': 
+
+GET: Returns all questions
+
+POST: 
+Body: {
+    statement: string, options: Array, answer:string, department: number
+}
+Returns:
+{
+    Success message,
+    Response -> 200,
+    data: ques
+}
+
+DELETE: 
+Body {
+    questionId: string
+}
+Returns {
+    Response -> 500
+}
+2) '/api/question/:quizId':
+Privilages: User
+GET:
+Returns {
+    Response->200/500
+    Returns questions for particular quizid (for attempt)
+
+}
+
+3) '/api/quiz' 
+
+PUT: 
+Privilages: Admin
+Body{
+    question: Array,
+    quizId: string,
+}
+Response {
+    status - 200
+    quizId: string
+}
+

@@ -17,7 +17,7 @@ import { selectAnswers } from "../../features/Answers/answerSlice";
 import { useSelector } from "react-redux";
 import { store } from "../../app/store";
 
-function SideBarQuiz() {
+function SideBarQuiz({data}) {
     const navigator = useNavigate();
     const { quizId } = useParams();
     const [upload, { isLoading }] = useUploadAnswersMutation();
@@ -65,7 +65,7 @@ function SideBarQuiz() {
                 <DepartmentQuiz name="Electrical" icon={ElectricalLogo} />
                 <DepartmentQuiz name="Programming" icon={CsLogo} />
                 <DepartmentQuiz name="Mechanical" icon={MechanicalLogo} />
-                <Timer />
+                <Timer data={data}/>
                 <Button
                     variant="contained"
                     sx={{

@@ -33,7 +33,7 @@ function QuizPage() {
                     },
                 }}
             >
-                <SideBarQuiz />
+                <SideBarQuiz data={data}/>
                 <Suspense fallback={<div>Loading</div>}>
                     <ContentQuiz
                         questions={data}

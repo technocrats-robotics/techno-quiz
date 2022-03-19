@@ -8,6 +8,7 @@ import Box from "@mui/material/Box";
 import Homepage from "./pages/Homepage";
 import NotFound from "./pages/NotFound";
 import UserDashboard from "./pages/UserDashboad";
+import QuizTracks from './pages/QuizTracks';
 import AdminDashboard from "./pages/AdminDashboard";
 import AddQuiz from "./pages/AddQuiz";
 import AddQues from "./pages/AddQues";
@@ -50,6 +51,7 @@ function App() {
                         />
                         <Route exact path="/about" element={<About />} />
                         <Route exact path="/user" element={<UserDashboard />} />
+                        <Route exact path="/quizTracks" element={<QuizTracks />} />
                         <Route
                             exact
                             path="/admin"

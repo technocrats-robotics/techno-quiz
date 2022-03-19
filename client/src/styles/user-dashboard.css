@@ -178,7 +178,7 @@ p.subtitle{
 div.stats{
     display: flex;
     flex-flow: row wrap;
-    gap: 2%;
+    column-gap: 2%;
     align-items: center;
     justify-content: center;
     width: inherit;
@@ -189,7 +189,7 @@ div.card{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 25vw;
+    width: 25%;
     padding: 5%;
     height: auto;
     background: rgba(255, 255, 255, 0.95);
@@ -202,7 +202,7 @@ div.card2{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 30vw;
+    width: 30%;
     padding: 5%;
     height: auto;
     background: rgba(255, 255, 255, 0.95);
@@ -321,4 +321,42 @@ img.footer{
     position: relative;
     width: 100%;
     height: auto;
+}
+
+@media (max-width : 1000px) {
+    section.subSection1{
+        display: none;
+    }
+    
+    section.subSection2{
+        width: 100%;
+    }
+
+    div.stats{
+        width: 80%;
+    }
+
+    div.card{
+        width: 80%;
+    }
+    
+    div.card2{
+        width: 80%;
+    }
+
+    h1.welcome{
+        width: 100%;
+        font-size: 3em;
+        line-height: 1em;
+    }
+
+    p.subtitle{
+        font-size: 2em;
+    }
+}
+
+@media (max-width : 500px) {
+    div.card{
+        width: 95%;
+    }
 }

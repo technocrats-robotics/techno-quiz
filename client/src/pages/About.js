@@ -3,12 +3,33 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
+import Navbar from "../components/Navbar";
 
 import backgroundImg from "../img/bg.svg";
 
 export default function About() {
+    
+var departments = [
+    {
+        "name": "Mechanical",
+        "linkto": "_blank"
+    },
+    {
+        "name": "Electrical",
+        "linkto": "_blank"
+    },
+    {
+        "name": "Programming",
+        "linkto": "_blank"
+    },
+    {
+        "name": "General",
+        "linkto": "_blank"
+    }
+]
     return (
         <>
+        <Navbar />
             <div
                 style={{
                     backgroundImage:
@@ -41,12 +62,13 @@ export default function About() {
                         justifyContent: "center",
                         alignItems: "center",
                     }}
-                >
-                    <Grid
-                        container
-                        columnSpacing={{ xs: 1, sm: 6, md: 10, lg: 6 }}
-                        rowSpacing={6}
-                    >
+                ><Grid
+                container
+                columnSpacing={{ xs: 1, sm: 6, md: 10, lg: 6 }}
+                rowSpacing={6}
+            >
+                    {departments.map(item => (
+                        
                         <Grid item xs={12} sm={6} md={6} lg={3}>
                             <Paper
                                 elevation={12}
@@ -70,7 +92,7 @@ export default function About() {
                                         fontSize: "5vmin",
                                     }}
                                 >
-                                    Mechanical
+                                    {item.name}
                                 </h1>
                                 <Button
                                     variant="outlined"
@@ -83,114 +105,8 @@ export default function About() {
                                 </Button>
                             </Paper>
                         </Grid>
-                        <Grid item xs={12} sm={6} md={6} lg={3}>
-                            <Paper
-                                elevation={12}
-                                style={{
-                                    backgroundColor: "#c4c4c4",
-                                    height: "40vh",
-                                    display: "flex",
-                                    flexDirection: "column",
-                                    justifyContent: "space-evenly",
-                                    alignItems: "center",
-                                    borderRadius: "1rem",
-                                    background: "rgba(41, 42, 46, 0.6)",
-                                    boxShadow:
-                                        "0 8px 32px 0 rgba( 31, 38, 135, 0.37 )",
-                                    backdropFilter: "blur( 6px )",
-                                }}
-                            >
-                                <h1
-                                    style={{
-                                        color: "white",
-                                        fontSize: "5vmin",
-                                    }}
-                                >
-                                    Electrical
-                                </h1>
-                                <Button
-                                    variant="outlined"
-                                    style={{
-                                        color: "#fffd1b",
-                                        border: "2px solid #fffd1b",
-                                    }}
-                                >
-                                    Click Me
-                                </Button>
-                            </Paper>
-                        </Grid>
-                        <Grid item xs={12} sm={6} md={6} lg={3}>
-                            <Paper
-                                elevation={12}
-                                style={{
-                                    backgroundColor: "#c4c4c4",
-                                    height: "40vh",
-                                    display: "flex",
-                                    flexDirection: "column",
-                                    justifyContent: "space-evenly",
-                                    alignItems: "center",
-                                    borderRadius: "1rem",
-                                    background: "rgba(41, 42, 46, 0.6)",
-                                    boxShadow:
-                                        "0 8px 32px 0 rgba( 31, 38, 135, 0.37 )",
-                                    backdropFilter: "blur( 6px )",
-                                }}
-                            >
-                                <h1
-                                    style={{
-                                        color: "white",
-                                        fontSize: "5vmin",
-                                    }}
-                                >
-                                    Programming
-                                </h1>
-                                <Button
-                                    variant="outlined"
-                                    style={{
-                                        color: "#fffd1b",
-                                        border: "2px solid #fffd1b",
-                                    }}
-                                >
-                                    Click Me
-                                </Button>
-                            </Paper>
-                        </Grid>
-                        <Grid item xs={12} sm={6} md={6} lg={3}>
-                            <Paper
-                                elevation={12}
-                                style={{
-                                    backgroundColor: "#c4c4c4",
-                                    height: "40vh",
-                                    display: "flex",
-                                    flexDirection: "column",
-                                    justifyContent: "space-evenly",
-                                    alignItems: "center",
-                                    borderRadius: "1rem",
-                                    background: "rgba(41, 42, 46, 0.6)",
-                                    boxShadow:
-                                        "0 8px 32px 0 rgba( 31, 38, 135, 0.37 )",
-                                    backdropFilter: "blur( 6px )",
-                                }}
-                            >
-                                <h1
-                                    style={{
-                                        color: "white",
-                                        fontSize: "5vmin",
-                                    }}
-                                >
-                                    General
-                                </h1>
-                                <Button
-                                    variant="outlined"
-                                    style={{
-                                        color: "#fffd1b",
-                                        border: "2px solid #fffd1b",
-                                    }}
-                                >
-                                    Click Me
-                                </Button>
-                            </Paper>
-                        </Grid>
+                    ))
+                    }
                     </Grid>
                 </Box>
 
@@ -216,7 +132,7 @@ export default function About() {
                     <p
                         style={{
                             color: "white",
-                            fontSize: "4vmin",
+                            fontSize: "2ch",
                             marginTop: "2rem",
                             textAlign: "justify",
                         }}

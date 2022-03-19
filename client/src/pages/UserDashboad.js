@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import '../App.css'
+import '../styles/user-dashboard.css'
 import logo from '../images/logo.png';
 import dummyUser from '../images/dummyUserIcon.png';
 import coder from '../images/coder.png';

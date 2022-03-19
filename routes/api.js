@@ -10,7 +10,8 @@ const admin = require("../app/http/middlewares/admin");
 const test = require("../testing/verify");
 const uploadAnswer = require("../app/http/controllers/answer");
 const evaluateAnswer = require("../app/http/controllers/evaluate");
-const getResult= require("../app/http/controllers/result")
+const { getResult } = require("../app/http/controllers/result");
+const { getLeaderboard } = require("../app/http/controllers/result");
 
 const registerLimiter = limiter({
     windowMs: 5 * 60 * 1000,
@@ -24,13 +25,14 @@ const loginLimiter = limiter({
 const api = (app) => {
     app.get("/api/question", user, Question.getQuestion);
     app.post("/api/question", user, admin, Question.addQuestion);
-    // Some comments added 
-    app.delete("/api/question",user,admin,Question.deleteQuestion);
+    // Some comments added
+    app.delete("/api/question", user, admin, Question.deleteQuestion);
 
     app.get("/api/quiz/questions/:quizId", user, Question.getQuizQuestions);
-    app.get("/api/quiz/:dept", user, Quiz.getQuiz);
+    app.put("/api/quiz/addQuestion", user, admin, Quiz.addQuizQuestions);
+    app.get("/api/quiz", user, Quiz.getQuiz);
     app.post("/api/quiz", user, admin, Quiz.addQuiz);
-    app.put("/api/quiz/publish",user,admin, Quiz.publishQuiz);
+    app.put("/api/quiz/publish", user, admin, Quiz.publishQuiz);
 
     app.post(
         "/api/auth/register",
@@ -71,7 +73,8 @@ const api = (app) => {
     app.post("/api/test/answer", user, uploadAnswer);
     app.put("/api/test/evaluate/:quizId", user, admin, evaluateAnswer);
 
-    app.get('/api/test/result/:quizId',user,getResult);
+    app.get("/api/test/result/:quizId", user, getResult);
+    app.get("/api/test/leaderboard/:quizId", user, getLeaderboard);
 };
 
 module.exports = api;

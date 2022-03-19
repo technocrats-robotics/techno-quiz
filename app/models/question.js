@@ -14,6 +14,14 @@ const question = new mongoose.Schema({
         type: String,
         required: true,
     },
+    department: {
+        type: Number,
+        required: true,
+    },
+    isUsed: {
+        type: Boolean,
+        default: false,
+    },
     createdOn: {
         type: Date,
         default: () => Date.now(),

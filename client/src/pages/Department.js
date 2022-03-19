@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-// import Navbar from "../components/Navbar";
+import Navbar from "../components/Navbar";
 import Bg from "../components/Bg";
 import { departmentInfo } from "../utils/departmentInfo";
 function Department() {
@@ -8,7 +8,7 @@ function Department() {
     // consume id
     return (
         <>
-            {/* <Navbar /> */}
+            <Navbar />
             {/* <DepartmentContent/> */}
             <Bg />
         </>

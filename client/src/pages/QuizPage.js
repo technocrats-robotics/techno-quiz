@@ -19,7 +19,6 @@ function QuizPage() {
 
     const { data, isLoading } = useGetQuestionsByIdQuery(quizId);
 
-
     return (
         <Box>
             <HeaderQuiz setHamburger={setHamburger} hamburger={hamburger} />
@@ -36,7 +35,11 @@ function QuizPage() {
             >
                 <SideBarQuiz />
                 <Suspense fallback={<div>Loading</div>}>
-                    <ContentQuiz questions={data} quizId={quizId} isLoading={isLoading} />
+                    <ContentQuiz
+                        questions={data}
+                        quizId={quizId}
+                        isLoading={isLoading}
+                    />
                 </Suspense>
             </Box>
             {hamburger && <SidebarXS />}

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Box, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import { withStyles } from "@mui/styles";
@@ -52,8 +53,9 @@ function SideBar() {
           marginRight: "20px",
         }}
       >
-        <CTypography style={{ marginTop: "40px" }}> Dashboard </CTypography>
-        <CTypography> Add Questions </CTypography>
+        <Link to="/admin" style={{ textDecoration: 'none' }}><CTypography style={{ marginTop: "40px" }}> Dashboard </CTypography></Link>
+        <Link to="/manageques" style={{ textDecoration: 'none' }}><CTypography> Manage Question </CTypography></Link>
+        <Link to="/managequiz" style={{ textDecoration: 'none' }}><CTypography> Manage Quiz</CTypography></Link>
         <CTypography> User Details </CTypography>
         <CTypography> View Statistics </CTypography>
         <IconButton

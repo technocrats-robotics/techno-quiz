@@ -1,9 +1,7 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
-// Notifications
-import ReactNotification from "react-notifications-component";
-import "react-notifications-component/dist/theme.css";
+
 
 import Box from "@mui/material/Box";
 // pages
@@ -11,25 +9,27 @@ import Homepage from "./pages/Homepage";
 import NotFound from "./pages/NotFound";
 import UserDashboard from "./pages/UserDashboad";
 import AdminDashboard from "./pages/AdminDashboard";
+import AddQuiz from "./pages/AddQuiz";
+import AddQues from "./pages/AddQues";
+import ManageQuiz from "./pages/ManageQuiz";
+import ModifyQuiz from "./pages/ModifyQuiz";
+import ModifyDeptQuiz from "./pages/ModifyDeptQuiz";
+import ManageQues from "./pages/ManageQues";
+import FinalQuiz from "./pages/FinalQuiz";
 import QuizPage from "./pages/QuizPage";
 import Leaderboard from "./pages/Leaderboard";
+import ScheduleQuiz from "./pages/ScheduleQuiz";
 import LandingPage from "./pages/LandingPage";
 import Department from "./pages/Department";
 import About from "./pages/About";
 
-// import TestingPage from "./pages/TestingPage";
-
-//Components
-
-// import NavBar from './components/NavBar';
-import QuizTracks from "./pages/QuizTracks";
 import AuthModal from "./components/AuthModal/AuthModal";
 // import TestingPage from "./pages/TestingPage";
 
 function App() {
     return (
         <>
-            <ReactNotification />
+            {/* <ReactNotification /> */}
             <Router>
                 <Box
                     sx={{
@@ -42,7 +42,7 @@ function App() {
                             path="/landing"
                             element={<LandingPage />}
                         />
-                        <Route exact path="/" element={<><Homepage /></>} />
+                        <Route exact path="/" element={<Homepage />} />
                         <Route
                             exact
                             path="/department/:id"
@@ -50,7 +50,6 @@ function App() {
                         />
                         <Route exact path="/about" element={<About />} />
                         <Route exact path="/user" element={<UserDashboard />} />
-                        <Route exact path="/quizTracks" element={<QuizTracks />} />
                         <Route
                             exact
                             path="/admin"
@@ -58,12 +57,24 @@ function App() {
                         />
                         <Route
                             exact
+                            path="/addquiz"
+                            element={<AddQuiz />}
+                        />
+                        <Route exact path="/addquiz/:quizid" element={<FinalQuiz />} />
+                        <Route exact path="/addques" element={<AddQues />} />
+                        <Route exact path="/managequiz" element={<ManageQuiz />} />
+                        <Route exact path="/modifyquiz" element={<ModifyQuiz />} />
+                        <Route exact path="/modifyquiz/:deptid" element={<ModifyDeptQuiz />} />
+                        <Route exact path="/manageques" element={<ManageQues />} />
+                        <Route exact path="/schedulequiz/:quizid" element={<ScheduleQuiz />} />
+                        <Route
+                            exact
                             path="/quiz/:quizId"
                             element={<QuizPage />}
                         />
                         <Route
                             exact
-                            path="/leaderboard"
+                            path="/leaderboard/:quizId"
                             element={<Leaderboard />}
                         />
                         {/* Admin routes */}

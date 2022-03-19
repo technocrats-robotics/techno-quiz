@@ -1,9 +1,9 @@
 import React from "react";
 import styled from '@emotion/styled'
 
-function Badge({ content, clean = false, logout = false, glow = false }) {
+function Badge({ content, clean = false, logout = false, schquiz = false, quiz = false, glow = false }) {
   return (
-    <Div clean={clean} logout={logout} glow={glow}>
+    <Div clean={clean} logout={logout} quiz={quiz} glow={glow} schquiz={schquiz}>
       {content}
     </Div>
   );
@@ -27,11 +27,39 @@ const Div = styled.span`
     padding: 0.3rem 1rem;
     border-radius: 1rem;
     font-weight: 500;
-    width: 60px;
+    width: 100px;
     margin: 30px 60px;
     text-align: center;
     color: #000;
     background-color: #FFFD1B;
+    cursor: pointer;
+    `}
+    ${({ schquiz }) =>
+    schquiz &&
+    `
+    padding: 0rem 0rem;
+    border-radius: 1rem;
+    font-weight: 500;
+    width: 100px;
+    text-align: center;
+    color: #000;
+    display: inline-block;
+    background-color: #FFFD1B;
+    margin-right: 0px;
+    margin-left: 0px;
+    cursor: pointer;
+    `}
+    ${({ quiz}) =>
+    quiz &&
+    `
+    padding: 0.3rem 1rem;
+    border-radius: 1rem;
+    font-weight: 500;
+    width: 100px;
+    margin: 30px 60px;
+    text-align: center;
+    color: #FFF;
+    background-color: #0CBC8B;
     cursor: pointer;
     `}
   ${({ glow }) =>

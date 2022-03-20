@@ -29,8 +29,8 @@ const register = (req, res) => {
   if (!errors.isEmpty()) {
     return res.status(422).json({ errors: errors.array() });
   }
-  const { name, email, password,username } = req.body;
-  const user = new User({name, username,email, password });
+  const { name, email, password,username, department, registrationNumber } = req.body;
+  const user = new User({name, username,email, password, department, registrationNumber });
 
   user.save(async (err, user) => {
     if (err) {

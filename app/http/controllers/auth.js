@@ -34,7 +34,7 @@ const register = (req, res) => {
 
   user.save(async (err, user) => {
     if (err) {
-      return res.json({
+      return res.status(400).json({
         message: "User not found",
         err,
       });

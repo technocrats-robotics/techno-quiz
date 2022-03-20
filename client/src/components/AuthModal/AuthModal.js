@@ -23,6 +23,8 @@ function AuthModal({ isActive, setIsActive }) {
         password: "",
         name: "",
         repassword: "",
+        department: "",
+        registrationNumber: "",
     });
 
     const [isPasswordMatching, setIsPasswordMatching] = useState(false);
@@ -62,7 +64,10 @@ function AuthModal({ isActive, setIsActive }) {
             username: registerCredentials.username,
             email: registerCredentials.email,
             password: registerCredentials.password,
+            department: registerCredentials.department,
+            registrationNumber: registerCredentials.registrationNumber,
         };
+        console.log(data);
         try {
             const response = await register(data).unwrap();
             dispatch(setUserState(response));

@@ -65,9 +65,16 @@ function AuthModal({ isActive, setIsActive }) {
         };
         try {
             const response = await register(data).unwrap();
-            dispatch(setUserState(response));
-            localStorage.setItem("token", response.token);
-            alert("Successful");
+            if (isError) {
+                console.log(isError);
+                console.log("ERROR");
+                alert("Something went wrong");
+            } else {
+                dispatch(setUserState(response));
+                localStorage.setItem("token", response.token);
+
+                alert("Registered Successfully. Please check your mail for verification");
+            }
         } catch (err) {
             console.log(err);
             alert("Error");

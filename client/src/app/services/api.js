@@ -56,6 +56,7 @@ export const api = createApi({
                 body,
             }),
         }),
+        
     }),
 });
 
@@ -66,5 +67,5 @@ export const {
     useRegisterMutation,
     useUploadAnswersMutation,
     useGetLeaderBoardQuery,
-    useAddQuestionMutation
+    useAddQuestionMutation,
 } = api;

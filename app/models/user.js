@@ -34,6 +34,14 @@ const user = new mongoose.Schema({
         type: String,
         default: userType[201],
     },
+    department: {
+        type: String,
+        required: true,
+    },
+    registrationNumber: {
+        type: String,
+        required: true,
+    },
 });
 
 user.pre("save", async function (next) {

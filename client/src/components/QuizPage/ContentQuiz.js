@@ -25,7 +25,7 @@ function ContentQuiz({ questions, quizId }) {
             }}
         >
             {questions &&
-                questions.map((question, idx) => (
+                questions.questions.map((question, idx) => (
                     <Objective
                         key={idx}
                         quizId={quizId}

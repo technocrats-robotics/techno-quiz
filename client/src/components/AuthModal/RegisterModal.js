@@ -9,6 +9,13 @@ import {
 import LoginLogo from "../Icons/login.svg";
 import CancelIcon from "@mui/icons-material/Cancel";
 
+// Radio buttons
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormControl from "@mui/material/FormControl";
+import FormLabel from "@mui/material/FormLabel";
+
 function RegisterModal({
     setHasAccount,
     hasAccount,
@@ -43,7 +50,7 @@ function RegisterModal({
                         position: "absolute",
                         width: "60%",
                         height: "100%",
-                        top: "20vh",
+                        top: "2vh",
                         left: "20vw",
                         border: "10px solid white",
                         justifyContent: "space-around",
@@ -107,7 +114,6 @@ function RegisterModal({
                                 setIsActive(false);
                             }}
                         />
-
                         {!matches && (
                             <Typography
                                 variant="h5"
@@ -146,7 +152,6 @@ function RegisterModal({
                                 paddingLeft: "1.5rem",
                             }}
                         />
-
                         <input
                             id="input"
                             label="Email-Id"
@@ -228,7 +233,6 @@ function RegisterModal({
                                 paddingLeft: "1.5rem",
                             }}
                         />
-
                         <input
                             id="input"
                             label="Re-enter Password"
@@ -256,6 +260,96 @@ function RegisterModal({
                                 paddingLeft: "1.5rem",
                             }}
                         />
+                        {/* RegistrationNumber */}
+                        <input
+                            id="input"
+                            label="Enter Registration Number"
+                            placeholder="Enter Registration Number"
+                            type="text"
+                            value={credentials.registrationNumber}
+                            onChange={(event) => {
+                                setCredentials({
+                                    ...credentials,
+                                    registrationNumber: event.target.value,
+                                });
+                            }}
+                            style={{
+                                color: "white",
+                                background: "#405893",
+                                "::placeholder": {
+                                    color: "white",
+                                },
+                                borderRadius: "1.5rem",
+                                border: "none",
+                                marginBottom: "1rem",
+                                width: "100%",
+                                outline: "none",
+                                height: "3rem",
+                                paddingLeft: "1.5rem",
+                            }}
+                        />
+                        {/* Department */}
+
+                        <FormControl>
+                            <FormLabel id="demo-radio-buttons-group-label">
+                                Department
+                            </FormLabel>
+
+                            <RadioGroup
+                                aria-labelledby="demo-radio-buttons-group-label"
+                                // defaultValue="Programming"
+                                name="radio-buttons-group"
+                                sx={{
+                                    display: "flex",
+                                    flexDirection: "row",
+                                }}
+                            >
+                                <FormControlLabel
+                                    value="Programming"
+                                    control={<Radio />}
+                                    label="Programming"
+                                    onClick={(event) => {
+                                        setCredentials({
+                                            ...credentials,
+                                            department: "Programming",
+                                        });
+                                    }}
+                                />
+                                <FormControlLabel
+                                    value="Electrical"
+                                    control={<Radio />}
+                                    label="Electrical"
+                                    onClick={(event) => {
+                                        setCredentials({
+                                            ...credentials,
+                                            department: "Electrical",
+                                        });
+                                    }}
+                                />
+                                <FormControlLabel
+                                    value="Mechanical"
+                                    control={<Radio />}
+                                    label="Mechanical"
+                                    onClick={(event) => {
+                                        setCredentials({
+                                            ...credentials,
+                                            department: "Mechanical",
+                                        });
+                                    }}
+                                />
+                                <FormControlLabel
+                                    value="Management"
+                                    control={<Radio />}
+                                    label="Management"
+                                    onClick={(event) => {
+                                        setCredentials({
+                                            ...credentials,
+                                            department: "Management",
+                                        });
+                                    }}
+                                />
+                            </RadioGroup>
+                        </FormControl>
 
                         <Typography variant="p" component={"p"}>
                             Do have an account ?

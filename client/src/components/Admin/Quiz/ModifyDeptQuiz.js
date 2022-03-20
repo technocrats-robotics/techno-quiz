@@ -1,6 +1,7 @@
 import { Box, Typography, Button} from "@mui/material";
 import Badge from "../Badge";
 import React from "react";
+import {Link} from "react-router-dom";
 
 function Content() {
   return (
@@ -63,6 +64,7 @@ function Content() {
           a. Elementum urna quis donec faucibus et, vitae nec. In risus lectus
           ultricies sit. Morbi urna orci.
         </Typography>
+        <Link to="/scheduleQuiz/:quizid" style={{textDecoration: 'none'}}>
         <Button sx={{width: "100%"}}>
           <Badge
             content="Select"
@@ -74,6 +76,7 @@ function Content() {
             }}
           />
         </Button>
+        </Link>
       </Box>
       <Box
         sx={{
@@ -108,6 +111,7 @@ function Content() {
           a. Elementum urna quis donec faucibus et, vitae nec. In risus lectus
           ultricies sit. Morbi urna orci.
         </Typography>
+        <Link to="/scheduleQuiz/:quizid" style={{textDecoration: 'none'}}>
         <Button sx={{width: "100%"}}>
           <Badge
             content="Select"
@@ -119,6 +123,7 @@ function Content() {
             }}
           />
         </Button>
+        </Link>
         </Box>
         <Box
         sx={{
@@ -129,7 +134,7 @@ function Content() {
         }}
       >
         <br></br>
-        <Typography
+       <Typography
           sx={{
             textAlign: "center",
             fontSize: "1.2rem",
@@ -153,6 +158,7 @@ function Content() {
           a. Elementum urna quis donec faucibus et, vitae nec. In risus lectus
           ultricies sit. Morbi urna orci.
         </Typography>
+        <Link to="/scheduleQuiz/:quizid" style={{textDecoration: 'none'}}>
         <Button sx={{width: "100%"}}>
           <Badge
             content="Select"
@@ -164,6 +170,7 @@ function Content() {
             }}
           />
         </Button>
+        </Link>
       </Box>
       <Box
         sx={{
@@ -198,7 +205,8 @@ function Content() {
           a. Elementum urna quis donec faucibus et, vitae nec. In risus lectus
           ultricies sit. Morbi urna orci.
         </Typography>
-        <Button sx={{width: "100%"}}>
+        <Link to="/scheduleQuiz/:quizid" style={{textDecoration: 'none'}}>
+          <Button sx={{width: "100%"}} >
           <Badge
             content="Select"
             logout
@@ -208,7 +216,7 @@ function Content() {
               cursor: "pointer",
             }}
           />
-        </Button>
+        </Button></Link>
         </Box>
       </Box>
     </Box>

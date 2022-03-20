@@ -40,13 +40,13 @@ const Div = styled.span`
     padding: 0rem 0rem;
     border-radius: 1rem;
     font-weight: 500;
-    width: 100px;
+    width: 80px;
     text-align: center;
     color: #000;
     display: inline-block;
     background-color: #FFFD1B;
-    margin-right: 0px;
-    margin-left: 0px;
+    margin-right: -90px;
+    margin-left: -140px;
     cursor: pointer;
     `}
     ${({ quiz}) =>

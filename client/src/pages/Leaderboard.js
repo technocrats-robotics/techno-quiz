@@ -19,7 +19,7 @@ function Leaderboard() {
     const { quizId } = useParams();
     console.log(quizId);
 
-    const { data, isLoading } = useGetLeaderBoardQuery(quizId);
+    const { data, isLoading, isSuccess } = useGetLeaderBoardQuery(quizId);
     console.log(data);
 
     const rows = [

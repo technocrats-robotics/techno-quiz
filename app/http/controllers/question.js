@@ -61,7 +61,13 @@ const getQuizQuestions = async (req, res) => {
         });
         const sanitizedQuestionsArray = sanitizeQuizQuestion(quiz);
         console.log(sanitizedQuestionsArray);
-        res.json(sanitizedQuestionsArray);
+        let responseObject = {
+            start: quiz.start,
+            end: quiz.end,
+            department: quiz.department,
+            questions: sanitizedQuestionsArray,
+        }
+        res.json(responseObject);
     } catch (error) {
         console.log(error);
         res.send("FAILED");

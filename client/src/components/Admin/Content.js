@@ -32,10 +32,10 @@ function Content() {
       </Typography>
       <Box
         sx={{
-          margin: "30px",
+          margin: "70px",
           backgroundColor: "#f2f2f4",
           borderRadius: "30px",
-          width: "350px",
+          width: "370px",
         }}
       >
         <br></br>
@@ -74,9 +74,9 @@ function Content() {
         sx={{
           backgroundColor: "#f2f2f4",
           borderRadius: "30px",
-          marginLeft: "420px",
-          marginTop: "-230px",
-          width: "650px",
+          marginLeft: "520px",
+          marginTop: "-270px",
+          width: "640px",
         }}
       >
         <br></br>
@@ -108,7 +108,7 @@ function Content() {
       </Box>
       <Box
         sx={{
-          margin: "30px",
+          margin: "70px",
           backgroundColor: "#f2f2f4",
           borderRadius: "30px",
           width: "550px",
@@ -129,7 +129,7 @@ function Content() {
         <img
           src={Graph}
           style={{
-            width: "480px",
+            width: "500px",
             height: "130px",
             marginLeft: "35px",
             marginBottom: "15px",
@@ -139,8 +139,8 @@ function Content() {
       </Box>
       <Box
         sx={{
-          marginLeft: "620px",
-          marginTop: "-245px",
+          marginLeft: "690px",
+          marginTop: "-295px",
           backgroundColor: "#f2f2f4",
           borderRadius: "30px",
           width: "450px",

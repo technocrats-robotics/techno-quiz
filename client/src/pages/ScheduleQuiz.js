@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import { Box, useMediaQuery, useTheme } from "@mui/material";
-import Content from "../components/Admin/Quiz/AddQuiz";
+import Content from "../components/Admin/Quiz/ScheduleQuiz";
 import Header from "../components/Admin/Header";
 import SideBar from "../components/Admin/Sidebar";
-import { useCreateQuizMutation } from "../app/services/api";
 
-function AddQuiz() {
+function ScheduleQuiz() {
   const [hamburger, setHamburger] = useState(false);
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("sm"));
-  
   return (
     <Box>
       <Header setHamburger={setHamburger} hamburger={hamburger} />
@@ -31,4 +29,4 @@ function AddQuiz() {
   );
 }
 
-export default AddQuiz;
+export default ScheduleQuiz;

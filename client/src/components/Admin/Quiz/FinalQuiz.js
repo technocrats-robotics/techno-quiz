@@ -132,57 +132,8 @@ function Content() {
         type="datetime-local"
         disabled
       />
-    <FTypography > Select Question Bank </FTypography>
-        <FTextField
-          id="questionBank"
-          select
-          value={qbank}
-          onChange={handleChange}
-        >
-          {questionBanks.map((option) => (
-            <MenuItem key={option.value} value={option.value}>
-              {option.label}
-            </MenuItem>
-          ))}
-        </FTextField>
-        <Box
-        sx={{
-          backgroundColor: "#f2f2f4",
-          borderRadius: "30px",
-          marginTop: "15px",
-          marginLeft: "10%",
-          width: "350px",
-          border: "1px solid #C4C4C4",
-          boxShadow: "3px 5px #C4C4C4"
-        }}
-      >
+
         <br></br>
-        <Typography
-          sx={{
-            textAlign: "center",
-            fontSize: "1.2rem",
-            fontWeight: "bolder",
-            color: "#000",
-          }}
-        >
-         {qbank}
-        </Typography>
-        <Typography
-          sx={{
-            margin: "20px 15px",
-            textAlign: "center",
-            fontSize: "0.9rem",
-            color: "#000",
-          }}
-        >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis
-          fermentum vitae, sit tincidunt aenean eu. Sed neque auctor purus
-          pretium pharetra donec vel felis. Nisl placerat vel, nulla tempor id
-          a. Elementum urna quis donec faucibus et, vitae nec. In risus lectus
-          ultricies sit. Morbi urna orci.
-        </Typography>
-        <br></br>
-      </Box>
       <Link to="/addquiz/:quizid" style={{ textDecoration: 'none' }}>
         <Button sx={{width: "100%"}} onClick={() => setSch("Quiz Scheduled Successfully!")}>
           <Badge
@@ -197,8 +148,10 @@ function Content() {
         </Button>
         </Link>
       </Box>
-    </Box>
+      </Box>
   );
 }
 
 export default Content;
+
+

@@ -20,30 +20,32 @@ function QuizPage() {
     const { data, isLoading } = useGetQuestionsByIdQuery(quizId);
 
     return (
-        <Box>
-            <HeaderQuiz setHamburger={setHamburger} hamburger={hamburger} />
-            <Box
-                sx={{
-                    display: "flex",
-                    minHeight: "100vh",
-                    height: "100%",
-                    paddingTop: {
-                        xs: "4rem",
-                        sm: "6rem",
-                    },
-                }}
-            >
-                <SideBarQuiz data={data}/>
-                <Suspense fallback={<div>Loading</div>}>
-                    <ContentQuiz
-                        questions={data}
-                        quizId={quizId}
-                        isLoading={isLoading}
-                    />
-                </Suspense>
+        !isLoading && (
+            <Box>
+                <HeaderQuiz setHamburger={setHamburger} hamburger={hamburger} />
+                <Box
+                    sx={{
+                        display: "flex",
+                        minHeight: "100vh",
+                        height: "100%",
+                        paddingTop: {
+                            xs: "4rem",
+                            sm: "6rem",
+                        },
+                    }}
+                >
+                    <SideBarQuiz data={data} />
+                    <Suspense fallback={<div>Loading</div>}>
+                        <ContentQuiz
+                            questions={data}
+                            quizId={quizId}
+                            isLoading={isLoading}
+                        />
+                    </Suspense>
+                </Box>
+                {hamburger && <SidebarXS />}
             </Box>
-            {hamburger && <SidebarXS />}
-        </Box>
+        )
     );
 }
 

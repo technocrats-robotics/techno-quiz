@@ -16,14 +16,21 @@ import { useNavigate, useParams } from "react-router-dom";
 import { selectAnswers } from "../../features/Answers/answerSlice";
 import { useSelector } from "react-redux";
 import { store } from "../../app/store";
+import SubmitModal from "../SubmitModal";
 
-function SideBarQuiz({data}) {
+function SideBarQuiz({ data }) {
     const navigator = useNavigate();
+    const [isOpen, setIsOpen] = React.useState(false);
     const { quizId } = useParams();
     const [upload, { isLoading }] = useUploadAnswersMutation();
+    const [confirm, setIsConfirm] = React.useState(false);
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        // <SubmitModal openState={true} closeState={false} />;
+        // setIsOpen(!isOpen);
+
+        // if (setIsConfirm === true) {
         try {
             const answers = store.getState().answers.answers;
             console.log("answer state", store.getState().answers);
@@ -35,7 +42,9 @@ function SideBarQuiz({data}) {
             console.log(err);
             alert("error");
         }
+        // }
     };
+
     return (
         <Box
             sx={{
@@ -50,6 +59,13 @@ function SideBarQuiz({data}) {
                 md: "block",
             }}
         >
+            {/* <SubmitModal openState={true} closeState={false} /> */}
+            <SubmitModal
+                openState={isOpen}
+                setIsOpen={setIsOpen}
+                setIsConfirm={setIsConfirm}
+                handleConfirm={handleSubmit}
+            />
             <Box
                 sx={{
                     display: "flex",
@@ -65,7 +81,7 @@ function SideBarQuiz({data}) {
                 <DepartmentQuiz name="Electrical" icon={ElectricalLogo} />
                 <DepartmentQuiz name="Programming" icon={CsLogo} />
                 <DepartmentQuiz name="Mechanical" icon={MechanicalLogo} />
-                <Timer data={data}/>
+                <Timer data={data} />
                 <Button
                     variant="contained"
                     sx={{
@@ -77,7 +93,7 @@ function SideBarQuiz({data}) {
                         marginRight: "0.7rem",
                         borderRadius: "1.5rem",
                     }}
-                    onClick={handleSubmit}
+                    onClick={() => setIsOpen(!isOpen)}
                 >
                     Submit Attempt!
                 </Button>

@@ -1,4 +1,3 @@
-import React from "react";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
@@ -56,12 +55,6 @@ function Homepage() {
                     <Typography
                         variant="h3"
                         component="h1"
-                        sx={{
-                            fontSize: {
-                                xs: "1.5rem",
-                                sm: "auto",
-                            },
-                        }}
                     >
                         Hero Content
                     </Typography>
@@ -92,7 +85,7 @@ function Homepage() {
                         flexDirection: "column",
                         justifyContent: "center",
                         alignItems: "center",
-                        mt: "4rem",
+                        mt: "7rem",
                     }}
                 >
                     <Typography
@@ -100,10 +93,10 @@ function Homepage() {
                         component="h1"
                         sx={{
                             color: "white",
-                            marginBottom: "1.5rem",
+                            marginBottom: "5rem",
                         }}
                     >
-                        Department
+                        Departments
                     </Typography>
                     <Grid
                         container
@@ -114,8 +107,7 @@ function Homepage() {
                             <Paper
                                 elevation={12}
                                 style={{
-                                    background:
-                                        "linear-gradient(145.74deg, rgba(41, 42, 46, 0.6) -11.13%, rgba(218, 218, 218, 0.37) 25.01%, rgba(218, 218, 218, 0.28) 69.34%, rgba(41, 42, 46, 0.62) 119.8%)",
+                                    background: "linear-gradient(145.74deg, rgba(41, 42, 46, 0.6) -11.13%, rgba(218, 218, 218, 0.37) 25.01%, rgba(218, 218, 218, 0.28) 69.34%, rgba(41, 42, 46, 0.62) 119.8%)",
                                     height: "40vh",
                                     display: "flex",
                                     flexDirection: "column",
@@ -131,7 +123,7 @@ function Homepage() {
                                 }}
                             >
                                 <Typography
-                                    variant={"h3"}
+                                    variant="h4"
                                     component="h3"
                                     sx={{
                                         color: "white",
@@ -171,7 +163,7 @@ function Homepage() {
                                 }}
                             >
                                 <Typography
-                                    variant={"h3"}
+                                    variant="h4"
                                     component="h3"
                                     sx={{
                                         color: "white",
@@ -211,7 +203,7 @@ function Homepage() {
                                 }}
                             >
                                 <Typography
-                                    variant={"h3"}
+                                    variant="h4"
                                     component="h3"
                                     sx={{
                                         color: "white",
@@ -251,7 +243,7 @@ function Homepage() {
                                 }}
                             >
                                 <Typography
-                                    variant={"h3"}
+                                    variant="h4"
                                     component="h3"
                                     sx={{
                                         color: "white",

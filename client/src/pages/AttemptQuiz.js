@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import Content from "../components/User/Content";
-import { Box } from "@mui/material";
-
+import { Box, useMediaQuery, useTheme } from "@mui/material";
+import Content from "../components/User/Quiz/AttemptQuiz";
 import Header from "../components/User/Header";
 import SideBar from "../components/User/Sidebar";
 
-export default function UserDashboard() {
+function AttemptQuiz() {
   const [hamburger, setHamburger] = useState(false);
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up("sm"));
   return (
     <Box>
       <Header setHamburger={setHamburger} hamburger={hamburger} />
@@ -27,3 +28,5 @@ export default function UserDashboard() {
     </Box>
   );
 }
+
+export default AttemptQuiz;

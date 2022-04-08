@@ -16,6 +16,8 @@ import ModifyQuiz from "./pages/ModifyQuiz";
 import ModifyDeptQuiz from "./pages/ModifyDeptQuiz";
 import ManageQues from "./pages/ManageQues";
 import FinalQuiz from "./pages/FinalQuiz";
+import AttemptQuiz from "./pages/AttemptQuiz";
+import SelectQuiz from "./pages/SelectQuiz";
 import QuizPage from "./pages/QuizPage";
 import Leaderboard from "./pages/Leaderboard";
 import ScheduleQuiz from "./pages/ScheduleQuiz";
@@ -50,6 +52,8 @@ function App() {
                         />
                         <Route exact path="/about" element={<About />} />
                         <Route exact path="/user" element={<UserDashboard />} />
+                        <Route exact path="/attemptquiz" element={<AttemptQuiz />} />
+                        <Route exact path="/selectquiz" element={<SelectQuiz />} />
                         <Route
                             exact
                             path="/admin"

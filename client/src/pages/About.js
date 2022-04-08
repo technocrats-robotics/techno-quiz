@@ -3,6 +3,7 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
+import { Typography } from "@mui/material";
 
 import backgroundImg from "../img/bg.svg";
 
@@ -51,27 +52,29 @@ export default function About() {
                             <Paper
                                 elevation={12}
                                 style={{
-                                    backgroundColor: "#c4c4c4",
+                                    background: "linear-gradient(145.74deg, rgba(41, 42, 46, 0.6) -11.13%, rgba(218, 218, 218, 0.37) 25.01%, rgba(218, 218, 218, 0.28) 69.34%, rgba(41, 42, 46, 0.62) 119.8%)",
                                     height: "40vh",
                                     display: "flex",
                                     flexDirection: "column",
                                     justifyContent: "space-evenly",
                                     alignItems: "center",
-                                    borderRadius: "1rem",
-                                    background: "rgba(41, 42, 46, 0.6)",
+                                    borderRadius: "3rem",
+                                    border: "2px solid rgba(255,255,255,0.3)",
                                     boxShadow:
-                                        "0 8px 32px 0 rgba( 31, 38, 135, 0.37 )",
-                                    backdropFilter: "blur( 6px )",
+                                        "0 8px 32px 0 rgba( 200, 200, 200, 0.37 )",
+                                    backdropFilter: "blur(10px)",
                                 }}
                             >
-                                <h1
-                                    style={{
+                                <Typography
+                                    variant="h4"
+                                    component="h1"
+                                    sx={{
                                         color: "white",
-                                        fontSize: "5vmin",
+                                        marginBottom: "5rem",
                                     }}
                                 >
                                     Mechanical
-                                </h1>
+                                </Typography>
                                 <Button
                                     variant="outlined"
                                     style={{
@@ -87,27 +90,29 @@ export default function About() {
                             <Paper
                                 elevation={12}
                                 style={{
-                                    backgroundColor: "#c4c4c4",
+                                    background: "linear-gradient(145.74deg, rgba(41, 42, 46, 0.6) -11.13%, rgba(218, 218, 218, 0.37) 25.01%, rgba(218, 218, 218, 0.28) 69.34%, rgba(41, 42, 46, 0.62) 119.8%)",
                                     height: "40vh",
                                     display: "flex",
                                     flexDirection: "column",
                                     justifyContent: "space-evenly",
                                     alignItems: "center",
-                                    borderRadius: "1rem",
-                                    background: "rgba(41, 42, 46, 0.6)",
+                                    borderRadius: "3rem",
+                                    border: "2px solid rgba(255,255,255,0.3)",
                                     boxShadow:
-                                        "0 8px 32px 0 rgba( 31, 38, 135, 0.37 )",
-                                    backdropFilter: "blur( 6px )",
+                                        "0 8px 32px 0 rgba( 200, 200, 200, 0.37 )",
+                                    backdropFilter: "blur(10px)",
                                 }}
                             >
-                                <h1
-                                    style={{
+                                <Typography
+                                    variant="h4"
+                                    component="h1"
+                                    sx={{
                                         color: "white",
-                                        fontSize: "5vmin",
+                                        marginBottom: "5rem",
                                     }}
                                 >
                                     Electrical
-                                </h1>
+                                </Typography>
                                 <Button
                                     variant="outlined"
                                     style={{
@@ -123,27 +128,29 @@ export default function About() {
                             <Paper
                                 elevation={12}
                                 style={{
-                                    backgroundColor: "#c4c4c4",
+                                    background: "linear-gradient(145.74deg, rgba(41, 42, 46, 0.6) -11.13%, rgba(218, 218, 218, 0.37) 25.01%, rgba(218, 218, 218, 0.28) 69.34%, rgba(41, 42, 46, 0.62) 119.8%)",
                                     height: "40vh",
                                     display: "flex",
                                     flexDirection: "column",
                                     justifyContent: "space-evenly",
                                     alignItems: "center",
-                                    borderRadius: "1rem",
-                                    background: "rgba(41, 42, 46, 0.6)",
+                                    borderRadius: "3rem",
+                                    border: "2px solid rgba(255,255,255,0.3)",
                                     boxShadow:
-                                        "0 8px 32px 0 rgba( 31, 38, 135, 0.37 )",
-                                    backdropFilter: "blur( 6px )",
+                                        "0 8px 32px 0 rgba( 200, 200, 200, 0.37 )",
+                                    backdropFilter: "blur(10px)",
                                 }}
                             >
-                                <h1
-                                    style={{
+                                <Typography
+                                    variant="h4"
+                                    component="h1"
+                                    sx={{
                                         color: "white",
-                                        fontSize: "5vmin",
+                                        marginBottom: "5rem",
                                     }}
                                 >
                                     Programming
-                                </h1>
+                                </Typography>
                                 <Button
                                     variant="outlined"
                                     style={{
@@ -159,27 +166,29 @@ export default function About() {
                             <Paper
                                 elevation={12}
                                 style={{
-                                    backgroundColor: "#c4c4c4",
+                                    background: "linear-gradient(145.74deg, rgba(41, 42, 46, 0.6) -11.13%, rgba(218, 218, 218, 0.37) 25.01%, rgba(218, 218, 218, 0.28) 69.34%, rgba(41, 42, 46, 0.62) 119.8%)",
                                     height: "40vh",
                                     display: "flex",
                                     flexDirection: "column",
                                     justifyContent: "space-evenly",
                                     alignItems: "center",
-                                    borderRadius: "1rem",
-                                    background: "rgba(41, 42, 46, 0.6)",
+                                    borderRadius: "3rem",
+                                    border: "2px solid rgba(255,255,255,0.3)",
                                     boxShadow:
-                                        "0 8px 32px 0 rgba( 31, 38, 135, 0.37 )",
-                                    backdropFilter: "blur( 6px )",
+                                        "0 8px 32px 0 rgba( 200, 200, 200, 0.37 )",
+                                    backdropFilter: "blur(10px)",
                                 }}
                             >
-                                <h1
-                                    style={{
+                                <Typography
+                                    variant="h4"
+                                    component="h1"
+                                    sx={{
                                         color: "white",
-                                        fontSize: "5vmin",
+                                        marginBottom: "5rem",
                                     }}
                                 >
                                     General
-                                </h1>
+                                </Typography>
                                 <Button
                                     variant="outlined"
                                     style={{
@@ -202,23 +211,24 @@ export default function About() {
                         mx: "auto",
                         justifyContent: "center",
                         alignItems: "center",
-                        mt: "5rem",
+                        mt: "7rem",
                     }}
                 >
-                    <h1
-                        style={{
+                    <Typography
+                        variant="h1"
+                        component="h1"
+                        sx={{
                             color: "white",
-                            fontSize: "9vmin",
+                            marginBottom: "4rem",
                         }}
                     >
                         About Technocrats
-                    </h1>
-                    <p
-                        style={{
-                            color: "white",
-                            fontSize: "4vmin",
-                            marginTop: "2rem",
+                    </Typography>
+                    <Typography
+                        variant="h5"
+                        sx={{
                             textAlign: "justify",
+                            color: "white",
                         }}
                     >
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -234,7 +244,7 @@ export default function About() {
                         convallis fermentum turpis sagittis. Nulla iaculis vel
                         diam a luctus. Aenean porta purus orci, in mattis turpis
                         dignissim ut.
-                    </p>
+                    </Typography>
                 </Box>
 
                 <Box
@@ -248,14 +258,16 @@ export default function About() {
                         mt: "5rem",
                     }}
                 >
-                    <h1
-                        style={{
+                    <Typography
+                        variant="h1"
+                        component="h1"
+                        sx={{
                             color: "white",
-                            fontSize: "9vmin",
+                            marginBottom: "4rem",
                         }}
                     >
                         Achievements
-                    </h1>
+                    </Typography>
                     <Grid
                         container
                         columnSpacing={{ xs: 1, sm: 4, md: 6, lg: 6 }}

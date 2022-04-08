@@ -52,9 +52,9 @@ export default function SideBar() {
           marginRight: "20px",
         }}
       >
-        <Link to="/admin" style={{ textDecoration: 'none' }}><CTypography style={{ marginTop: "40px" }}> Dashboard </CTypography></Link>
-        <Link to="/manageques" style={{ textDecoration: 'none' }}><CTypography> Leaderboard </CTypography></Link>
-        <Link to="/managequiz" style={{ textDecoration: 'none' }}><CTypography> Quiz Tracks</CTypography></Link>
+        <Link to="/user" style={{ textDecoration: 'none' }}><CTypography style={{ marginTop: "40px" }}> Dashboard </CTypography></Link>
+        <Link to="/leaderboard/:quizId" style={{ textDecoration: 'none' }}><CTypography> Leaderboard </CTypography></Link>
+        <Link to="/attemptquiz" style={{ textDecoration: 'none' }}><CTypography> Quiz Tracks</CTypography></Link>
         <CTypography> View Attempts </CTypography>
         <IconButton
           edge="start"

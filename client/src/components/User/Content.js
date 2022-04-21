@@ -3,8 +3,10 @@ import React from "react";
 import Meter from "../Icons/Meter.png";
 import Graph from "../Icons/Graph.png";
 import Test from "../Icons/Test.png";
-
+import {useGetAvailableQuizQuery} from "../../app/services/api";
 function Content() {
+  const {data, isLoading, isSucess} = useGetAvailableQuizQuery();
+  console.log(data);
   return (
     <Box
       sx={{

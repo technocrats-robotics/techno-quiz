@@ -48,6 +48,7 @@ const addQuizQuestions = async (req, res) => {
 
 const getQuiz = async (req, res) => {
     const date = Date.now();
+    console.log("Inside getQuiz");
     try {
         const quiz = await Quiz.find({
             isPublished: true,

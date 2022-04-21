@@ -7,6 +7,8 @@ import Paper from "@mui/material/Paper";
 import backgroundImg from "../img/bg.svg";
 import Navbar from "../components/Navbar";
 import { Typography } from "@mui/material";
+
+
 function Homepage() {
     return (
         <>

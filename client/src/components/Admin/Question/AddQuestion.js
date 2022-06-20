@@ -81,23 +81,25 @@ function Content() {
     };
 
     const handleSubmit = async () => {
-        let newAnswer
-        if(answer==="option 1"){
-            newAnswer=options[0]
-        }
-        else if(answer==="option 1"){
-            newAnswer=options[1]
-        }
-        else if(answer==="option 1"){
-            newAnswer=options[2]
-        }
-        else{
-            newAnswer=options[3]
+        let newAnswer;
+        if (answer === "option 1") {
+            newAnswer = options[0];
+        } else if (answer === "option 1") {
+            newAnswer = options[1];
+        } else if (answer === "option 1") {
+            newAnswer = options[2];
+        } else {
+            newAnswer = options[3];
         }
         try {
-            const data = { statement:statment, department, options, answer:newAnswer };
+            const data = {
+                statement: statment,
+                department,
+                options,
+                answer: newAnswer,
+            };
             const response = await addQuestion(data).unwrap();
-            console.log(response)
+            console.log(response);
         } catch (error) {
             console.log(error);
         }
@@ -178,7 +180,7 @@ function Content() {
                         </MenuItem>
                     ))}
                 </FTextField>
-                <FTypography> Select Question Bank(s)</FTypography>
+                {/* <FTypography> Select Question Bank(s)</FTypography>
                 <FTextField
                     id="qbank"
                     select
@@ -191,7 +193,7 @@ function Content() {
                             {option.label}
                         </MenuItem>
                     ))}
-                </FTextField>
+                </FTextField> */}
                 <RadioGroup sx={{ margin: "2% 10%" }} defaultValue="MCQ">
                     <FormControlLabel
                         sx={{ color: "#000" }}
@@ -204,7 +206,7 @@ function Content() {
                         }
                         label="Multiple Choice Question (MCQ)"
                     />
-                    <FormControlLabel
+                    {/* <FormControlLabel
                         sx={{ color: "#000" }}
                         onClick={() => setquesType(false)}
                         value="fill"
@@ -214,7 +216,7 @@ function Content() {
                             />
                         }
                         label="Fill in the Blanks"
-                    />
+                    /> */}
                 </RadioGroup>
                 <br></br>
                 {quesType ? (

@@ -3,21 +3,29 @@ const Quiz = require("../../models/quiz");
 
 const sanitizeQuizQuestion = require("../services/sanitizeQuizQuestion");
 
-const addQuestion = (req, res, next) => {
+const addQuestion = async (req, res, next) => {
     const { statement, options, answer, department } = req.body;
 
     const ques = new Question({ statement, options, answer, department });
     // const [addQuestion]
 
+    const existing = await Question.findOne({ statement });
+
+    if (existing) {
+        return res.status(400).json({
+            message: "Question already exists",
+        });
+    }
+
     console.log(req.body);
     ques.save((err, ques) => {
         if (err) {
-            return res.json({
+            return res.status(501).json({
                 message: "Err: Question Not Added",
                 err,
             });
         }
-        return res.json({
+        return res.status(201).json({
             status: "Success: Question was Added !",
             data: ques,
         });

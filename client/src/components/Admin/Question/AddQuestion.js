@@ -7,10 +7,12 @@ import {
     RadioGroup,
     Radio,
     FormControlLabel,
+    Snackbar,
+    Alert,
 } from "@mui/material";
 import { withStyles } from "@mui/styles";
 import Badge from "../Badge";
-import { React, useState } from "react";
+import { React, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAddQuestionMutation } from "../../../app/services/api";
 import produce from "immer";
@@ -64,6 +66,9 @@ const FTextField = withStyles({
 })(TextField);
 
 function Content() {
+    const [isOpenSuccess, setIsOpenSuccess] = useState(false);
+    const [isOpenFail, setIsOpenFail] = useState(false);
+
     // backend
     const [statment, setStatment] = useState("");
     const [department, setDepartment] = useState("Electrical");
@@ -84,9 +89,9 @@ function Content() {
         let newAnswer;
         if (answer === "option 1") {
             newAnswer = options[0];
-        } else if (answer === "option 1") {
+        } else if (answer === "option 2") {
             newAnswer = options[1];
-        } else if (answer === "option 1") {
+        } else if (answer === "option 3") {
             newAnswer = options[2];
         } else {
             newAnswer = options[3];
@@ -100,12 +105,28 @@ function Content() {
             };
             const response = await addQuestion(data).unwrap();
             console.log(response);
+            setIsOpenSuccess(true);
         } catch (error) {
             console.log(error);
+            setIsOpenFail(true);
         }
     };
 
     const [addQuestion, { isLoading }] = useAddQuestionMutation();
+
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         console.log("Success Timeout");
+    //         setIsOpenSuccess(false);
+    //     }, 3000);
+    // }, [isOpenSuccess]);
+
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         console.log("Fail Timeout");
+    //         setIsOpenFail(false);
+    //     }, 3000);
+    // }, [isOpenFail]);
 
     return (
         <Box
@@ -117,6 +138,30 @@ function Content() {
                 color: "white",
             }}
         >
+            <Snackbar
+                anchorOrigin={{ vertical: "top", horizontal: "center" }}
+                autoHideDuration={3000}
+                open={isOpenSuccess}
+                onClose={() => {
+                    console.log("Close");
+                    setIsOpenSuccess(false);
+                }}
+                message="Question Added Successfully"
+            >
+                <Alert severity="success">Successfully added question</Alert>
+            </Snackbar>
+            <Snackbar
+                anchorOrigin={{ vertical: "top", horizontal: "center" }}
+                autoHideDuration={3000}
+                open={isOpenFail}
+                onClose={() => {
+                    console.log("Close");
+                    setIsOpenFail(false);
+                }}
+                message="Question could not be added"
+            >
+                <Alert severity="error">Question could not be added</Alert>
+            </Snackbar>
             <Typography
                 sx={{
                     textAlign: "center",

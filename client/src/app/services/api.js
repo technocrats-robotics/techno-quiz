@@ -58,10 +58,16 @@ export const api = createApi({
         }),
         getAvailableQuiz: builder.query({
             query: () => ({
-                url:"/api/quiz",
+                url: "/api/quiz",
                 method: "GET",
-            })
-        })
+            }),
+        }),
+        getAllQuiz: builder.query({
+            query: (department) => ({
+                url: `/api/quiz/all/${department}`,
+                method: "GET",
+            }),
+        }),
     }),
 });
 
@@ -73,5 +79,6 @@ export const {
     useUploadAnswersMutation,
     useGetLeaderBoardQuery,
     useAddQuestionMutation,
-    useGetAvailableQuizQuery
+    useGetAvailableQuizQuery,
+    useGetAllQuizQuery,
 } = api;

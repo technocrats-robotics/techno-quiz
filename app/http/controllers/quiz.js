@@ -46,6 +46,7 @@ const addQuizQuestions = async (req, res) => {
     }
 };
 
+// users, not for admins
 const getQuiz = async (req, res) => {
     const date = Date.now();
     console.log("Inside getQuiz");
@@ -58,6 +59,25 @@ const getQuiz = async (req, res) => {
             },
         });
 
+        return res.json({
+            status: "Success ! Quiz are Fetched",
+            data: quiz,
+        });
+    } catch (err) {
+        return res.json({
+            message: "Err: Quiz not Fetched !",
+            err,
+        });
+    }
+};
+
+// for admins only
+const getAllQuiz = async (req, res) => {
+    const { department } = req.params;
+    try {
+        const quiz = await Quiz.find({
+            department: department,
+        });
         return res.json({
             status: "Success ! Quiz are Fetched",
             data: quiz,
@@ -86,4 +106,5 @@ module.exports = {
     getQuiz,
     addQuizQuestions,
     publishQuiz,
+    getAllQuiz,
 };

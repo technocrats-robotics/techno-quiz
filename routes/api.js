@@ -34,6 +34,8 @@ const api = (app) => {
     app.post("/api/quiz", user, admin, Quiz.addQuiz);
     app.put("/api/quiz/publish", user, admin, Quiz.publishQuiz);
 
+    app.get("/api/quiz/all/:department", user, admin, Quiz.getAllQuiz);
+
     app.post(
         "/api/auth/register",
         registerLimiter,

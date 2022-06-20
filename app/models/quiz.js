@@ -28,7 +28,7 @@ const quiz = new mongoose.Schema({
         default: () => Date.now(),
     },
     department: {
-        type: Number,
+        type: String,
         required: true,
     },
     adminId: {

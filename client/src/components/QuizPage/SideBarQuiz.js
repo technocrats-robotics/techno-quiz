@@ -37,7 +37,7 @@ function SideBarQuiz({ data }) {
             const response = await upload({ quizId, answers }).unwrap();
             console.log("response", response);
             alert("Success");
-            navigator("/dashboard");
+            navigator("/user");
         } catch (err) {
             console.log(err);
             alert("error");

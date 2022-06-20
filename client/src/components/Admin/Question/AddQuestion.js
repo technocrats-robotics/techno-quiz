@@ -13,12 +13,20 @@ import Badge from "../Badge";
 import { React, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAddQuestionMutation } from "../../../app/services/api";
+import produce from "immer";
 
 const departments = [
     { value: "Electrical", label: "Electrical" },
     { value: "General Robotics", label: "General Robotics" },
     { value: "Programming", label: "Programming" },
     { value: "Mechanical", label: "Mechanical" },
+];
+
+const answers = [
+    { value: "option 1", label: "option 1" },
+    { value: "option 2", label: "option 2" },
+    { value: "option 3", label: "option 3" },
+    { value: "option 4", label: "option 4" },
 ];
 
 const quesBank = [
@@ -56,7 +64,12 @@ const FTextField = withStyles({
 })(TextField);
 
 function Content() {
+    // backend
+    const [statment, setStatment] = useState("");
     const [department, setDepartment] = useState("Electrical");
+    const [options, setOptions] = useState(["", "", "", ""]);
+    const [answer, setAnswer] = useState("");
+
     const [questionBank, setquesBank] = useState("Electrical 1");
     const [quesType, setquesType] = useState(true);
     const [ques, setQues] = useState("Create New Question!");
@@ -65,6 +78,29 @@ function Content() {
     };
     const handleBank = (event) => {
         setquesBank(event.target.value);
+    };
+
+    const handleSubmit = async () => {
+        let newAnswer
+        if(answer==="option 1"){
+            newAnswer=options[0]
+        }
+        else if(answer==="option 1"){
+            newAnswer=options[1]
+        }
+        else if(answer==="option 1"){
+            newAnswer=options[2]
+        }
+        else{
+            newAnswer=options[3]
+        }
+        try {
+            const data = { statement:statment, department, options, answer:newAnswer };
+            const response = await addQuestion(data).unwrap();
+            console.log(response)
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     const [addQuestion, { isLoading }] = useAddQuestionMutation();
@@ -122,6 +158,10 @@ function Content() {
                             color: "#343434",
                             fontWeight: "bolder",
                         },
+                    }}
+                    value={statment}
+                    onChange={(e) => {
+                        setStatment(e.target.value);
                     }}
                     required={true}
                 />
@@ -200,6 +240,14 @@ function Content() {
                                     fontWeight: "bolder",
                                 },
                             }}
+                            value={options[0]}
+                            onChange={(e) => {
+                                setOptions(
+                                    produce(options, (draftState) => {
+                                        draftState.splice(0, 1, e.target.value);
+                                    })
+                                );
+                            }}
                             size="small"
                             required
                         />
@@ -212,6 +260,14 @@ function Content() {
                                     color: "#343434",
                                     fontWeight: "bolder",
                                 },
+                            }}
+                            value={options[1]}
+                            onChange={(e) => {
+                                setOptions(
+                                    produce(options, (draftState) => {
+                                        draftState.splice(1, 1, e.target.value);
+                                    })
+                                );
                             }}
                             size="small"
                             required
@@ -226,6 +282,14 @@ function Content() {
                                     fontWeight: "bolder",
                                 },
                             }}
+                            value={options[2]}
+                            onChange={(e) => {
+                                setOptions(
+                                    produce(options, (draftState) => {
+                                        draftState.splice(2, 1, e.target.value);
+                                    })
+                                );
+                            }}
                             size="small"
                             required
                         />
@@ -239,15 +303,36 @@ function Content() {
                                     fontWeight: "bolder",
                                 },
                             }}
+                            value={options[3]}
+                            onChange={(e) => {
+                                setOptions(
+                                    produce(options, (draftState) => {
+                                        draftState.splice(3, 1, e.target.value);
+                                    })
+                                );
+                            }}
                             size="small"
                             required
                         />
                     </Box>
                 ) : null}
-                <Button
-                    sx={{ width: "100%" }}
-                    onClick={() => setQues("Question Added Successfully!")}
+                <FTypography> Select Answer </FTypography>
+                <FTextField
+                    id="qdept"
+                    select
+                    value={answer}
+                    onChange={(e) => {
+                        setAnswer(e.target.value);
+                        console.log(answer);
+                    }}
                 >
+                    {answers.map((option) => (
+                        <MenuItem key={option.value} value={option.value}>
+                            {option.label}
+                        </MenuItem>
+                    ))}
+                </FTextField>
+                <Button sx={{ width: "100%" }} onClick={() => handleSubmit()}>
                     <Badge
                         content="Create"
                         logout

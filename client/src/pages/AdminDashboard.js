@@ -18,8 +18,8 @@ function AdminDashboard() {
           minHeight: "100vh",
           height: "100%",
           paddingTop: {
-            xs: "4rem",
-            sm: "6rem",
+            xs: "3rem",
+            sm: "3rem",
           },
         }}
       >

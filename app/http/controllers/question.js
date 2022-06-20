@@ -5,7 +5,11 @@ const sanitizeQuizQuestion = require("../services/sanitizeQuizQuestion");
 
 const addQuestion = (req, res, next) => {
     const { statement, options, answer, department } = req.body;
-    const ques = new Question({ statement, options, answer,department });
+
+    const ques = new Question({ statement, options, answer, department });
+    // const [addQuestion]
+
+    console.log(req.body);
     ques.save((err, ques) => {
         if (err) {
             return res.json({
@@ -20,23 +24,21 @@ const addQuestion = (req, res, next) => {
     });
 };
 
-const deleteQuestion= async (req,res)=>{
-    const {questionId}=req.body;
+const deleteQuestion = async (req, res) => {
+    const { questionId } = req.body;
 
-    try{
-        await Question.deleteOne({questionId})
+    try {
+        await Question.deleteOne({ questionId });
         return res.send("Question deleted");
-
-    }
-    catch(err){
+    } catch (err) {
         return res.json({
-            message:"Error, Question not deleted!",
+            message: "Error, Question not deleted!",
             err,
-        })
+        });
     }
-}
+};
 
-// for admin to fetch all questions 
+// for admin to fetch all questions
 const getQuestion = async (req, res, next) => {
     try {
         const ques = await Question.find();
@@ -66,7 +68,7 @@ const getQuizQuestions = async (req, res) => {
             end: quiz.end,
             department: quiz.department,
             questions: sanitizedQuestionsArray,
-        }
+        };
         res.json(responseObject);
     } catch (error) {
         console.log(error);
@@ -78,5 +80,5 @@ module.exports = {
     addQuestion,
     getQuestion,
     getQuizQuestions,
-    deleteQuestion
+    deleteQuestion,
 };

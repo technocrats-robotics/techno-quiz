@@ -18,7 +18,7 @@ function ModifyQuiz() {
           height: "100%",
           paddingTop: {
             xs: "4rem",
-            sm: "6rem",
+            sm: "3rem",
           },
         }}
       >

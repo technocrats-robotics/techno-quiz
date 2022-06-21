@@ -2,7 +2,7 @@ const Quiz = require("../../models/quiz");
 const updateQuestions = require("../services/updateQuestion");
 
 const addQuiz = (req, res) => {
-    const { name, description, questions, start, end, department } = req.body;
+    const { name, description, questions, start, end, department,noOfQuestions } = req.body;
     const quiz = new Quiz({
         name,
         description,
@@ -10,6 +10,7 @@ const addQuiz = (req, res) => {
         start,
         end,
         department,
+        noOfQuestions
     });
     quiz.save((err, quiz) => {
         if (err) {
@@ -46,8 +47,10 @@ const addQuizQuestions = async (req, res) => {
     }
 };
 
+// users, not for admins
 const getQuiz = async (req, res) => {
     const date = Date.now();
+    console.log("Inside getQuiz");
     try {
         const quiz = await Quiz.find({
             isPublished: true,
@@ -57,6 +60,25 @@ const getQuiz = async (req, res) => {
             },
         });
 
+        return res.json({
+            status: "Success ! Quiz are Fetched",
+            data: quiz,
+        });
+    } catch (err) {
+        return res.json({
+            message: "Err: Quiz not Fetched !",
+            err,
+        });
+    }
+};
+
+// for admins only
+const getAllQuiz = async (req, res) => {
+    const { department } = req.params;
+    try {
+        const quiz = await Quiz.find({
+            department: department,
+        });
         return res.json({
             status: "Success ! Quiz are Fetched",
             data: quiz,
@@ -85,4 +107,5 @@ module.exports = {
     getQuiz,
     addQuizQuestions,
     publishQuiz,
+    getAllQuiz,
 };

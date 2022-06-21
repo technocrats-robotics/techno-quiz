@@ -7,10 +7,12 @@ import RegisterModal from "./RegisterModal";
 import { setUserState } from "../../features/Auth/authSlice";
 import Alert from "@mui/material/Alert";
 import CloseIcon from "@mui/icons-material/Close";
+import { useNavigate } from "react-router-dom";
 
 function AuthModal({ isActive, setIsActive }) {
     const [login, { isLoading }] = useLoginMutation();
     const [register, { isError }] = useRegisterMutation();
+    const navigator = useNavigate();
     const dispatch = useDispatch();
     const [hasAccount, setHasAccount] = useState(true);
     const [loginCredentials, setLoginCredentials] = useState({
@@ -46,6 +48,7 @@ function AuthModal({ isActive, setIsActive }) {
             dispatch(setUserState(response));
             localStorage.setItem("token", response.token);
             alert("Successful");
+            navigator("/admin");
         } catch (err) {
             console.log(err);
             alert("Error");
@@ -78,7 +81,9 @@ function AuthModal({ isActive, setIsActive }) {
                 dispatch(setUserState(response));
                 localStorage.setItem("token", response.token);
 
-                alert("Registered Successfully. Please check your mail for verification");
+                alert(
+                    "Registered Successfully. Please check your mail for verification"
+                );
             }
         } catch (err) {
             console.log(err);

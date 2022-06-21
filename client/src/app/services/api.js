@@ -56,7 +56,25 @@ export const api = createApi({
                 body,
             }),
         }),
-        
+        getAvailableQuiz: builder.query({
+            query: () => ({
+                url: "/api/quiz",
+                method: "GET",
+            }),
+        }),
+        getAllQuiz: builder.query({
+            query: (department) => ({
+                url: `/api/quiz/all/${department}`,
+                method: "GET",
+            }),
+        }),
+        addQuiz:builder.mutation({
+            query:(body)=>({
+                url:"/api/quiz",
+                method:"POST",
+                body,
+            })
+        })
     }),
 });
 
@@ -68,4 +86,7 @@ export const {
     useUploadAnswersMutation,
     useGetLeaderBoardQuery,
     useAddQuestionMutation,
+    useGetAvailableQuizQuery,
+    useGetAllQuizQuery,
+    useAddQuizMutation
 } = api;

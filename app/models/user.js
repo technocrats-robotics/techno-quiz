@@ -42,6 +42,12 @@ const user = new mongoose.Schema({
         type: String,
         required: true,
     },
+    attemptedQuiz: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Quiz",
+        },
+    ],
 });
 
 user.pre("save", async function (next) {

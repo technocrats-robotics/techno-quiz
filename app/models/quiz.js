@@ -9,6 +9,12 @@ const quiz = new mongoose.Schema({
         type: String,
         required: true,
     },
+    noOfQuestions:
+    {
+       type:Number,
+       required:true,
+    }
+    ,
     questions: [
         {
             type: mongoose.Schema.Types.ObjectId,
@@ -28,7 +34,7 @@ const quiz = new mongoose.Schema({
         default: () => Date.now(),
     },
     department: {
-        type: Number,
+        type: String,
         required: true,
     },
     adminId: {

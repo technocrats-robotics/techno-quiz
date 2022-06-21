@@ -2,7 +2,7 @@ const Quiz = require("../../models/quiz");
 const updateQuestions = require("../services/updateQuestion");
 
 const addQuiz = (req, res) => {
-    const { name, description, questions, start, end, department } = req.body;
+    const { name, description, questions, start, end, department,noOfQuestions } = req.body;
     const quiz = new Quiz({
         name,
         description,
@@ -10,6 +10,7 @@ const addQuiz = (req, res) => {
         start,
         end,
         department,
+        noOfQuestions
     });
     quiz.save((err, quiz) => {
         if (err) {

@@ -54,7 +54,8 @@ const evaluateAnswer = async (req, res) => {
             message: "Evaluation completed",
         });
 
-        const quizDetails = await Quiz.findOne({ quizId });
+        const quizDetails = await Quiz.findById(quizId);
+        console.log(quizDetails);
         const newInstance = new latestQuizModel({
             quizId,
             department: quizDetails.department,

@@ -104,7 +104,7 @@ function App() {
                         />
                         <Route
                             exact
-                            path="/leaderboard/:dept"
+                            path="/leaderboard/"
                             element={<Leaderboard />}
                         />
                         {/* Admin routes */}

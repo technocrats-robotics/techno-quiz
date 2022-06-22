@@ -10,9 +10,9 @@ import { Box } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import HeaderQuiz from "../components/QuizPage/HeaderQuiz";
 import Ranking from "../components/LeaderBoard/Ranking";
+import axios from "axios";
 
 // Table imports
-
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableContainer from "@mui/material/TableContainer";
@@ -23,11 +23,9 @@ import { useGetLeaderBoardQuery } from "../app/services/api";
 import { useParams } from "react-router-dom";
 
 function Leaderboard() {
-    const { dept } = useParams();
     const [department, setDepartment] = useState("electrical");
-    const { data, isLoading, isSuccess } = useGetLeaderBoardQuery(dept);
-    console.log(data);
 
+    const [data, setData] = useState(null);
     const rows = [
         createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
         createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
@@ -39,10 +37,23 @@ function Leaderboard() {
     function createData(name, calories, fat, carbs, protein) {
         return { name, calories, fat, carbs, protein };
     }
-    // useEffect(() => {
-    //     const { data, isLoading, isSuccess } =
-    //         useGetLeaderBoardQuery(department);
-    // }, [department]);
+    useEffect(async () => {
+        try {
+            const response = await axios.get(
+                `/api/test/leaderboard/${department}`,
+                {
+                    headers: {
+                        "auth-token": localStorage.getItem("token"),
+                    },
+                }
+            );
+            setData(response.data);
+            console.log(data);
+        } catch (err) {
+            console.log(err);
+            setData(null);
+        }
+    }, [department]);
 
     return (
         <>
@@ -73,7 +84,10 @@ function Leaderboard() {
                                 backgroundColor: "white",
                             }}
                             value={department}
-                            onChange={(e) => setDepartment(e.target.value)}
+                            onChange={(e) => {
+                                setDepartment(() => e.target.value);
+                                console.log(department);
+                            }}
                         >
                             <MenuItem value={"electrical"}>Electrical</MenuItem>
                             <MenuItem value={"programming"}>
@@ -110,7 +124,7 @@ function Leaderboard() {
                                     width: "100%",
                                 }}
                             >
-                                {data && data[1].userId.name.split(" ")[0]}
+                                {data && data[1]?.userId.name.split(" ")[0]}
                             </Typography>
                             <img
                                 src="/leaderBoard2.svg"

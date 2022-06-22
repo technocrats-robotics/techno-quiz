@@ -26,10 +26,11 @@ const getResult = async (req, res) => {
 const getLeaderboard = async (req, res) => {
     let department = req.params.department;
     try {
+        console.log(department);
         const newInstance = await latestQuizModel
             .find({ department })
             .sort({ evaluatedOn: -1 });
-        console.log(newInstance[0]);
+        console.log(newInstance[0].quizId);
         const leaderBoardResult = await resultModel
             .find({ quizId: newInstance[0].quizId })
             .sort({ score: -1 })
@@ -37,7 +38,7 @@ const getLeaderboard = async (req, res) => {
                 path: "userId",
                 select: "username name",
             });
-        console.log(leaderBoardResult);
+        // console.log(leaderBoardResult);
 
         res.status(200).json(leaderBoardResult);
     } catch (err) {

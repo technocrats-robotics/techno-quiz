@@ -6,7 +6,6 @@ import LoginModal from "./LoginModal";
 import RegisterModal from "./RegisterModal";
 import { setUserState } from "../../features/Auth/authSlice";
 import Alert from "@mui/material/Alert";
-import CloseIcon from "@mui/icons-material/Close";
 import { useNavigate } from "react-router-dom";
 
 function AuthModal({ isActive, setIsActive }) {

@@ -59,7 +59,7 @@ export default function SideBar() {
                     </CTypography>
                 </Link>
                 <Link
-                    to="/leaderboard/:quizId"
+                    to="/leaderboard/62b3340d55fd97e0d427b39d"
                     style={{ textDecoration: "none" }}
                 >
                     <CTypography> Leaderboard </CTypography>
@@ -68,7 +68,7 @@ export default function SideBar() {
                     <CTypography> Quiz Tracks</CTypography>
                 </Link>
                 {/* <Link> */}
-                    <CTypography> View Attempts </CTypography>
+                <CTypography> View Attempts </CTypography>
                 {/* </Link> */}
                 <IconButton
                     edge="start"

@@ -1,1 +1,2 @@
-1) Duration of quiz, handling user disconnection during quiz has to be addressed.
+
+1) Question linking (SUPER IMPORTANT)

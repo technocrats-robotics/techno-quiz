@@ -1,19 +1,20 @@
 const answerModel = require("../../models/answer");
+const { latestQuizModel } = require("../../models/latestQuiz");
+const Quiz = require("../../models/quiz");
 const resultModel = require("../../models/result");
 
 const evaluateScore = async (answerArray) => {
     // it will loop through the whole array
-    answerArray.forEach((answerObject) => {               
+    answerArray.forEach((answerObject) => {
         // each element will be a object of user attempt
         // hence we have score evaluation is done inside here
         let score = 0;
         answerObject.answers.forEach((answer) => {
-            console.log(answer);
             if (answer.userAnswer === answer.questionId.answer) {
                 score++;
             }
         });
-        // For each user we have to create a result object 
+        // For each user we have to create a result object
         const result = saveResult(
             score,
             answerObject.quizId,
@@ -44,13 +45,23 @@ const evaluateAnswer = async (req, res) => {
     const quizId = req.params.quizId;
     try {
         const answerArray = await answerModel.find({ quizId }).populate({
-            path: "answers.questionId",
+            path: "answers.questionId quizId",
         });
+        await Quiz.findByIdAndUpdate(quizId,{isEvaluated:true})
         console.log(answerArray);
+        // const department = answerArray
         await evaluateScore(answerArray);
         res.status(200).json({
             message: "Evaluation completed",
         });
+
+        const quizDetails = await Quiz.findById(quizId);
+        console.log(quizDetails);
+        const newInstance = new latestQuizModel({
+            quizId,
+            department: quizDetails.department,
+        });
+        await newInstance.save();
     } catch (err) {
         console.log(err);
         res.status(200).send(err);

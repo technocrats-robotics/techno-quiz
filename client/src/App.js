@@ -1,8 +1,6 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
-
-
 import Box from "@mui/material/Box";
 // pages
 import Homepage from "./pages/Homepage";
@@ -52,25 +50,53 @@ function App() {
                         />
                         <Route exact path="/about" element={<About />} />
                         <Route exact path="/user" element={<UserDashboard />} />
-                        <Route exact path="/attemptquiz" element={<AttemptQuiz />} />
-                        <Route exact path="/selectquiz" element={<SelectQuiz />} />
+                        <Route
+                            exact
+                            path="/attemptquiz"
+                            element={<AttemptQuiz />}
+                        />
+                        <Route
+                            exact
+                            path="/selectquiz"
+                            element={<SelectQuiz />}
+                        />
                         <Route
                             exact
                             path="/admin"
                             element={<AdminDashboard />}
                         />
+                        <Route exact path="/addquiz" element={<AddQuiz />} />
                         <Route
                             exact
-                            path="/addquiz"
-                            element={<AddQuiz />}
+                            path="/addquiz/:quizid"
+                            element={<FinalQuiz />}
                         />
-                        <Route exact path="/addquiz/:quizid" element={<FinalQuiz />} />
                         <Route exact path="/addques" element={<AddQues />} />
-                        <Route exact path="/managequiz" element={<ManageQuiz />} />
-                        <Route exact path="/modifyquiz" element={<ModifyQuiz />} />
-                        <Route exact path="/modifyquiz/:deptid" element={<ModifyDeptQuiz />} />
-                        <Route exact path="/manageques" element={<ManageQues />} />
-                        <Route exact path="/schedulequiz/:quizid" element={<ScheduleQuiz />} />
+                        <Route
+                            exact
+                            path="/managequiz"
+                            element={<ManageQuiz />}
+                        />
+                        <Route
+                            exact
+                            path="/modifyquiz"
+                            element={<ModifyQuiz />}
+                        />
+                        <Route
+                            exact
+                            path="/modifyquiz/:deptid"
+                            element={<ModifyDeptQuiz />}
+                        />
+                        <Route
+                            exact
+                            path="/manageques"
+                            element={<ManageQues />}
+                        />
+                        <Route
+                            exact
+                            path="/schedulequiz/:quizid"
+                            element={<ScheduleQuiz />}
+                        />
                         <Route
                             exact
                             path="/quiz/:quizId"
@@ -78,7 +104,7 @@ function App() {
                         />
                         <Route
                             exact
-                            path="/leaderboard/:quizId"
+                            path="/leaderboard/"
                             element={<Leaderboard />}
                         />
                         {/* Admin routes */}

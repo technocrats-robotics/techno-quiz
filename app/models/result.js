@@ -11,12 +11,16 @@ const resultSchema = new mongoose.Schema({
         ref: "Quiz",
         required: true,
     },
-    score:{
-        type:Number,
-        default:0
-    }
+    score: {
+        type: Number,
+        default: 0,
+    },
+    evaluatedOn: {
+        type: Date,
+        default: () => Date.now(),
+    },
 });
 
 const resultModel = mongoose.model("Result", resultSchema);
 
-module.exports=resultModel
+module.exports = resultModel;

@@ -1,4 +1,5 @@
 const Mongoose = require("mongoose");
+const { latestQuizModel } = require("../../models/latestQuiz");
 const resultModel = require("../../models/result");
 
 const getResult = async (req, res) => {
@@ -23,20 +24,21 @@ const getResult = async (req, res) => {
 };
 
 const getLeaderboard = async (req, res) => {
-    let quizId = req.params.quizId;
+    let department = req.params.department;
     try {
-        quizId = Mongoose.Types.ObjectId(quizId);
-
+        console.log(department);
+        const newInstance = await latestQuizModel
+            .find({ department })
+            .sort({ evaluatedOn: -1 });
+        console.log(newInstance[0].quizId);
         const leaderBoardResult = await resultModel
-            .find({
-                quizId,
-            })
+            .find({ quizId: newInstance[0].quizId })
             .sort({ score: -1 })
             .populate({
                 path: "userId",
                 select: "username name",
             });
-        console.log(leaderBoardResult);
+        // console.log(leaderBoardResult);
 
         res.status(200).json(leaderBoardResult);
     } catch (err) {

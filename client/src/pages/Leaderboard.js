@@ -1,11 +1,18 @@
-import { Container, Grid, TableCell, Typography } from "@mui/material";
+import {
+    Container,
+    Grid,
+    MenuItem,
+    Select,
+    TableCell,
+    Typography,
+} from "@mui/material";
 import { Box } from "@mui/system";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import HeaderQuiz from "../components/QuizPage/HeaderQuiz";
 import Ranking from "../components/LeaderBoard/Ranking";
+import axios from "axios";
 
 // Table imports
-
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableContainer from "@mui/material/TableContainer";
@@ -16,12 +23,9 @@ import { useGetLeaderBoardQuery } from "../app/services/api";
 import { useParams } from "react-router-dom";
 
 function Leaderboard() {
-    const { quizId } = useParams();
-    console.log(quizId);
+    const [department, setDepartment] = useState("electrical");
 
-    const { data, isLoading, isSuccess } = useGetLeaderBoardQuery(quizId);
-    console.log(data);
-
+    const [data, setData] = useState(null);
     const rows = [
         createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
         createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
@@ -33,6 +37,23 @@ function Leaderboard() {
     function createData(name, calories, fat, carbs, protein) {
         return { name, calories, fat, carbs, protein };
     }
+    useEffect(async () => {
+        try {
+            const response = await axios.get(
+                `/api/test/leaderboard/${department}`,
+                {
+                    headers: {
+                        "auth-token": localStorage.getItem("token"),
+                    },
+                }
+            );
+            setData(response.data);
+            console.log(data);
+        } catch (err) {
+            console.log(err);
+            setData(null);
+        }
+    }, [department]);
 
     return (
         <>
@@ -51,23 +72,31 @@ function Leaderboard() {
                 }}
             >
                 <Box>
-                    <Typography
-                        variant="h3"
-                        component="h3"
-                        align="center"
-                        color="#FFFFFF"
+                    <Box
+                        sx={{
+                            width: "100%",
+                            display: "flex",
+                            justifyContent: "center",
+                        }}
                     >
-                        Heading
-                    </Typography>
-
-                    <Typography
-                        variant="h6"
-                        component="h6"
-                        align="center"
-                        color="#FFFFFF"
-                    >
-                        Programming
-                    </Typography>
+                        <Select
+                            sx={{
+                                backgroundColor: "white",
+                            }}
+                            value={department}
+                            onChange={(e) => {
+                                setDepartment(() => e.target.value);
+                                console.log(department);
+                            }}
+                        >
+                            <MenuItem value={"electrical"}>Electrical</MenuItem>
+                            <MenuItem value={"programming"}>
+                                Programming
+                            </MenuItem>
+                            <MenuItem value={"mechanical"}>Mechanical</MenuItem>
+                            <MenuItem value={"robotics"}>Robotics</MenuItem>
+                        </Select>
+                    </Box>
                     <Box
                         sx={{
                             justifyContent: "center",
@@ -95,7 +124,7 @@ function Leaderboard() {
                                     width: "100%",
                                 }}
                             >
-                                {data && data[1].userId.name}
+                                {data && data[1]?.userId.name.split(" ")[0]}
                             </Typography>
                             <img
                                 src="/leaderBoard2.svg"
@@ -125,7 +154,7 @@ function Leaderboard() {
                                     width: "100%",
                                 }}
                             >
-                                {data && data[0].userId.name}
+                                {data && data[0]?.userId.name.split(" ")[0]}
                             </Typography>
                             <img
                                 src="/leaderBoard1.svg"
@@ -153,7 +182,7 @@ function Leaderboard() {
                                     width: "100%",
                                 }}
                             >
-                                {data && data[2].userId.name}
+                                {data && data[2]?.userId.name.split(" ")[0]}
                             </Typography>
                             <img
                                 src="/leaderBoard3.svg"

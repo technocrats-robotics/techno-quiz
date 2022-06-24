@@ -48,6 +48,10 @@ const quiz = new mongoose.Schema({
         type: Boolean,
         default: false,
     },
+    isEvaluated: {
+        type: Boolean,
+        default: false,
+    },
 });
 
 const Quiz = mongoose.model("Quiz", quiz);

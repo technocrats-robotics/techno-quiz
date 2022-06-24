@@ -47,6 +47,7 @@ const evaluateAnswer = async (req, res) => {
         const answerArray = await answerModel.find({ quizId }).populate({
             path: "answers.questionId quizId",
         });
+        await Quiz.findByIdAndUpdate(quizId,{isEvaluated:true})
         console.log(answerArray);
         // const department = answerArray
         await evaluateScore(answerArray);

@@ -3,16 +3,31 @@ import Badge from "../Badge";
 import React from "react";
 import { Link } from "react-router-dom";
 import { borderRadius } from "@mui/system";
-import { usePublishQuizMutation } from "../../../app/services/api";
+import { useEvaluateQuizMutation, usePublishQuizMutation } from "../../../app/services/api";
 
 function QuizCard({ data }) {
     const [publish,{isLoading,isError,isSuccess}]=usePublishQuizMutation()
+    const [evaluate,{}]=useEvaluateQuizMutation()
 
     const handlePublish=async(event)=>{
         event.preventDefault()
         
         try{
             const response=await publish({quizId:data._id}).unwrap()
+            console.log(response)
+            alert('success')
+        }
+        catch(err){
+            alert('failed')
+            console.log(err)
+        }
+      
+    }
+    const handleEvaluate=async(event)=>{
+        event.preventDefault()
+        
+        try{
+            const response=await evaluate(data._id).unwrap()
             console.log(response)
             alert('success')
         }
@@ -87,10 +102,6 @@ function QuizCard({ data }) {
                     </Button>
                 </Link>
 
-                <Link
-                    to={`/scheduleQuiz/${data._id}`}
-                    style={{ textDecoration: "none" }}
-                >
                     {/* <Badge
                     content="Select"
                     logout
@@ -103,7 +114,7 @@ function QuizCard({ data }) {
                 >
                     <Button sx={{ width: "100%" }}></Button>
                 </Badge> */}
-                    <Button
+                {!data.isEvaluated && <Button
                         sx={{
                             color: "#000",
                             backgroundColor: "#00cc00",
@@ -111,10 +122,24 @@ function QuizCard({ data }) {
                             paddingLeft: "1.5rem",
                             paddingRight: "1.5rem",
                         }}
+                        onClick={handleEvaluate}
                     >
                         Evaluate
-                    </Button>
-                </Link>
+                    </Button>} 
+                    {data.isEvaluated && <Button
+                        sx={{
+                            color: "#000",
+                            backgroundColor: "#00cc00",
+                            borderRadius: "1.5rem",
+                            paddingLeft: "1.5rem",
+                            paddingRight: "1.5rem",
+                        }}
+                        
+                    >
+                        Evaluated
+                    </Button>} 
+                    
+               
 
                     {/* <Badge
                     content="Select"
@@ -128,7 +153,7 @@ function QuizCard({ data }) {
                 >
                     <Button sx={{ width: "100%" }}></Button>
                 </Badge> */}
-                    <Button
+                {!data.isPublished && <Button
                         sx={{
                             color: "#000",
                             backgroundColor: "#ff3300",
@@ -139,7 +164,20 @@ function QuizCard({ data }) {
                         onClick={handlePublish}
                     >
                         PUBLISH
-                    </Button>
+                    </Button>}
+                    {data.isPublished && <Button
+                        sx={{
+                            color: "#000",
+                            backgroundColor: "#ff3300",
+                            borderRadius: "1.5rem",
+                            paddingLeft: "1.5rem",
+                            paddingRight: "1.5rem",
+                        }}
+
+                    >
+                        Already Published
+                    </Button>}
+                    
                 
             </Box>
         </Box>

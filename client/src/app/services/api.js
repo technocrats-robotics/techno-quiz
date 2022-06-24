@@ -74,6 +74,13 @@ export const api = createApi({
                 method:"POST",
                 body,
             })
+        }),
+        publishQuiz:builder.mutation({
+            query:(body)=>({
+                url:"/api/quiz/publish",
+                method:"PUT",
+                body,
+            })
         })
     }),
 });
@@ -88,5 +95,6 @@ export const {
     useAddQuestionMutation,
     useGetAvailableQuizQuery,
     useGetAllQuizQuery,
-    useAddQuizMutation
+    useAddQuizMutation,
+    usePublishQuizMutation,
 } = api;

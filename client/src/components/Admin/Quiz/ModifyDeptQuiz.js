@@ -3,8 +3,25 @@ import Badge from "../Badge";
 import React from "react";
 import { Link } from "react-router-dom";
 import { borderRadius } from "@mui/system";
+import { usePublishQuizMutation } from "../../../app/services/api";
 
 function QuizCard({ data }) {
+    const [publish,{isLoading,isError,isSuccess}]=usePublishQuizMutation()
+
+    const handlePublish=async(event)=>{
+        event.preventDefault()
+        
+        try{
+            const response=await publish({quizId:data._id}).unwrap()
+            console.log(response)
+            alert('success')
+        }
+        catch(err){
+            alert('failed')
+            console.log(err)
+        }
+      
+    }
     return (
         <Box
             sx={{
@@ -12,12 +29,11 @@ function QuizCard({ data }) {
                 borderRadius: "30px",
                 // width: "70%",
                 marginBottom: "5%",
-                display:'flex',
-                flexDirection:'column',
-                justifyContent:'center',
-                alignItems:'center',
-                paddingBottom:'1.5rem'
-                
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+                paddingBottom: "1.5rem",
             }}
         >
             <br></br>
@@ -41,11 +57,12 @@ function QuizCard({ data }) {
             >
                 {data.description}
             </Typography>
-            <Link
-                to={`/scheduleQuiz/${data._id}`}
-                style={{ textDecoration: "none" }}
-            >
-                {/* <Badge
+            <Box>
+                <Link
+                    to={`/scheduleQuiz/${data._id}`}
+                    style={{ textDecoration: "none" }}
+                >
+                    {/* <Badge
                     content="Select"
                     logout
                     style={{
@@ -57,16 +74,74 @@ function QuizCard({ data }) {
                 >
                     <Button sx={{ width: "100%" }}></Button>
                 </Badge> */}
-                <Button sx={{
-                    color:"#000",
-                    backgroundColor:"#FFE500",
-                    borderRadius:'1.5rem',
-                    paddingLeft:'1.5rem',
-                    paddingRight:'1.5rem'
+                    <Button
+                        sx={{
+                            color: "#000",
+                            backgroundColor: "#FFE500",
+                            borderRadius: "1.5rem",
+                            paddingLeft: "1.5rem",
+                            paddingRight: "1.5rem",
+                        }}
+                    >
+                        Select
+                    </Button>
+                </Link>
 
+                <Link
+                    to={`/scheduleQuiz/${data._id}`}
+                    style={{ textDecoration: "none" }}
+                >
+                    {/* <Badge
+                    content="Select"
+                    logout
+                    style={{
+                        color: "#000",
+                        textAlign: "center",
+                        cursor: "pointer",
+                        
+                    }}
+                >
+                    <Button sx={{ width: "100%" }}></Button>
+                </Badge> */}
+                    <Button
+                        sx={{
+                            color: "#000",
+                            backgroundColor: "#00cc00",
+                            borderRadius: "1.5rem",
+                            paddingLeft: "1.5rem",
+                            paddingRight: "1.5rem",
+                        }}
+                    >
+                        Evaluate
+                    </Button>
+                </Link>
 
-                }}>Select</Button>
-            </Link>
+                    {/* <Badge
+                    content="Select"
+                    logout
+                    style={{
+                        color: "#000",
+                        textAlign: "center",
+                        cursor: "pointer",
+                        
+                    }}
+                >
+                    <Button sx={{ width: "100%" }}></Button>
+                </Badge> */}
+                    <Button
+                        sx={{
+                            color: "#000",
+                            backgroundColor: "#ff3300",
+                            borderRadius: "1.5rem",
+                            paddingLeft: "1.5rem",
+                            paddingRight: "1.5rem",
+                        }}
+                        onClick={handlePublish}
+                    >
+                        PUBLISH
+                    </Button>
+                
+            </Box>
         </Box>
     );
 }
@@ -97,12 +172,12 @@ function Content({ quiz }) {
             >
                 Select the Quiz
             </Typography>
-            <Grid container spacing={2} sx={{mx:'1.5rem'}}>
+            <Grid container spacing={2} sx={{ mx: "1.5rem" }}>
                 <Grid item xs={4}>
-            {quiz.map((item) => (
-                <QuizCard key={item._id} data={item} />
-            ))}
-            </Grid>
+                    {quiz.map((item) => (
+                        <QuizCard key={item._id} data={item} />
+                    ))}
+                </Grid>
             </Grid>
         </Box>
     );

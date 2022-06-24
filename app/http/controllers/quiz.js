@@ -94,12 +94,13 @@ const getAllQuiz = async (req, res) => {
 const publishQuiz = async (req, res) => {
     const quizId = req.body.quizId;
     try {
-        const quiz = await Quiz.findOne({ quizId });
+        const quiz = await Quiz.findById(quizId);
+        console.log(quiz)
         quiz.isPublished = true;
         quiz.save();
-        res.status(200).send("PUBLISHED");
+        res.status(200).json({msg:"PUBLISHED"});
     } catch (error) {
-        res.status(500).send("ERROR");
+        res.status(500).json({msg:"ERROR"});
     }
 };
 module.exports = {

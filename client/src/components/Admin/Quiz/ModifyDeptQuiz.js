@@ -1,7 +1,8 @@
-import { Box, Typography, Button } from "@mui/material";
+import { Box, Typography, Button, Grid } from "@mui/material";
 import Badge from "../Badge";
 import React from "react";
 import { Link } from "react-router-dom";
+import { borderRadius } from "@mui/system";
 
 function QuizCard({ data }) {
     return (
@@ -9,8 +10,14 @@ function QuizCard({ data }) {
             sx={{
                 backgroundColor: "#f2f2f4",
                 borderRadius: "30px",
-                width: "70%",
+                // width: "70%",
                 marginBottom: "5%",
+                display:'flex',
+                flexDirection:'column',
+                justifyContent:'center',
+                alignItems:'center',
+                paddingBottom:'1.5rem'
+                
             }}
         >
             <br></br>
@@ -38,17 +45,27 @@ function QuizCard({ data }) {
                 to={`/scheduleQuiz/${data._id}`}
                 style={{ textDecoration: "none" }}
             >
-                <Button sx={{ width: "100%" }}>
-                    <Badge
-                        content="Select"
-                        logout
-                        style={{
-                            color: "#000",
-                            textAlign: "center",
-                            cursor: "pointer",
-                        }}
-                    />
-                </Button>
+                {/* <Badge
+                    content="Select"
+                    logout
+                    style={{
+                        color: "#000",
+                        textAlign: "center",
+                        cursor: "pointer",
+                        
+                    }}
+                >
+                    <Button sx={{ width: "100%" }}></Button>
+                </Badge> */}
+                <Button sx={{
+                    color:"#000",
+                    backgroundColor:"#FFE500",
+                    borderRadius:'1.5rem',
+                    paddingLeft:'1.5rem',
+                    paddingRight:'1.5rem'
+
+
+                }}>Select</Button>
             </Link>
         </Box>
     );
@@ -80,9 +97,13 @@ function Content({ quiz }) {
             >
                 Select the Quiz
             </Typography>
+            <Grid container spacing={2} sx={{mx:'1.5rem'}}>
+                <Grid item xs={4}>
             {quiz.map((item) => (
                 <QuizCard key={item._id} data={item} />
             ))}
+            </Grid>
+            </Grid>
         </Box>
     );
 }

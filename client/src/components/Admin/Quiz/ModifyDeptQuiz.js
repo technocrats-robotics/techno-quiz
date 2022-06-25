@@ -18,7 +18,7 @@ function QuizCard({ data }) {
             alert('success')
         }
         catch(err){
-            alert('failed')
+            alert(err.data.err)
             console.log(err)
         }
       
@@ -210,12 +210,14 @@ function Content({ quiz }) {
             >
                 Select the Quiz
             </Typography>
-            <Grid container spacing={2} sx={{ mx: "1.5rem" }}>
-                <Grid item xs={4}>
+            <Grid container spacing={2} sx={{ mx: "3rem" }}>
+                
                     {quiz.map((item) => (
+                        <Grid item xs={4}>
                         <QuizCard key={item._id} data={item} />
+                        </Grid>
                     ))}
-                </Grid>
+               
             </Grid>
         </Box>
     );

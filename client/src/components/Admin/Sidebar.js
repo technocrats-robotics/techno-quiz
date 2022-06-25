@@ -94,6 +94,7 @@ function SideBar() {
                 <Button
                     onClick={() => {
                         dispatch(removeUserState());
+                        localStorage.removeItem('token')
                         navigator("/");
                     }}
                 >

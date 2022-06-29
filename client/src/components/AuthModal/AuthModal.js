@@ -4,10 +4,10 @@ import { useDispatch } from "react-redux";
 import { useLoginMutation, useRegisterMutation } from "../../app/services/api";
 import LoginModal from "./LoginModal";
 import RegisterModal from "./RegisterModal";
-import { setUserState } from "../../features/Auth/authSlice";
+import { selectCurrentUser, setUserState } from "../../features/Auth/authSlice";
 import Alert from "@mui/material/Alert";
-import CloseIcon from "@mui/icons-material/Close";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function AuthModal({ isActive, setIsActive }) {
     const [login, { isLoading }] = useLoginMutation();
@@ -48,7 +48,11 @@ function AuthModal({ isActive, setIsActive }) {
             dispatch(setUserState(response));
             localStorage.setItem("token", response.token);
             alert("Successful");
-            navigator("/admin");
+            if (response.responseUser.role === "admin") {
+                navigator("/admin");
+            } else {
+                navigator("/user");
+            }
         } catch (err) {
             console.log(err);
             alert("Error");

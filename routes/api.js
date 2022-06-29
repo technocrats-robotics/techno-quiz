@@ -76,7 +76,7 @@ const api = (app) => {
     app.put("/api/test/evaluate/:quizId", user, admin, evaluateAnswer);
 
     app.get("/api/test/result/:quizId", user, getResult);
-    app.get("/api/test/leaderboard/:quizId", user, getLeaderboard);
+    app.get("/api/test/leaderboard/:department", user, getLeaderboard);
 };
 
 module.exports = api;

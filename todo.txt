@@ -1,1 +1,3 @@
-1) Duration of quiz, handling user disconnection during quiz has to be addressed.
+1) Evaluation UI/some sort of buttons.
+2) Publish of Quiz UI. (UI+BACKEND) 
+3) Question linking (SUPER IMPORTANT)

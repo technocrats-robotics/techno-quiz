@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
@@ -75,8 +76,10 @@ export default function About() {
                                 >
                                     Mechanical
                                 </Typography>
+                                
                                 <Button
                                     variant="outlined"
+                                    component={Link} to="/department/4"
                                     style={{
                                         color: "#fffd1b",
                                         border: "2px solid #fffd1b",
@@ -84,6 +87,7 @@ export default function About() {
                                 >
                                     Click Me
                                 </Button>
+                                
                             </Paper>
                         </Grid>
                         <Grid item xs={12} sm={6} md={6} lg={3}>
@@ -115,6 +119,7 @@ export default function About() {
                                 </Typography>
                                 <Button
                                     variant="outlined"
+                                    component={Link} to="/department/3"
                                     style={{
                                         color: "#fffd1b",
                                         border: "2px solid #fffd1b",
@@ -144,6 +149,7 @@ export default function About() {
                                 <Typography
                                     variant="h4"
                                     component="h1"
+                                   
                                     sx={{
                                         color: "white",
                                         marginBottom: "5rem",
@@ -153,6 +159,7 @@ export default function About() {
                                 </Typography>
                                 <Button
                                     variant="outlined"
+                                    component={Link} to="/department/2"
                                     style={{
                                         color: "#fffd1b",
                                         border: "2px solid #fffd1b",
@@ -191,6 +198,7 @@ export default function About() {
                                 </Typography>
                                 <Button
                                     variant="outlined"
+                                    component={Link} to="/department/1"
                                     style={{
                                         color: "#fffd1b",
                                         border: "2px solid #fffd1b",

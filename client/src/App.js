@@ -52,6 +52,7 @@ function App() {
                         />
                         <Route exact path="/about" element={<About />} />
                         <Route exact path="/user" element={<UserDashboard />} />
+                        <Route exact path="/department/:id" element={<Department />} />
                         <Route exact path="/attemptquiz" element={<AttemptQuiz />} />
                         <Route exact path="/selectquiz" element={<SelectQuiz />} />
                         <Route

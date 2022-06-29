@@ -7,6 +7,8 @@ import SideBar from "../components/Admin/Sidebar";
 import { selectCurrentUser } from "../features/Auth/authSlice";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import jwt from "jsonwebtoken"
+
 function AdminDashboard() {
     const [hamburger, setHamburger] = useState(false);
     const theme = useTheme();
@@ -16,7 +18,13 @@ function AdminDashboard() {
     console.log(currentUser);
 
     useEffect(() => {
-        if (!currentUser || currentUser.role !== "admin") {
+        const token=localStorage.getItem('token')
+        console.log(token)
+        const user=jwt.decode(token)
+        console.log(user)
+        
+        
+        if (!user || user.role!='admin') {
             alert("You are not loggedin/authorized");
             navigator("/");
         }

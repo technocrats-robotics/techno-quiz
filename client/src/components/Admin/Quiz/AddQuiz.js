@@ -2,24 +2,25 @@ import { Box, Typography, TextField, Button, MenuItem, responsiveFontSizes } fro
 import { withStyles } from "@mui/styles";
 import Badge from "../Badge";
 import { React, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { useAddQuizMutation } from "../../../app/services/api";
+import { useNavigate } from "react-router-dom";
 
 const departments = [
     {
-        value: "Electrical",
+        value: "electrical",
         label: "Electrical",
     },
     {
-        value: "General Robotics",
+        value: "robotics",
         label: "General Robotics",
     },
     {
-        value: "Programming",
+        value: "programming",
         label: "Programming",
     },
     {
-        value: "Mechanical",
+        value: "mechanical",
         label: "Mechanical",
     },
 ];
@@ -42,10 +43,12 @@ const FTextField = withStyles({
 })(TextField);
 
 function Content() {
-    const [department, setDepartment] = useState("Electrical");
+    const [department, setDepartment] = useState("electrical");
     const handleChange = (event) => {
         setDepartment(event.target.value);
     };
+
+    const navigate=useNavigate();
 
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
@@ -60,6 +63,8 @@ function Content() {
        try{
             const response=await addQuiz({ name, description, start, end, noOfQuestions,department }).unwrap()
             console.log(response)
+            navigate('/admin')
+
 
        }
        catch(err){

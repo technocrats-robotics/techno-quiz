@@ -2,12 +2,11 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
-
+import { Link } from "react-router-dom";
 // components
 import backgroundImg from "../img/bg.svg";
 import Navbar from "../components/Navbar";
 import { Typography } from "@mui/material";
-
 
 function Homepage() {
     return (
@@ -54,10 +53,7 @@ function Homepage() {
                         borderRadius: "1.5rem",
                     }}
                 >
-                    <Typography
-                        variant="h3"
-                        component="h1"
-                    >
+                    <Typography variant="h3" component="h1">
                         Hero Content
                     </Typography>
                 </Box>
@@ -109,7 +105,8 @@ function Homepage() {
                             <Paper
                                 elevation={12}
                                 style={{
-                                    background: "linear-gradient(145.74deg, rgba(41, 42, 46, 0.6) -11.13%, rgba(218, 218, 218, 0.37) 25.01%, rgba(218, 218, 218, 0.28) 69.34%, rgba(41, 42, 46, 0.62) 119.8%)",
+                                    background:
+                                        "linear-gradient(145.74deg, rgba(41, 42, 46, 0.6) -11.13%, rgba(218, 218, 218, 0.37) 25.01%, rgba(218, 218, 218, 0.28) 69.34%, rgba(41, 42, 46, 0.62) 119.8%)",
                                     height: "40vh",
                                     display: "flex",
                                     flexDirection: "column",
@@ -133,15 +130,17 @@ function Homepage() {
                                 >
                                     Mechanical
                                 </Typography>
-                                <Button
-                                    variant="outlined"
-                                    style={{
-                                        color: "#fffd1b",
-                                        border: "2px solid #fffd1b",
-                                    }}
-                                >
-                                    Click Me
-                                </Button>
+                                <Link to="/department/4">
+                                    <Button
+                                        variant="outlined"
+                                        style={{
+                                            color: "#fffd1b",
+                                            border: "2px solid #fffd1b",
+                                        }}
+                                    >
+                                        Click Me
+                                    </Button>
+                                </Link>
                             </Paper>
                         </Grid>
                         <Grid item xs={12} sm={6} md={6} lg={3}>
@@ -173,15 +172,17 @@ function Homepage() {
                                 >
                                     Electrical
                                 </Typography>
-                                <Button
-                                    variant="outlined"
-                                    style={{
-                                        color: "#fffd1b",
-                                        border: "2px solid #fffd1b",
-                                    }}
-                                >
-                                    Click Me
-                                </Button>
+                                <Link to="/department/3">
+                                    <Button
+                                        variant="outlined"
+                                        style={{
+                                            color: "#fffd1b",
+                                            border: "2px solid #fffd1b",
+                                        }}
+                                    >
+                                        Click Me
+                                    </Button>
+                                </Link>
                             </Paper>
                         </Grid>
                         <Grid item xs={12} sm={6} md={6} lg={3}>
@@ -213,15 +214,17 @@ function Homepage() {
                                 >
                                     Programming
                                 </Typography>
-                                <Button
-                                    variant="outlined"
-                                    style={{
-                                        color: "#fffd1b",
-                                        border: "2px solid #fffd1b",
-                                    }}
-                                >
-                                    Click Me
-                                </Button>
+                                <Link to="/department/2">
+                                    <Button
+                                        variant="outlined"
+                                        style={{
+                                            color: "#fffd1b",
+                                            border: "2px solid #fffd1b",
+                                        }}
+                                    >
+                                        Click Me
+                                    </Button>
+                                </Link>
                             </Paper>
                         </Grid>
                         <Grid item xs={12} sm={6} md={6} lg={3}>
@@ -253,15 +256,17 @@ function Homepage() {
                                 >
                                     General
                                 </Typography>
-                                <Button
-                                    variant="outlined"
-                                    style={{
-                                        color: "#fffd1b",
-                                        border: "2px solid #fffd1b",
-                                    }}
-                                >
-                                    Click Me
-                                </Button>
+                                <Link to="/department/1">
+                                    <Button
+                                        variant="outlined"
+                                        style={{
+                                            color: "#fffd1b",
+                                            border: "2px solid #fffd1b",
+                                        }}
+                                    >
+                                        Click Me
+                                    </Button>
+                                </Link>
                             </Paper>
                         </Grid>
                     </Grid>

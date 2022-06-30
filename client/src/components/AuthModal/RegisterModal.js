@@ -291,7 +291,10 @@ function RegisterModal({
                         {/* Department */}
 
                         <FormControl>
-                            <FormLabel id="demo-radio-buttons-group-label">
+                            <FormLabel
+                                id="demo-radio-buttons-group-label"
+                                style={{ color: "#FFF", fontWeight: "bolder" }}
+                            >
                                 Department
                             </FormLabel>
 
@@ -306,7 +309,16 @@ function RegisterModal({
                             >
                                 <FormControlLabel
                                     value="Programming"
-                                    control={<Radio />}
+                                    control={
+                                        <Radio
+                                            sx={{
+                                                color: "#ffe500",
+                                                "&.Mui-checked": {
+                                                    color: "#ffe500",
+                                                },
+                                            }}
+                                        />
+                                    }
                                     label="Programming"
                                     onClick={(event) => {
                                         setCredentials({
@@ -317,7 +329,16 @@ function RegisterModal({
                                 />
                                 <FormControlLabel
                                     value="Electrical"
-                                    control={<Radio />}
+                                    control={
+                                        <Radio
+                                            sx={{
+                                                color: "#ffe500",
+                                                "&.Mui-checked": {
+                                                    color: "#ffe500",
+                                                },
+                                            }}
+                                        />
+                                    }
                                     label="Electrical"
                                     onClick={(event) => {
                                         setCredentials({
@@ -328,7 +349,16 @@ function RegisterModal({
                                 />
                                 <FormControlLabel
                                     value="Mechanical"
-                                    control={<Radio />}
+                                    control={
+                                        <Radio
+                                            sx={{
+                                                color: "#ffe500",
+                                                "&.Mui-checked": {
+                                                    color: "#ffe500",
+                                                },
+                                            }}
+                                        />
+                                    }
                                     label="Mechanical"
                                     onClick={(event) => {
                                         setCredentials({
@@ -339,7 +369,16 @@ function RegisterModal({
                                 />
                                 <FormControlLabel
                                     value="Management"
-                                    control={<Radio />}
+                                    control={
+                                        <Radio
+                                            sx={{
+                                                color: "#ffe500",
+                                                "&.Mui-checked": {
+                                                    color: "#ffe500",
+                                                },
+                                            }}
+                                        />
+                                    }
                                     label="Management"
                                     onClick={(event) => {
                                         setCredentials({

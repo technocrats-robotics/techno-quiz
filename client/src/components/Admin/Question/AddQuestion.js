@@ -84,21 +84,22 @@ function Content() {
         };
 
         try {
-            const response = await addQuestion(data).unwrap();
-            console.log(response);
-            setIsOpenSuccess(true);
-        } catch (error) {
-            console.log(error);
             if (
-                data.statement != "" ||
-                data.department != "" ||
-                data.options != "" ||
-                data.answer != ""
+                data.statement == "" ||
+                data.department == "" ||
+                data.options == "" ||
+                data.answer == ""
             ) {
                 setIsOpenFailRequired(true);
-            } else {
-                setIsOpenFail(true);
             }
+            else{
+                const response = await addQuestion(data).unwrap();
+                console.log(response);
+                setIsOpenSuccess(true);
+            }
+        } catch (error) {
+            console.log(error);
+            setIsOpenFail(true);
         }
     };
 

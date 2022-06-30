@@ -109,7 +109,7 @@ function App() {
                         />
                         <Route
                             exact
-                            path="/schedulequiz/:quizid"
+                            path="/schedulequiz/:dept/:quizid"
                             element={<ScheduleQuiz />}
                         />
                         <Route

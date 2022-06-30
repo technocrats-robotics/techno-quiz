@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
@@ -53,7 +53,8 @@ export default function About() {
                             <Paper
                                 elevation={12}
                                 style={{
-                                    background: "linear-gradient(145.74deg, rgba(41, 42, 46, 0.6) -11.13%, rgba(218, 218, 218, 0.37) 25.01%, rgba(218, 218, 218, 0.28) 69.34%, rgba(41, 42, 46, 0.62) 119.8%)",
+                                    background:
+                                        "linear-gradient(145.74deg, rgba(41, 42, 46, 0.6) -11.13%, rgba(218, 218, 218, 0.37) 25.01%, rgba(218, 218, 218, 0.28) 69.34%, rgba(41, 42, 46, 0.62) 119.8%)",
                                     height: "40vh",
                                     display: "flex",
                                     flexDirection: "column",
@@ -76,25 +77,25 @@ export default function About() {
                                 >
                                     Mechanical
                                 </Typography>
-                                
-                                <Button
-                                    variant="outlined"
-                                    component={Link} to="/department/4"
-                                    style={{
-                                        color: "#fffd1b",
-                                        border: "2px solid #fffd1b",
-                                    }}
-                                >
-                                    Click Me
-                                </Button>
-                                
+                                <Link to="/department/4">
+                                    <Button
+                                        variant="outlined"
+                                        style={{
+                                            color: "#fffd1b",
+                                            border: "2px solid #fffd1b",
+                                        }}
+                                    >
+                                        Click Me
+                                    </Button>
+                                </Link>
                             </Paper>
                         </Grid>
                         <Grid item xs={12} sm={6} md={6} lg={3}>
                             <Paper
                                 elevation={12}
                                 style={{
-                                    background: "linear-gradient(145.74deg, rgba(41, 42, 46, 0.6) -11.13%, rgba(218, 218, 218, 0.37) 25.01%, rgba(218, 218, 218, 0.28) 69.34%, rgba(41, 42, 46, 0.62) 119.8%)",
+                                    background:
+                                        "linear-gradient(145.74deg, rgba(41, 42, 46, 0.6) -11.13%, rgba(218, 218, 218, 0.37) 25.01%, rgba(218, 218, 218, 0.28) 69.34%, rgba(41, 42, 46, 0.62) 119.8%)",
                                     height: "40vh",
                                     display: "flex",
                                     flexDirection: "column",
@@ -119,7 +120,8 @@ export default function About() {
                                 </Typography>
                                 <Button
                                     variant="outlined"
-                                    component={Link} to="/department/3"
+                                    component={Link}
+                                    to="/department/3"
                                     style={{
                                         color: "#fffd1b",
                                         border: "2px solid #fffd1b",
@@ -133,7 +135,8 @@ export default function About() {
                             <Paper
                                 elevation={12}
                                 style={{
-                                    background: "linear-gradient(145.74deg, rgba(41, 42, 46, 0.6) -11.13%, rgba(218, 218, 218, 0.37) 25.01%, rgba(218, 218, 218, 0.28) 69.34%, rgba(41, 42, 46, 0.62) 119.8%)",
+                                    background:
+                                        "linear-gradient(145.74deg, rgba(41, 42, 46, 0.6) -11.13%, rgba(218, 218, 218, 0.37) 25.01%, rgba(218, 218, 218, 0.28) 69.34%, rgba(41, 42, 46, 0.62) 119.8%)",
                                     height: "40vh",
                                     display: "flex",
                                     flexDirection: "column",
@@ -149,7 +152,6 @@ export default function About() {
                                 <Typography
                                     variant="h4"
                                     component="h1"
-                                   
                                     sx={{
                                         color: "white",
                                         marginBottom: "5rem",
@@ -159,7 +161,8 @@ export default function About() {
                                 </Typography>
                                 <Button
                                     variant="outlined"
-                                    component={Link} to="/department/2"
+                                    component={Link}
+                                    to="/department/2"
                                     style={{
                                         color: "#fffd1b",
                                         border: "2px solid #fffd1b",
@@ -173,7 +176,8 @@ export default function About() {
                             <Paper
                                 elevation={12}
                                 style={{
-                                    background: "linear-gradient(145.74deg, rgba(41, 42, 46, 0.6) -11.13%, rgba(218, 218, 218, 0.37) 25.01%, rgba(218, 218, 218, 0.28) 69.34%, rgba(41, 42, 46, 0.62) 119.8%)",
+                                    background:
+                                        "linear-gradient(145.74deg, rgba(41, 42, 46, 0.6) -11.13%, rgba(218, 218, 218, 0.37) 25.01%, rgba(218, 218, 218, 0.28) 69.34%, rgba(41, 42, 46, 0.62) 119.8%)",
                                     height: "40vh",
                                     display: "flex",
                                     flexDirection: "column",
@@ -198,7 +202,8 @@ export default function About() {
                                 </Typography>
                                 <Button
                                     variant="outlined"
-                                    component={Link} to="/department/1"
+                                    component={Link}
+                                    to="/department/1"
                                     style={{
                                         color: "#fffd1b",
                                         border: "2px solid #fffd1b",

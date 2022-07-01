@@ -12,6 +12,7 @@ const addQuiz = (req, res) => {
         department,
         noOfQuestions
     });
+
     quiz.save((err, quiz) => {
         if (err) {
             return res.json({

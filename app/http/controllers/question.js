@@ -47,9 +47,12 @@ const deleteQuestion = async (req, res) => {
 };
 
 // for admin to fetch all questions
-const getQuestion = async (req, res, next) => {
+const getAvailableQuestions = async (req, res) => {
+    const { department } = req.params;
     try {
-        const ques = await Question.find();
+        const ques = await Question.find({
+            department: department,
+        });
         return res.json({
             status: "Success ! Questions are Fetched",
             data: ques,
@@ -86,7 +89,7 @@ const getQuizQuestions = async (req, res) => {
 
 module.exports = {
     addQuestion,
-    getQuestion,
+    getAvailableQuestions,
     getQuizQuestions,
     deleteQuestion,
 };

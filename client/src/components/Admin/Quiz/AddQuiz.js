@@ -1,25 +1,33 @@
-import { Box, Typography, TextField, Button, MenuItem, responsiveFontSizes } from "@mui/material";
+import {
+    Box,
+    Typography,
+    TextField,
+    Button,
+    MenuItem,
+    Alert,
+    Snackbar,
+} from "@mui/material";
 import { withStyles } from "@mui/styles";
 import Badge from "../Badge";
 import { React, useState } from "react";
-import { Link } from "react-router-dom";
 import { useAddQuizMutation } from "../../../app/services/api";
+import { useNavigate } from "react-router-dom";
 
 const departments = [
     {
-        value: "Electrical",
+        value: "electrical",
         label: "Electrical",
     },
     {
-        value: "General Robotics",
+        value: "robotics",
         label: "General Robotics",
     },
     {
-        value: "Programming",
+        value: "programming",
         label: "Programming",
     },
     {
-        value: "Mechanical",
+        value: "mechanical",
         label: "Mechanical",
     },
 ];
@@ -42,7 +50,12 @@ const FTextField = withStyles({
 })(TextField);
 
 function Content() {
-    const [department, setDepartment] = useState("Electrical");
+    const [department, setDepartment] = useState("electrical");
+    const [isOpenSuccess, setIsOpenSuccess] = useState(false);
+    const [isOpenFail, setIsOpenFail] = useState(false);
+    const [isOpenFailRequired, setIsOpenFailRequired] = useState(false);
+    const [isOpenFailTime, setIsOpenFailTime] = useState(false);
+
     const handleChange = (event) => {
         setDepartment(event.target.value);
     };
@@ -51,20 +64,43 @@ function Content() {
     const [description, setDescription] = useState("");
     const [start, setStart] = useState("");
     const [end, setEnd] = useState("");
-    const [noOfQuestions, setNoOfQuestions] = useState(0);
+    const [noOfQuestions, setNoOfQuestions] = useState(1);
     //const [questions,setName]=useState('')
-    const [addQuiz,{isSuccess,isLoading,isError}]=useAddQuizMutation()
-    const handleSubmit =async (event) => {
+    const [addQuiz, { isSuccess, isLoading, isError }] = useAddQuizMutation();
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log({ name, description, start, end, noOfQuestions });
-       try{
-            const response=await addQuiz({ name, description, start, end, noOfQuestions,department }).unwrap()
-            console.log(response)
-
-       }
-       catch(err){
-            console.log(err)
-       }
+        const data = {
+            name: name,
+            description: description,
+            start: start,
+            end: end,
+            noOfQuestions: noOfQuestions,
+            department: department,
+        };
+        try {
+            if (
+                data.name == "" ||
+                data.description == "" ||
+                data.start == "" ||
+                data.end == "" ||
+                data.noOfQuestions == "" ||
+                data.department == ""
+            ) {
+                setIsOpenFailRequired(true);
+            }
+            else if(
+                data.start>=data.end) {
+                setIsOpenFailTime(true);
+            }
+            else{
+                const response = await addQuiz(data).unwrap();
+                console.log(response);
+                setIsOpenSuccess(true);
+            }
+        } catch (err) {
+            console.log(err);
+            setIsOpenFail(true);
+        }
     };
 
     return (
@@ -77,6 +113,59 @@ function Content() {
                 color: "white",
             }}
         >
+            <Snackbar
+                anchorOrigin={{ vertical: "top", horizontal: "center" }}
+                autoHideDuration={3000}
+                open={isOpenSuccess}
+                onClose={() => {
+                    console.log("Close");
+                    setIsOpenSuccess(false);
+                }}
+                message="Quiz Added Successfully"
+            >
+                <Alert severity="success">Successfully added quiz</Alert>
+            </Snackbar>
+            <Snackbar
+                anchorOrigin={{ vertical: "top", horizontal: "center" }}
+                autoHideDuration={3000}
+                open={isOpenFail}
+                onClose={() => {
+                    console.log("Close");
+                    setIsOpenFail(false);
+                }}
+                message="Quiz could not be added"
+            >
+                <Alert severity="error">Quiz could not be added</Alert>
+            </Snackbar>
+            <Snackbar
+                anchorOrigin={{ vertical: "top", horizontal: "center" }}
+                autoHideDuration={3000}
+                open={isOpenFailRequired}
+                onClose={() => {
+                    console.log("Close");
+                    setIsOpenFailRequired(false);
+                }}
+                message="Please enter all the required fields"
+            >
+                <Alert severity="warning">
+                    Please enter all the required fields
+                </Alert>
+            </Snackbar>
+            <Snackbar
+                anchorOrigin={{ vertical: "top", horizontal: "center" }}
+                autoHideDuration={3000}
+                open={isOpenFailTime}
+                onClose={() => {
+                    console.log("Close");
+                    setIsOpenFailTime(false);
+                }}
+                message="Quiz Start Time cannot be greater than End Time"
+            >
+                <Alert severity="info">
+                    Quiz Start Time cannot be greater than End Time
+                </Alert>
+            </Snackbar>
+
             <Typography
                 sx={{
                     textAlign: "center",
@@ -128,6 +217,7 @@ function Content() {
                 <FTextField
                     id="qdept"
                     select
+                    required
                     value={department}
                     onChange={handleChange}
                 >
@@ -145,10 +235,14 @@ function Content() {
                             color: "#343434",
                             fontWeight: "bolder",
                         },
+                        inputProps: { 
+                            min: 1,
+                        },
                     }}
                     id="qnum"
                     variant="filled"
                     size="small"
+                    required
                     value={noOfQuestions}
                     onChange={(event) => setNoOfQuestions(event.target.value)}
                 />
@@ -159,10 +253,14 @@ function Content() {
                             color: "#343434",
                             fontWeight: "bolder",
                         },
+                        inputProps: { 
+                            min: 1,
+                        },
                     }}
                     id="qtime"
                     variant="filled"
                     size="small"
+                    required
                     type="number"
                 />
                 <FTypography>Start Time</FTypography>
@@ -181,6 +279,7 @@ function Content() {
                         shrink: true,
                     }}
                     value={start}
+                    required
                     onChange={(event) => setStart(event.target.value)}
                 />
                 <FTypography>End Time</FTypography>
@@ -199,6 +298,7 @@ function Content() {
                         shrink: true,
                     }}
                     value={end}
+                    required
                     onChange={(event) => setEnd(event.target.value)}
                 />
                 <FTypography>Quiz Description</FTypography>
@@ -213,6 +313,7 @@ function Content() {
                     variant="filled"
                     size="small"
                     value={description}
+                    required
                     onChange={(event) => setDescription(event.target.value)}
                 />
                 <br></br>

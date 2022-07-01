@@ -52,6 +52,21 @@ function App() {
                         <Route exact path="/user" element={<UserDashboard />} />
                         <Route
                             exact
+                            path="/department/:id"
+                            element={<Department />}
+                        />
+                        <Route
+                            exact
+                            path="/attemptquiz"
+                            element={<AttemptQuiz />}
+                        />
+                        <Route
+                            exact
+                            path="/selectquiz"
+                            element={<SelectQuiz />}
+                        />
+                        <Route
+                            exact
                             path="/attemptquiz"
                             element={<AttemptQuiz />}
                         />
@@ -94,7 +109,7 @@ function App() {
                         />
                         <Route
                             exact
-                            path="/schedulequiz/:quizid"
+                            path="/schedulequiz/:dept/:quizid"
                             element={<ScheduleQuiz />}
                         />
                         <Route

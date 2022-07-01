@@ -49,6 +49,12 @@ export const api = createApi({
                 method: "GET",
             }),
         }),
+        getAvailableQuestions: builder.query({
+            query: (department) => ({
+                url: `/api/question/all/${department}`,
+                method: "GET",
+            }),
+        }),
         addQuestion: builder.mutation({
             query: (body) => ({
                 url: `/api/question`,
@@ -68,27 +74,26 @@ export const api = createApi({
                 method: "GET",
             }),
         }),
-        addQuiz:builder.mutation({
-            query:(body)=>({
-                url:"/api/quiz",
-                method:"POST",
+        addQuiz: builder.mutation({
+            query: (body) => ({
+                url: "/api/quiz",
+                method: "POST",
                 body,
-            })
+            }),
         }),
-        publishQuiz:builder.mutation({
-            query:(body)=>({
-                url:"/api/quiz/publish",
-                method:"PUT",
+        publishQuiz: builder.mutation({
+            query: (body) => ({
+                url: "/api/quiz/publish",
+                method: "PUT",
                 body,
-            })
+            }),
         }),
-        evaluateQuiz:builder.mutation({
-            query:(quizId)=>({
-                url:`/api/test/evaluate/${quizId}`,
-                method:"PUT",
-                
-            })
-        })
+        evaluateQuiz: builder.mutation({
+            query: (quizId) => ({
+                url: `/api/test/evaluate/${quizId}`,
+                method: "PUT",
+            }),
+        }),
     }),
 });
 
@@ -102,6 +107,7 @@ export const {
     useAddQuestionMutation,
     useGetAvailableQuizQuery,
     useGetAllQuizQuery,
+    useGetAvailableQuestionsQuery,
     useAddQuizMutation,
     usePublishQuizMutation,
     useEvaluateQuizMutation,

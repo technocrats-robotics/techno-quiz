@@ -3,47 +3,48 @@ import Badge from "../Badge";
 import React from "react";
 import { Link } from "react-router-dom";
 import { borderRadius } from "@mui/system";
-import { useEvaluateQuizMutation, usePublishQuizMutation } from "../../../app/services/api";
+import {
+    useEvaluateQuizMutation,
+    usePublishQuizMutation,
+} from "../../../app/services/api";
 
 function QuizCard({ data }) {
-    const [publish,{isLoading,isError,isSuccess}]=usePublishQuizMutation()
-    const [evaluate,{}]=useEvaluateQuizMutation()
+    const [publish, { isLoading, isError, isSuccess }] =
+        usePublishQuizMutation();
+    const [evaluate, {}] = useEvaluateQuizMutation();
 
-    const handlePublish=async(event)=>{
-        event.preventDefault()
-        
-        try{
-            const response=await publish({quizId:data._id}).unwrap()
-            console.log(response)
-            alert('success')
+    const handlePublish = async (event) => {
+        event.preventDefault();
+
+        try {
+            const response = await publish({ quizId: data._id }).unwrap();
+            console.log(response);
+            alert("success");
+        } catch (err) {
+            alert(err.data.err);
+            console.log(err);
         }
-        catch(err){
-            alert('failed')
-            console.log(err)
+    };
+    const handleEvaluate = async (event) => {
+        event.preventDefault();
+
+        try {
+            const response = await evaluate(data._id).unwrap();
+            console.log(response);
+            alert("success");
+        } catch (err) {
+            alert("failed");
+            console.log(err);
         }
-      
-    }
-    const handleEvaluate=async(event)=>{
-        event.preventDefault()
-        
-        try{
-            const response=await evaluate(data._id).unwrap()
-            console.log(response)
-            alert('success')
-        }
-        catch(err){
-            alert('failed')
-            console.log(err)
-        }
-      
-    }
+    };
     return (
         <Box
             sx={{
                 backgroundColor: "#f2f2f4",
                 borderRadius: "30px",
-                // width: "70%",
+                width: "32vw",
                 marginBottom: "5%",
+                marginTop: "5%",
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "center",
@@ -74,111 +75,82 @@ function QuizCard({ data }) {
             </Typography>
             <Box>
                 <Link
-                    to={`/scheduleQuiz/${data._id}`}
+                    to={`/scheduleQuiz/${data.department}/${data._id}`}
                     style={{ textDecoration: "none" }}
                 >
-                    {/* <Badge
-                    content="Select"
-                    logout
-                    style={{
-                        color: "#000",
-                        textAlign: "center",
-                        cursor: "pointer",
-                        
-                    }}
-                >
-                    <Button sx={{ width: "100%" }}></Button>
-                </Badge> */}
                     <Button
                         sx={{
-                            color: "#000",
-                            backgroundColor: "#FFE500",
-                            borderRadius: "1.5rem",
+                            color: "#FFF",
+                            backgroundColor: "#f0ad4e",
+                            borderRadius: "0.5rem",
                             paddingLeft: "1.5rem",
                             paddingRight: "1.5rem",
+                            marginLeft: "0.4rem",
                         }}
                     >
                         Select
                     </Button>
                 </Link>
 
-                    {/* <Badge
-                    content="Select"
-                    logout
-                    style={{
-                        color: "#000",
-                        textAlign: "center",
-                        cursor: "pointer",
-                        
-                    }}
-                >
-                    <Button sx={{ width: "100%" }}></Button>
-                </Badge> */}
-                {!data.isEvaluated && <Button
+                {!data.isEvaluated && (
+                    <Button
                         sx={{
-                            color: "#000",
-                            backgroundColor: "#00cc00",
-                            borderRadius: "1.5rem",
+                            color: "#FFF",
+                            backgroundColor: "#0275d8",
+                            borderRadius: "0.5rem",
                             paddingLeft: "1.5rem",
                             paddingRight: "1.5rem",
+                            marginLeft: "0.4rem",
                         }}
                         onClick={handleEvaluate}
                     >
                         Evaluate
-                    </Button>} 
-                    {data.isEvaluated && <Button
+                    </Button>
+                )}
+                {data.isEvaluated && (
+                    <Button
                         sx={{
-                            color: "#000",
-                            backgroundColor: "#00cc00",
-                            borderRadius: "1.5rem",
+                            color: "#FFF",
+                            backgroundColor: "#0275d8",
+                            borderRadius: "0.5rem",
                             paddingLeft: "1.5rem",
                             paddingRight: "1.5rem",
+                            marginLeft: "0.4rem",
                         }}
-                        
                     >
                         Evaluated
-                    </Button>} 
-                    
-               
+                    </Button>
+                )}
 
-                    {/* <Badge
-                    content="Select"
-                    logout
-                    style={{
-                        color: "#000",
-                        textAlign: "center",
-                        cursor: "pointer",
-                        
-                    }}
-                >
-                    <Button sx={{ width: "100%" }}></Button>
-                </Badge> */}
-                {!data.isPublished && <Button
+                {!data.isPublished && (
+                    <Button
                         sx={{
-                            color: "#000",
-                            backgroundColor: "#ff3300",
-                            borderRadius: "1.5rem",
+                            color: "#FFF",
+                            backgroundColor: "#5cb85c",
+                            borderRadius: "0.5rem",
                             paddingLeft: "1.5rem",
                             paddingRight: "1.5rem",
+                            marginLeft: "0.4rem",
                         }}
                         onClick={handlePublish}
                     >
                         PUBLISH
-                    </Button>}
-                    {data.isPublished && <Button
+                    </Button>
+                )}
+                {data.isPublished && (
+                    <Button
                         sx={{
-                            color: "#000",
-                            backgroundColor: "#ff3300",
-                            borderRadius: "1.5rem",
+                            color: "#FFF",
+                            backgroundColor: "#5cb85c",
+                            borderRadius: "0.5rem",
                             paddingLeft: "1.5rem",
                             paddingRight: "1.5rem",
+                            marginLeft: "0.4rem",
                         }}
-
                     >
                         Already Published
-                    </Button>}
-                    
-                
+                    </Button>
+                )}
             </Box>
         </Box>
     );
@@ -210,12 +182,12 @@ function Content({ quiz }) {
             >
                 Select the Quiz
             </Typography>
-            <Grid container spacing={2} sx={{ mx: "1.5rem" }}>
-                <Grid item xs={4}>
-                    {quiz.map((item) => (
+            <Grid container spacing={2} sx={{ mx: "3rem" }}>
+                {quiz.map((item) => (
+                    <Grid item xs={4}>
                         <QuizCard key={item._id} data={item} />
-                    ))}
-                </Grid>
+                    </Grid>
+                ))}
             </Grid>
         </Box>
     );

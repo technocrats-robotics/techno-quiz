@@ -18,10 +18,10 @@ import { useAddQuestionMutation } from "../../../app/services/api";
 import produce from "immer";
 
 const departments = [
-    { value: "Electrical", label: "Electrical" },
-    { value: "General Robotics", label: "General Robotics" },
-    { value: "Programming", label: "Programming" },
-    { value: "Mechanical", label: "Mechanical" },
+    { value: "electrical", label: "Electrical" },
+    { value: "robotics", label: "General Robotics" },
+    { value: "programming", label: "Programming" },
+    { value: "mechanical", label: "Mechanical" },
 ];
 
 const answers = [
@@ -29,23 +29,6 @@ const answers = [
     { value: "option 2", label: "option 2" },
     { value: "option 3", label: "option 3" },
     { value: "option 4", label: "option 4" },
-];
-
-const quesBank = [
-    { value: "Electrical 1", label: "Electrical 1" },
-    { value: "Electrical 2", label: "Electrical 2" },
-    { value: "Electrical 3", label: "Electrical 3" },
-    { value: "Electrical 4", label: "Electrical 4" },
-    { value: "Electrical 5", label: "Electrical 5" },
-    { value: "Programming 1", label: "Programming 1" },
-    { value: "Programming 2", label: "Programming 2" },
-    { value: "Programming 3", label: "Programming 3" },
-    { value: "Programming 4", label: "Programming 4" },
-    { value: "Robotics 1", label: "Robotics 1" },
-    { value: "Robotics 2", label: "Robotics 2" },
-    { value: "Robotics 3", label: "Robotics 3" },
-    { value: "Mechanical 1", label: "Mechanical 1" },
-    { value: "Mechanical 2", label: "Mechanical 2" },
 ];
 
 const FTypography = withStyles({
@@ -68,21 +51,18 @@ const FTextField = withStyles({
 function Content() {
     const [isOpenSuccess, setIsOpenSuccess] = useState(false);
     const [isOpenFail, setIsOpenFail] = useState(false);
+    const [isOpenFailRequired, setIsOpenFailRequired] = useState(false);
 
     // backend
     const [statment, setStatment] = useState("");
-    const [department, setDepartment] = useState("Electrical");
+    const [department, setDepartment] = useState("");
     const [options, setOptions] = useState(["", "", "", ""]);
     const [answer, setAnswer] = useState("");
 
-    const [questionBank, setquesBank] = useState("Electrical 1");
     const [quesType, setquesType] = useState(true);
     const [ques, setQues] = useState("Create New Question!");
     const handleChange = (event) => {
         setDepartment(event.target.value);
-    };
-    const handleBank = (event) => {
-        setquesBank(event.target.value);
     };
 
     const handleSubmit = async () => {
@@ -96,16 +76,27 @@ function Content() {
         } else {
             newAnswer = options[3];
         }
+        const data = {
+            statement: statment,
+            department,
+            options,
+            answer: newAnswer,
+        };
+
         try {
-            const data = {
-                statement: statment,
-                department,
-                options,
-                answer: newAnswer,
-            };
-            const response = await addQuestion(data).unwrap();
-            console.log(response);
-            setIsOpenSuccess(true);
+            if (
+                data.statement == "" ||
+                data.department == "" ||
+                data.options == "" ||
+                data.answer == ""
+            ) {
+                setIsOpenFailRequired(true);
+            }
+            else{
+                const response = await addQuestion(data).unwrap();
+                console.log(response);
+                setIsOpenSuccess(true);
+            }
         } catch (error) {
             console.log(error);
             setIsOpenFail(true);
@@ -162,6 +153,20 @@ function Content() {
             >
                 <Alert severity="error">Question could not be added</Alert>
             </Snackbar>
+            <Snackbar
+                anchorOrigin={{ vertical: "top", horizontal: "center" }}
+                autoHideDuration={3000}
+                open={isOpenFailRequired}
+                onClose={() => {
+                    console.log("Close");
+                    setIsOpenFailRequired(false);
+                }}
+                message="Please enter all the required fields"
+            >
+                <Alert severity="warning">
+                    Please enter all the required fields
+                </Alert>
+            </Snackbar>
             <Typography
                 sx={{
                     textAlign: "center",
@@ -210,7 +215,7 @@ function Content() {
                     onChange={(e) => {
                         setStatment(e.target.value);
                     }}
-                    required={true}
+                    required
                 />
                 <FTypography> Select Department </FTypography>
                 <FTextField
@@ -218,6 +223,7 @@ function Content() {
                     select
                     value={department}
                     onChange={handleChange}
+                    required
                 >
                     {departments.map((option) => (
                         <MenuItem key={option.value} value={option.value}>
@@ -372,6 +378,7 @@ function Content() {
                         setAnswer(e.target.value);
                         console.log(answer);
                     }}
+                    required
                 >
                     {answers.map((option) => (
                         <MenuItem key={option.value} value={option.value}>

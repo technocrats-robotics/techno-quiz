@@ -5,7 +5,7 @@ import { useLoginMutation, useRegisterMutation } from "../../app/services/api";
 import LoginModal from "./LoginModal";
 import RegisterModal from "./RegisterModal";
 import { selectCurrentUser, setUserState } from "../../features/Auth/authSlice";
-import Alert from "@mui/material/Alert";
+import { Alert, Snackbar } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -14,6 +14,9 @@ function AuthModal({ isActive, setIsActive }) {
     const [register, { isError }] = useRegisterMutation();
     const navigator = useNavigate();
     const dispatch = useDispatch();
+    const [isOpenSuccess, setIsOpenSuccess] = useState(false);
+    const [isOpenFail, setIsOpenFail] = useState(false);
+    const [isOpenFailRequired, setIsOpenFailRequired] = useState(false);
     const [hasAccount, setHasAccount] = useState(true);
     const [loginCredentials, setLoginCredentials] = useState({
         email: "",
@@ -44,18 +47,25 @@ function AuthModal({ isActive, setIsActive }) {
     const handleLogin = async (event) => {
         event.preventDefault();
         try {
-            const response = await login(loginCredentials).unwrap();
-            dispatch(setUserState(response));
-            localStorage.setItem("token", response.token);
-            alert("Successful");
-            if (response.responseUser.role === "admin") {
-                navigator("/admin");
+            if (
+                loginCredentials.email == "" ||
+                loginCredentials.password == ""
+            ) {
+                setIsOpenFailRequired(true);
             } else {
-                navigator("/user");
+                const response = await login(loginCredentials).unwrap();
+                dispatch(setUserState(response));
+                localStorage.setItem("token", response.token);
+                setIsOpenSuccess(true);
+                if (response.responseUser.role === "admin") {
+                    navigator("/admin");
+                } else {
+                    navigator("/user");
+                }
             }
         } catch (err) {
             console.log(err);
-            alert("Error");
+            setIsOpenFail(true);
         }
     };
 
@@ -97,14 +107,48 @@ function AuthModal({ isActive, setIsActive }) {
 
     return ReactDOM.createPortal(
         <>
-            {toast && (
-                <Alert
-                    severity="error"
-                    style={{ zIndex: 1000, position: "fixed" }}
-                >
-                    Password not Matching
+            <Snackbar
+                anchorOrigin={{ vertical: "top", horizontal: "center" }}
+                autoHideDuration={3000}
+                open={isOpenSuccess}
+                onClose={() => {
+                    console.log("Close");
+                    setIsOpenSuccess(false);
+                }}
+                message="Logged In Successfully"
+            >
+                <Alert style={{ marginTop: "50px" }} severity="success">
+                    Logged In Successfully
                 </Alert>
-            )}
+            </Snackbar>
+            <Snackbar
+                anchorOrigin={{ vertical: "top", horizontal: "center" }}
+                autoHideDuration={3000}
+                open={isOpenFail}
+                onClose={() => {
+                    console.log("Close");
+                    setIsOpenFail(false);
+                }}
+                message="Invalid Email/Password"
+            >
+                <Alert style={{ marginTop: "50px" }} severity="error">
+                    Invalid Email/Password. Try Again!
+                </Alert>
+            </Snackbar>
+            <Snackbar
+                anchorOrigin={{ vertical: "top", horizontal: "center" }}
+                
+                open={isOpenFailRequired}
+                onClose={() => {
+                    console.log("Close");
+                    setIsOpenFailRequired(false);
+                }}
+                message="Please enter all the required fields"
+            >
+                <Alert style={{ marginTop: "50px" }} severity="warning">
+                    Please enter all the required fields
+                </Alert>
+            </Snackbar>
             {hasAccount ? (
                 <LoginModal
                     handleLogin={handleLogin}

@@ -147,9 +147,7 @@ const verify = (req, res) => {
                     }
                     user.isVerified = true;
                     user.save();
-                    return res.json({
-                        message: "User verified",
-                    });
+                    res.redirect("http://localhost:3000/login");
                 })
                 .catch((err) => {
                     res.json({

@@ -16,7 +16,6 @@ function ModifyDeptQuiz() {
     const matches = useMediaQuery(theme.breakpoints.up("sm"));
 
     const { data, isLoading, isSuccess } = useGetAllQuizQuery(deptid);
-
     console.log(data);
     return (
         isSuccess &&

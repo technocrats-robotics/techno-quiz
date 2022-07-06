@@ -64,6 +64,17 @@ const getAvailableQuestions = async (req, res) => {
         });
     }
 };
+const includeQues = async (req, res) => {
+    const { quizId, quesId } = req.params;
+    try {
+        const quiz = await Quiz.findById(quizId);
+        quiz.questions.push(quesId);
+        quiz.save();
+        res.status(200).json({ msg: "QUES INSERTED" });
+    } catch (error) {
+        res.status(500).json({ msg: "ERROR" });
+    }
+};
 
 // For user to fetch
 const getQuizQuestions = async (req, res) => {
@@ -92,4 +103,5 @@ module.exports = {
     getAvailableQuestions,
     getQuizQuestions,
     deleteQuestion,
+    includeQues,
 };

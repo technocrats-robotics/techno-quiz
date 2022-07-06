@@ -27,8 +27,19 @@ const api = (app) => {
     app.post("/api/question", user, admin, Question.addQuestion);
     // Some comments added
     app.delete("/api/question", user, admin, Question.deleteQuestion);
-    app.get("/api/question/all/:department", user, admin, Question.getAvailableQuestions);
+    app.get(
+        "/api/question/all/:department",
+        user,
+        admin,
+        Question.getAvailableQuestions
+    );
     app.get("/api/quiz/questions/:quizId", user, Question.getQuizQuestions);
+    app.put(
+        "/api/quiz/include/:quizId/:quesId",
+        user,
+        admin,
+        Question.includeQues
+    );
     app.put("/api/quiz/addQuestion", user, admin, Quiz.addQuizQuestions);
     app.get("/api/quiz", user, Quiz.getQuiz);
     app.post("/api/quiz", user, admin, Quiz.addQuiz);

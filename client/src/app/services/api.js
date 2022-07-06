@@ -94,6 +94,12 @@ export const api = createApi({
                 method: "PUT",
             }),
         }),
+        includeQues: builder.mutation({
+            query: (body) => ({
+                url: `/api/quiz/include/${body.quizId}/${body.quesId}`,
+                method: "PUT",
+            }),
+        }),
     }),
 });
 
@@ -111,4 +117,5 @@ export const {
     useAddQuizMutation,
     usePublishQuizMutation,
     useEvaluateQuizMutation,
+    useIncludeQuesMutation,
 } = api;

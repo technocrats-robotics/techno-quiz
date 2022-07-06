@@ -7,13 +7,11 @@ import SideBar from "../components/Admin/Sidebar";
 import { useGetAvailableQuestionsQuery } from "../app/services/api";
 
 function ScheduleQuiz() {
-    const { dept, quizId } = useParams();
-    console.log(dept);
+    const { dept, quizid } = useParams();
     const [hamburger, setHamburger] = useState(false);
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.up("sm"));
     const { data, isLoading, isSuccess } = useGetAvailableQuestionsQuery(dept);
-    console.log(data);
     return (
         <Box>
             <Header setHamburger={setHamburger} hamburger={hamburger} />
@@ -29,7 +27,9 @@ function ScheduleQuiz() {
                 }}
             >
                 <SideBar />
-                {isSuccess && !isLoading && <Content question={data} />}
+                {isSuccess && !isLoading && (
+                    <Content ques={[data.data, quizid]} />
+                )}
             </Box>
         </Box>
     );

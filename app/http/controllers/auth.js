@@ -51,7 +51,6 @@ const register = async (req, res) => {
 
         await user.save();
 
-        console.log(user);
         const token = Jwt.sign(
             {
                 id: user._id,
@@ -86,7 +85,6 @@ const login = async (req, res) => {
         return res.status(422).json({ errors: errors.array() });
     }
     const { email, password } = req.body;
-    console.log("HIT!!!");
     const user = await User.findOne({ email });
     if (!user) {
         return res.status(401).json({ message: "User does not exist" });
@@ -120,30 +118,6 @@ const login = async (req, res) => {
         responseUser,
         token,
     });
-
-    // User.findOne({ email })
-    //     .then((user) => {
-    //         if (!user) {
-    //             return res.status(404).json({
-    //                 message: "User not found",
-    //             });
-    //         } else {
-    //             user.authenticate(password).then((isMatch) => {
-    //                 console.log(isMatch);
-    //                 if (isMatch) {
-    //                 }
-    //                 return res.status(401).json({
-    //                     message: "Password is incorrect",
-    //                 });
-    //             });
-    //         }
-    //     })
-    //     .catch((err) => {
-    //         res.json({
-    //             message: "User not found",
-    //             err,
-    //         });
-    //     });
 };
 const verify = (req, res) => {
     const { token } = req.params;

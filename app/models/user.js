@@ -56,12 +56,16 @@ user.pre("save", async function (next) {
         this.password = await bcrypt.hash(this.password, salt);
         next();
     } catch (err) {
+        console.log(err);
         next(err);
     }
 });
 user.methods = {
     authenticate: async function (plainpassword) {
-        return await bcrypt.compare(plainpassword, this.password);
+        console.log("Plain Password", plainpassword);
+        console.log("Encrypted Password", this.password);
+
+        return bcrypt.compare(plainpassword, this.password);
     },
 };
 

@@ -48,7 +48,7 @@ const deleteQuestion = async (req, res) => {
 
 // for admin to fetch all questions
 const getAvailableQuestions = async (req, res) => {
-    const { department } = req.params;
+    let { department } = req.params;
     try {
         const ques = await Question.find({
             department: department,

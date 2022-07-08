@@ -57,21 +57,22 @@ const user = new mongoose.Schema({
 
 user.pre("save", async function (next) {
     if (!this.hookEnabled) {
-        this.hookEnabled = true;
-        next();
+        return next();
     }
-
     try {
         const salt = await bcrypt.genSalt(10);
         this.password = await bcrypt.hash(this.password, salt);
+        this.hookEnabled = false;
         next();
     } catch (err) {
+        console.log(err);
         next(err);
     }
 });
 user.methods = {
     authenticate: async function (plainpassword) {
-        return await bcrypt.compare(plainpassword, this.password);
+        const isMatch = await bcrypt.compare(plainpassword, this.password);
+        return isMatch;
     },
 };
 

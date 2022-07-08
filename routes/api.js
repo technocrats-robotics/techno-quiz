@@ -1,5 +1,5 @@
 const limiter = require("express-rate-limit");
-const { check, validationResult } = require("express-validator");
+const { check, validationResult, body } = require("express-validator");
 // controllers
 const Question = require("../app/http/controllers/question");
 const Auth = require("../app/http/controllers/auth");
@@ -24,7 +24,13 @@ const loginLimiter = limiter({
 
 const api = (app) => {
     // app.get("/api/question", user, Question.getQuestion);
-    app.post("/api/question", user, admin, Question.addQuestion);
+    app.post(
+        "/api/question",
+        user,
+        admin,
+
+        Question.addQuestion
+    );
     // Some comments added
     app.delete("/api/question", user, admin, Question.deleteQuestion);
     app.get(
@@ -42,7 +48,56 @@ const api = (app) => {
     );
     app.put("/api/quiz/addQuestion", user, admin, Quiz.addQuizQuestions);
     app.get("/api/quiz", user, Quiz.getQuiz);
-    app.post("/api/quiz", user, admin, Quiz.addQuiz);
+    app.post(
+        "/api/quiz",
+        user,
+        admin,
+        [
+            body("name")
+                .not()
+                .isEmpty()
+                .withMessage("name property should exist"),
+            body("description")
+                .not()
+                .isEmpty()
+                .withMessage("description should exist"),
+            body("department").custom((value) => {
+                let name = value.toLowerCase();
+                if (
+                    name !== "programming" &&
+                    name !== "electrical" &&
+                    name !== "robotics" &&
+                    name !== "mechanical"
+                ) {
+                    console.log("inside log");
+                    return Promise.reject("department should be valid");
+                }
+                return Promise.resolve();
+            }),
+
+            body("start").custom((value, { req }) => {
+                let current = Date.now();
+                let given = new Date(value).getTime();
+                if (given <= current) {
+                    return Promise.reject(
+                        "Start time should not be less than current time"
+                    );
+                }
+                return Promise.resolve();
+            }),
+            body("end").custom((value, { req }) => {
+                let given = new Date(value).getTime();
+                if (given <= new Date(req.body.start).getTime()) {
+                    return Promise.reject(
+                        "End time should not be less than start time"
+                    );
+                }
+                return Promise.resolve();
+            }),
+        ],
+
+        Quiz.addQuiz
+    );
     app.put("/api/quiz/publish", user, admin, Quiz.publishQuiz);
 
     app.get("/api/quiz/all/:department", user, admin, Quiz.getAllQuiz);

@@ -47,8 +47,7 @@ const evaluateAnswer = async (req, res) => {
         const answerArray = await answerModel.find({ quizId }).populate({
             path: "answers.questionId quizId",
         });
-        await Quiz.findByIdAndUpdate(quizId,{isEvaluated:true})
-        console.log(answerArray);
+        await Quiz.findByIdAndUpdate(quizId, { isEvaluated: true });
         // const department = answerArray
         await evaluateScore(answerArray);
         res.status(200).json({
@@ -56,7 +55,6 @@ const evaluateAnswer = async (req, res) => {
         });
 
         const quizDetails = await Quiz.findById(quizId);
-        console.log(quizDetails);
         const newInstance = new latestQuizModel({
             quizId,
             department: quizDetails.department,

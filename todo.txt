@@ -1,0 +1,10 @@
+#1) background of ui pages (HOME, ABOUT, CONTACT) 
+#2) About section department linking not working
+#3) Auth modal animations
+#4) Question fetching should be updated --- capitallization.
+#5) Question validation 
+
+
+
+// V.V. Important
+// The hash is not 100% fault proof

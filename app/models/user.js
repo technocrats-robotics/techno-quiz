@@ -62,9 +62,6 @@ user.pre("save", async function (next) {
 });
 user.methods = {
     authenticate: async function (plainpassword) {
-        console.log("Plain Password", plainpassword);
-        console.log("Encrypted Password", this.password);
-
         return bcrypt.compare(plainpassword, this.password);
     },
 };

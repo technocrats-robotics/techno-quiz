@@ -93,7 +93,6 @@ const login = async (req, res) => {
     const isMatch = await user.authenticate(password);
 
     if (!isMatch) {
-        console.log(isMatch);
         return res.status(401).json({ message: "User/Password not matching" });
     }
 

@@ -59,7 +59,7 @@ export default function SideBar() {
                     </CTypography>
                 </Link>
                 <Link
-                    to="/leaderboard/62b3340d55fd97e0d427b39d"
+                    to="/leaderboard"
                     style={{ textDecoration: "none" }}
                 >
                     <CTypography> Leaderboard </CTypography>

@@ -118,39 +118,62 @@ const login = async (req, res) => {
         token,
     });
 };
-const verify = (req, res) => {
+const verify = async (req, res) => {
     const { token } = req.params;
-    Token.findOne({ token })
-        .then((token) => {
-            if (!token) {
-                return res.json({
-                    message: "Token not found",
-                });
-            }
-            User.findOne({ _id: token.userId })
-                .then((user) => {
-                    if (!user) {
-                        return res.json({
-                            message: "User not found",
-                        });
-                    }
-                    user.isVerified = true;
-                    user.save();
-                    res.redirect("http://localhost:3000/login");
-                })
-                .catch((err) => {
-                    res.json({
-                        message: "User not found",
-                        err,
-                    });
-                });
-        })
-        .catch((err) => {
-            res.json({
-                message: "Token not found",
-                err,
-            });
-        });
+
+    try {
+        const tokenVerify = await Token.findOne({ token });
+        if (!tokenVerify) {
+            return res.status(401).json({ message: "Token not found" });
+        }
+        const user = await User.findById(tokenVerify.userId);
+        console.log(user);
+        if (!user) {
+            return res.status(401).json({ message: "User not found" });
+        }
+        if (user.isVerified) {
+            return res.status(401).json({ message: "User already verified" });
+        }
+        user.isVerified = true;
+        console.log(user);
+        await user.save();
+        return res.redirect("http://localhost:3000/");
+    } catch (err) {
+        console.error(err);
+        return res.status(500).json({ message: "Something went wrong", err });
+    }
+
+    // Token.findOne({ token })
+    //     .then((token) => {
+    //         if (!token) {
+    //             return res.json({
+    //                 message: "Token not found",
+    //             });
+    //         }
+    //         User.findOne({ _id: token.userId })
+    //             .then((user) => {
+    //                 if (!user) {
+    //                     return res.json({
+    //                         message: "User not found",
+    //                     });
+    //                 }
+    //                 user.isVerified = true;
+    //                 await user.save();
+    //                 res.redirect("http://localhost:3000/login");
+    //             })
+    //             .catch((err) => {
+    //                 res.json({
+    //                     message: "User not found",
+    //                     err,
+    //                 });
+    //             });
+    //     })
+    //     .catch((err) => {
+    //         res.json({
+    //             message: "Token not found",
+    //             err,
+    //         });
+    //     });
 };
 module.exports = {
     register,

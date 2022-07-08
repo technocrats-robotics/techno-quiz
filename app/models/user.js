@@ -4,6 +4,7 @@ const userType = require("../utils/user");
 const { v4: uuidv4 } = require("uuid");
 const crypto = require("crypto");
 const bcrypt = require("bcrypt");
+const { threadId } = require("worker_threads");
 
 const user = new mongoose.Schema({
     name: {
@@ -48,9 +49,18 @@ const user = new mongoose.Schema({
             ref: "Quiz",
         },
     ],
+    hookEnabled: {
+        type: Boolean,
+        default: true,
+    },
 });
 
 user.pre("save", async function (next) {
+    if (!this.hookEnabled) {
+        this.hookEnabled = true;
+        next();
+    }
+
     try {
         const salt = await bcrypt.genSalt(10);
         this.password = await bcrypt.hash(this.password, salt);

@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import Badge from "../../Admin/Badge";
 import React from "react";
 
-
-
 function Content() {
     return (
         <Box
@@ -66,12 +64,11 @@ function Content() {
                             color: "#000",
                         }}
                     >
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Turpis fermentum vitae, sit tincidunt aenean eu. Sed
-                        neque auctor purus pretium pharetra donec vel felis.
-                        Nisl placerat vel, nulla tempor id a. Elementum urna
-                        quis donec faucibus et, vitae nec. In risus lectus
-                        ultricies sit. Morbi urna orci.
+                        This section includes all the Quizzes that are active
+                        and eligible for the user to attempt. Kindly keep a
+                        check on this section to attempt exciting quizzes and
+                        challenges put forwsrd by our team at Technocrats
+                        Robotics.
                     </Typography>
                     <Link to="/selectquiz" style={{ textDecoration: "none" }}>
                         <Button sx={{ width: "100%" }}>

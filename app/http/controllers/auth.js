@@ -26,30 +26,31 @@ const sendConfirmationEmail = (user, token) => {
     });
 };
 
-const register = (req, res) => {
+const register = async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(422).json({ errors: errors.array() });
     }
     const { name, email, password, username, department, registrationNumber } =
         req.body;
-    const user = new User({
-        name,
-        username,
-        email,
-        password,
-        department,
-        registrationNumber,
-    });
-    console.log(user);
 
-    user.save(async (err, user) => {
-        if (err) {
-            return res.status(400).json({
-                message: "User not found",
-                err,
-            });
+    try {
+        const check = await User.findOne({ email });
+        if (check) {
+            console.log(check);
+            return res.status(403).json({ message: "User already exist" });
         }
+        const user = new User({
+            name,
+            username,
+            email,
+            password,
+            department,
+            registrationNumber,
+        });
+
+        await user.save();
+
         const token = Jwt.sign(
             {
                 id: user._id,
@@ -61,107 +62,118 @@ const register = (req, res) => {
             }
         );
         // Send Mail to user for confimation
-        try {
-            const token = new Token({
-                userId: user._id,
-                token: crypto.randomBytes(16).toString("hex"),
-            });
-            await token.save();
-            sendConfirmationEmail(user, token.token);
-        } catch (err) {
-            return res.status(500).send("Server error!");
-        }
+        const tokenVerify = new Token({
+            userId: user._id,
+            token: crypto.randomBytes(16).toString("hex"),
+        });
+        await tokenVerify.save();
+        sendConfirmationEmail(user, tokenVerify.token);
 
         return res.status(200).json({
             message: "User created",
             token,
         });
-    });
+    } catch (err) {
+        console.error(err);
+        return res.status(500).json({ message: "Something went wrong" });
+    }
 };
 
-const login = (req, res) => {
+const login = async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(422).json({ errors: errors.array() });
     }
     const { email, password } = req.body;
-    console.log("HIT!!!");
-    User.findOne({ email })
-        .then((user) => {
-            if (!user) {
-                res.status(404).json({
-                    message: "User not found",
-                });
-            } else {
-                if (user.authenticate(password)) {
-                    const token = Jwt.sign(
-                        {
-                            id: user._id,
-                            role: user.role,
-                        },
-                        process.env.TOKEN_SECRET,
-                        {
-                            expiresIn: "3h",
-                        }
-                    );
-                    const responseUser = {
-                        email: user.email,
-                        isAdmin: user.isAdmin,
-                        name: user.name,
-                        role: user.role,
-                        createdOn: user.createdOn,
-                    };
-                    return res.json({
-                        responseUser,
-                        token,
-                    });
-                } else {
-                    res.json({
-                        message: "Password is incorrect",
-                    });
-                }
-            }
-        })
-        .catch((err) => {
-            res.json({
-                message: "User not found",
-                err,
-            });
-        });
+    const user = await User.findOne({ email });
+    if (!user) {
+        return res.status(401).json({ message: "User does not exist" });
+    }
+
+    const isMatch = await user.authenticate(password);
+
+    if (!isMatch) {
+        return res.status(401).json({ message: "User/Password not matching" });
+    }
+
+    const token = Jwt.sign(
+        {
+            id: user._id,
+            role: user.role,
+        },
+        process.env.TOKEN_SECRET,
+        {
+            expiresIn: "3h",
+        }
+    );
+    const responseUser = {
+        email: user.email,
+        isAdmin: user.isAdmin,
+        name: user.name,
+        role: user.role,
+        createdOn: user.createdOn,
+    };
+    return res.status(200).json({
+        responseUser,
+        token,
+    });
 };
-const verify = (req, res) => {
+const verify = async (req, res) => {
     const { token } = req.params;
-    Token.findOne({ token })
-        .then((token) => {
-            if (!token) {
-                return res.json({
-                    message: "Token not found",
-                });
-            }
-            User.findOne({ _id: token.userId })
-                .then((user) => {
-                    if (!user) {
-                        return res.json({
-                            message: "User not found",
-                        });
-                    }
-                    user.isVerified = true;
-                    user.save();
-                    res.redirect("http://localhost:3000/login");
-                })
-                .catch((err) => {
-                    res.json({
-                        message: "User not found",
-                        err,
-                    });
-                });
-        })
-        .catch((err) => {
-            res.json({
-                message: "Token not found",
-                err,
-            });
-        });
+
+    try {
+        const tokenVerify = await Token.findOne({ token });
+        if (!tokenVerify) {
+            return res.status(401).json({ message: "Token not found" });
+        }
+        const user = await User.findById(tokenVerify.userId);
+        console.log(user);
+        if (!user) {
+            return res.status(401).json({ message: "User not found" });
+        }
+        if (user.isVerified) {
+            return res.status(401).json({ message: "User already verified" });
+        }
+        user.isVerified = true;
+        console.log(user);
+        await user.save();
+        return res.redirect("http://localhost:3000/");
+    } catch (err) {
+        console.error(err);
+        return res.status(500).json({ message: "Something went wrong", err });
+    }
+
+    // Token.findOne({ token })
+    //     .then((token) => {
+    //         if (!token) {
+    //             return res.json({
+    //                 message: "Token not found",
+    //             });
+    //         }
+    //         User.findOne({ _id: token.userId })
+    //             .then((user) => {
+    //                 if (!user) {
+    //                     return res.json({
+    //                         message: "User not found",
+    //                     });
+    //                 }
+    //                 user.isVerified = true;
+    //                 await user.save();
+    //                 res.redirect("http://localhost:3000/login");
+    //             })
+    //             .catch((err) => {
+    //                 res.json({
+    //                     message: "User not found",
+    //                     err,
+    //                 });
+    //             });
+    //     })
+    //     .catch((err) => {
+    //         res.json({
+    //             message: "Token not found",
+    //             err,
+    //         });
+    //     });
 };
 module.exports = {
     register,

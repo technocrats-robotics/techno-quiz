@@ -5,8 +5,6 @@ const uploadAnswer = async (req, res) => {
     // User answer should follow the schema of answerSchema
     const userAnswer = req.body;
     const userId = req.user.id;
-    console.log(userAnswer);
-    console.log(userId);
     const userAttempt = sanitizeUserAttempt(userAnswer, userId);
     // TODO: JValidation required before saving
     try {

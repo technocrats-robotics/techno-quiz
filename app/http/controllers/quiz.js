@@ -1,8 +1,22 @@
+const { validationResult } = require("express-validator");
 const Quiz = require("../../models/quiz");
 const updateQuestions = require("../services/updateQuestion");
 
 const addQuiz = (req, res) => {
-    const { name, description, questions, start, end, department,noOfQuestions } = req.body;
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(422).json({ errors: errors.array() });
+    }
+
+    const {
+        name,
+        description,
+        questions,
+        start,
+        end,
+        department,
+        noOfQuestions,
+    } = req.body;
     const quiz = new Quiz({
         name,
         description,
@@ -10,7 +24,7 @@ const addQuiz = (req, res) => {
         start,
         end,
         department,
-        noOfQuestions
+        noOfQuestions,
     });
 
     quiz.save((err, quiz) => {
@@ -96,12 +110,12 @@ const publishQuiz = async (req, res) => {
     const quizId = req.body.quizId;
     try {
         const quiz = await Quiz.findById(quizId);
-        console.log(quiz)
+        console.log(quiz);
         quiz.isPublished = true;
         quiz.save();
-        res.status(200).json({msg:"PUBLISHED"});
+        res.status(200).json({ msg: "PUBLISHED" });
     } catch (error) {
-        res.status(500).json({msg:"ERROR"});
+        res.status(500).json({ msg: "ERROR" });
     }
 };
 module.exports = {

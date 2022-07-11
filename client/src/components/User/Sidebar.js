@@ -1,10 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Box, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import { withStyles } from "@mui/styles";
 import IconButton from "@mui/material/IconButton";
 import Man from "../Icons/Man.png";
 import Badge from "../Admin/Badge";
+import { useDispatch } from "react-redux";
+import { removeUserState } from "../../features/Auth/authSlice";
+
+
 const CTypography = withStyles({
     root: {
         color: "#000",
@@ -24,6 +28,10 @@ const CTypography = withStyles({
     },
 })(Typography);
 export default function SideBar() {
+
+    const dispatch = useDispatch();
+    const navigator = useNavigate();
+    
     return (
         <Box
             sx={{
@@ -88,7 +96,11 @@ export default function SideBar() {
                         alt="Dashboard"
                     />
                 </IconButton>
-                <Button>
+                <Button onClick={() => {
+                    dispatch(removeUserState);
+                    localStorage.removeItem('token');
+                    navigator("/");
+                }} >
                     <Badge
                         content="Logout"
                         logout
